@@ -26,6 +26,12 @@ public class MainActivity extends AppCompatActivity {
         busHandler = new BusHandler();
         busHandler.start();
 
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         busHandler.post();
 
         boolean b = JNI_Bus.init("123", "123");
@@ -37,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void run() {
+            Log.i(TAG, "BusHandler run");
+
             Looper.prepare();
             handler = new Handler(new Handler.Callback() {
                 @Override
@@ -46,8 +54,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
             Looper.loop();
-
-            Log.i(TAG, "BusHandler after loop");
         }
 
         void post() {
@@ -58,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
                         Log.i(TAG, "BusHandler handler.post");
                     }
                 });
+
+                handler.sendEmptyMessage(1);
             }
         }
     }
