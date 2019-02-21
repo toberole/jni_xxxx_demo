@@ -1,16 +1,19 @@
-package com.jni.org;
+package com.jni.org.activity;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 
 import com.jni.bus.JNI_Bus;
+import com.jni.org.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = MainActivity.class.getSimpleName();
     private Button btn;
 
@@ -22,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btn = findViewById(R.id.btn_test);
+
+        btn.setOnClickListener(this);
 
         busHandler = new BusHandler();
         busHandler.start();
@@ -38,46 +43,53 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "b = " + b);
     }
 
+
     @Override
     protected void onStart() {
         super.onStart();
 
-        Log.i(TAG,"MainActivity#onStart");
+        Log.i(TAG, "MainActivity#onStart");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        Log.i(TAG,"MainActivity#onResume");
+        Log.i(TAG, "MainActivity#onResume");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
 
-        Log.i(TAG,"MainActivity#onRestart");
+        Log.i(TAG, "MainActivity#onRestart");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
 
-        Log.i(TAG,"MainActivity#onPause");
+        Log.i(TAG, "MainActivity#onPause");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
 
-        Log.i(TAG,"MainActivity#onStop");
+        Log.i(TAG, "MainActivity#onStop");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
 
-        Log.i(TAG,"MainActivity#onDestroy");
+        Log.i(TAG, "MainActivity#onDestroy");
+    }
+
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent(MainActivity.this, TestActivity.class);
+        startActivity(intent);
     }
 
     private class BusHandler extends Thread {
