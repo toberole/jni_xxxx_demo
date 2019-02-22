@@ -10,12 +10,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <service
+            android:name=".service.CalService"
+            android:enabled="true"
+            android:exported="true"></service>
+
         <activity
+            android:name=".activity.TestActivity"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
-            android:name=".activity.TestActivity"
             android:process=":xxxtest" />
-
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,6 +27,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".service.ManagerUserService"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>
