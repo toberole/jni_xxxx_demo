@@ -22,6 +22,9 @@ public class ManagerUserService extends Service {
     public static final String TAG = ManagerUserService.class.getSimpleName();
 
     // private CopyOnWriteArrayList<IOnNewUserAdded> listeners = new CopyOnWriteArrayList<>();
+    /**
+     * 注意 需要使用RemoteCallbackList，系统提供的专门用于删除跨进程的listener的接口
+     */
     private RemoteCallbackList<IOnNewUserAdded> listeners = new RemoteCallbackList<>();
 
     /**
