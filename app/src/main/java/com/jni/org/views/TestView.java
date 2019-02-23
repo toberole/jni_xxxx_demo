@@ -1,4 +1,4 @@
-package com.jni.views;
+package com.jni.org.views;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -11,11 +11,11 @@ public class TestView extends View {
         super(context);
     }
 
-    public TestView(Context context, @androidx.annotation.Nullable @Nullable AttributeSet attrs) {
+    public TestView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public TestView(Context context, @androidx.annotation.Nullable @Nullable AttributeSet attrs, int defStyleAttr) {
+    public TestView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

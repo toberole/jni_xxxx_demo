@@ -62,6 +62,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_get_users.setOnClickListener(this);
         btn_unregister.setOnClickListener(this);
 
+        btn.getLeft();
+
         busHandler = new BusHandler();
         busHandler.start();
 
