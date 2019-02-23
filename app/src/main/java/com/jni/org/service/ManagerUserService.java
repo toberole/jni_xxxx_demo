@@ -2,6 +2,7 @@ package com.jni.org.service;
 
 import android.app.Service;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.IBinder;
 import android.os.RemoteCallbackList;
 import android.os.RemoteException;
@@ -41,7 +42,7 @@ public class ManagerUserService extends Service {
 
             addUser_notify();
 
-            Log.i(TAG, "ManagerUserService#addUser thread_id: " + Thread.currentThread().getId() + " age: " + user.age + " name: " + user.name);
+            Log.i(TAG, "ManagerUserService#addUser thread_id: " + Thread.currentThread().getId() + " thread_name: " + Thread.currentThread().getName() + " age: " + user.age + " name: " + user.name);
         }
 
         @Override
@@ -124,8 +125,24 @@ public class ManagerUserService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         Log.i(TAG, "ManagerUserService#onBind");
+        // TODO 校验客户端权限
+        boolean b = checkClientPermission();
 
         return userManager;
+    }
+
+    /**
+     * 校验客户端权限
+     */
+    private boolean checkClientPermission() {
+        boolean res = false;
+        int checked = checkCallingOrSelfPermission("com.xxx.call");
+        if (checked == PackageManager.PERMISSION_DENIED) {
+            res = false;
+        } else {
+            res = true;
+        }
+        return res;
     }
 
     private void addUser_notify() {
@@ -150,6 +167,9 @@ public class ManagerUserService extends Service {
             IOnNewUserAdded iOnNewUserAdded = listeners.getBroadcastItem(i);
             if (null != iOnNewUserAdded) {
                 try {
+                    /**
+                     * 调用客户端的方法[阻塞式的]
+                     */
                     iOnNewUserAdded.onAddUser(user);
                 } catch (RemoteException e) {
                     e.printStackTrace();

@@ -23,16 +23,18 @@ import com.jni.org.service.ManagerUserService;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, ServiceConnection {
     public static final String TAG = MainActivity.class.getSimpleName();
-    private Button btn;
 
-    private BusHandler busHandler;
+    private Button btn;
+    private Button btn_add_user;
     private Button btn_bind_serice;
+    private Button btn_get_users;
+    private Button btn_unregister;
 
     private IUserManager userManager;
-    private Button btn_add_user;
-    private Button btn_get_users;
+
+    private BusHandler busHandler;
 
     // 注册给aidl服务端回调
     private IOnNewUserAdded listener = new IOnNewUserAdded.Stub() {
@@ -42,7 +44,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Log.i(TAG, "IOnNewUserAdded#onAddUser user name: " + u.name + " age: " + u.age);
         }
     };
-    private Button btn_unregister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,13 +56,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_get_users = findViewById(R.id.btn_get_users);
         btn_unregister = findViewById(R.id.btn_unregister);
 
-
         btn.setOnClickListener(this);
         btn_bind_serice.setOnClickListener(this);
         btn_add_user.setOnClickListener(this);
         btn_get_users.setOnClickListener(this);
         btn_unregister.setOnClickListener(this);
-
 
         busHandler = new BusHandler();
         busHandler.start();
@@ -77,7 +76,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         boolean b = JNI_Bus.init("123", "123");
         Log.i(TAG, "b = " + b);
     }
-
 
     @Override
     protected void onStart() {
@@ -175,29 +173,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_bind_serice:
                 Intent bind_service = new Intent(MainActivity.this, ManagerUserService.class);
-                MainActivity.this.bindService(bind_service, new ServiceConnection() {
-                    @Override
-                    public void onServiceConnected(ComponentName name, IBinder service) {
-                        userManager = IUserManager.Stub.asInterface(service);
-
-                        try {
-                            userManager.registerListener(listener);
-                        } catch (RemoteException e) {
-                            e.printStackTrace();
-                        }
-                    }
-
-                    @Override
-                    public void onServiceDisconnected(ComponentName name) {
-                        userManager = null;
-                    }
-                }, BIND_AUTO_CREATE);
+                MainActivity.this.bindService(bind_service, this, BIND_AUTO_CREATE);
                 break;
             default:
                 break;
         }
-
     }
+
+    @Override
+    public void onServiceConnected(ComponentName name, IBinder service) {
+        userManager = IUserManager.Stub.asInterface(service);
+
+        // 通信异常中断 会回调deathRecipient
+        userManager.asBinder().unlinkToDeath(deathRecipient, 0);
+
+        try {
+            userManager.registerListener(listener);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onServiceDisconnected(ComponentName name) {
+        userManager = null;
+    }
+
+    private IBinder.DeathRecipient deathRecipient = new IBinder.DeathRecipient() {
+        @Override
+        public void binderDied() {
+            Log.i(TAG, "IBinder.DeathRecipient#binderDied");
+        }
+    };
 
     private class BusHandler extends Thread {
         private Handler handler;
