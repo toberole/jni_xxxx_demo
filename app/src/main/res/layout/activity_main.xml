@@ -36,4 +36,11 @@
         android:text="btn_get_users" />
 
 
+    <Button
+        android:id="@+id/btn_unregister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="btn_unregister" />
+
+
 </LinearLayout>

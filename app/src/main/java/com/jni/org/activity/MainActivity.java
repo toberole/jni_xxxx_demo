@@ -35,13 +35,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btn_get_users;
 
     // 注册给aidl服务端回调
-    private IOnNewUserAdded listener = new IOnNewUserAdded.Stub(){
+    private IOnNewUserAdded listener = new IOnNewUserAdded.Stub() {
 
         @Override
         public void onAddUser(User u) throws RemoteException {
             Log.i(TAG, "IOnNewUserAdded#onAddUser user name: " + u.name + " age: " + u.age);
         }
     };
+    private Button btn_unregister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,11 +53,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_bind_serice = findViewById(R.id.btn_bind_serice);
         btn_add_user = findViewById(R.id.btn_add_user);
         btn_get_users = findViewById(R.id.btn_get_users);
+        btn_unregister = findViewById(R.id.btn_unregister);
+
 
         btn.setOnClickListener(this);
         btn_bind_serice.setOnClickListener(this);
         btn_add_user.setOnClickListener(this);
         btn_get_users.setOnClickListener(this);
+        btn_unregister.setOnClickListener(this);
+
 
         busHandler = new BusHandler();
         busHandler.start();
@@ -114,17 +119,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onDestroy();
 
         /**
-         * 注意 此种方法是无法达到反注册的方法的
-         * 需要使用RemoteCallbackList，系统提供的专门用于删除跨进程的
-         * listener的接口
+         * 注意 此种方法需要使用RemoteCallbackList，系统提供的专门用于删除跨进程的listener的接口
          */
-//        if (userManager!=null && userManager.asBinder().isBinderAlive()){
-//            try {
-//                userManager.unRegisterListener(listener);
-//            } catch (RemoteException e) {
-//                e.printStackTrace();
-//            }
-//        }
+        if (userManager != null && userManager.asBinder().isBinderAlive()) {
+            try {
+                userManager.unRegisterListener(listener);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
 
         Log.i(TAG, "MainActivity#onDestroy");
     }
@@ -135,6 +138,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_test:
                 Intent intent = new Intent(MainActivity.this, TestActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.btn_unregister:
+                if (userManager != null && userManager.asBinder().isBinderAlive()) {
+                    try {
+                        userManager.unRegisterListener(listener);
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+                }
                 break;
             case R.id.btn_add_user:
                 if (userManager != null) {
