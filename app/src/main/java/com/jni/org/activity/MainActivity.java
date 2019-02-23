@@ -113,13 +113,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onDestroy() {
         super.onDestroy();
 
-        if (userManager!=null && userManager.asBinder().isBinderAlive()){
-            try {
-                userManager.unRegisterListener(listener);
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
-        }
+        /**
+         * 注意 此种方法是无法达到反注册的方法的
+         * 需要使用RemoteCallbackList，系统提供的专门用于删除跨进程的
+         * listener的接口
+         */
+//        if (userManager!=null && userManager.asBinder().isBinderAlive()){
+//            try {
+//                userManager.unRegisterListener(listener);
+//            } catch (RemoteException e) {
+//                e.printStackTrace();
+//            }
+//        }
 
         Log.i(TAG, "MainActivity#onDestroy");
     }

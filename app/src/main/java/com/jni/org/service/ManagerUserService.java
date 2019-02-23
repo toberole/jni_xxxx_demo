@@ -3,6 +3,7 @@ package com.jni.org.service;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 import android.util.Log;
 
@@ -20,7 +21,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class ManagerUserService extends Service {
     public static final String TAG = ManagerUserService.class.getSimpleName();
 
-    private CopyOnWriteArrayList<IOnNewUserAdded> listeners = new CopyOnWriteArrayList<>();
+    // private CopyOnWriteArrayList<IOnNewUserAdded> listeners = new CopyOnWriteArrayList<>();
+    private RemoteCallbackList<IOnNewUserAdded> listeners = new RemoteCallbackList<>();
 
     /**
      * 实现服务接口
@@ -56,20 +58,26 @@ public class ManagerUserService extends Service {
 
         @Override
         public void registerListener(IOnNewUserAdded listener) throws RemoteException {
-            if (!listeners.contains(listener)) {
-                listeners.add(listener);
+//            if (!listeners.contains(listener)) {
+//                listeners.add(listener);
+//
+//                Log.i(TAG, "ManagerUserService#registerListener");
+//            }
 
-                Log.i(TAG, "ManagerUserService#registerListener");
-            }
+            listeners.register(listener);
+            Log.i(TAG, "ManagerUserService#registerListener");
         }
 
         @Override
         public void unRegisterListener(IOnNewUserAdded listener) throws RemoteException {
-            if (!listeners.contains(listener)) {
-                listeners.remove(listener);
+//            if (!listeners.contains(listener)) {
+//                listeners.remove(listener);
+//
+//                Log.i(TAG, "ManagerUserService#unRegisterListener");
+//            }
 
-                Log.i(TAG, "ManagerUserService#unRegisterListener");
-            }
+            listeners.unregister(listener);
+            Log.i(TAG, "ManagerUserService#unRegisterListener");
         }
     };
 
@@ -118,15 +126,36 @@ public class ManagerUserService extends Service {
     }
 
     private void addUser_notify() {
-        for (IOnNewUserAdded l : listeners) {
-            try {
-                User user = new User();
-                user.age = 100;
-                user.name = "hello world";
-                l.onAddUser(user);
-            } catch (RemoteException e) {
-                e.printStackTrace();
+//        for (IOnNewUserAdded l : listeners) {
+//            try {
+//                User user = new User();
+//                user.age = 100;
+//                user.name = "hello world";
+//                l.onAddUser(user);
+//            } catch (RemoteException e) {
+//                e.printStackTrace();
+//            }
+//        }
+
+        // 注意：beginBroadcast 和 finishBroadcast 必须配对使用
+        int n = listeners.beginBroadcast();
+        User user = new User();
+        user.age = 100;
+        user.name = "hello world";
+
+        for (int i = 0; i < n; i++) {
+            IOnNewUserAdded iOnNewUserAdded = listeners.getBroadcastItem(i);
+            if (null != iOnNewUserAdded) {
+                try {
+                    iOnNewUserAdded.onAddUser(user);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
             }
         }
+
+        listeners.finishBroadcast();
+
+
     }
 }
