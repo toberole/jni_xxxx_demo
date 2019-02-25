@@ -15,7 +15,7 @@ JNIEXPORT jboolean JNICALL Java_com_jni_bus_JNI_1Bus_init
     std::string c_pwd = pwd;
 
     std::thread task([c_name, c_pwd]() {
-        if (c_name.compare("123")==0 && c_pwd.compare("123")==0) {
+        if (c_name.compare("123") == 0 && c_pwd.compare("123") == 0) {
             b = true;
         }
     });
