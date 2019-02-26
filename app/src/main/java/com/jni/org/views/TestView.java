@@ -3,6 +3,7 @@ package com.jni.org.views;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -35,8 +36,12 @@ public class TestView extends View {
         super.onDraw(canvas);
 
         canvas.drawColor(Color.parseColor("#FF0000"));
-
+        Paint paint = new Paint();
+        paint.setTextSize(50);
+        paint.setColor(Color.YELLOW);
+        canvas.drawText("hello world", 10, 20, paint);
         Log.i(TAG, "TestView#onDraw");
+
     }
 
     @Override
@@ -44,5 +49,12 @@ public class TestView extends View {
         super.onLayout(changed, left, top, right, bottom);
 
         Log.i(TAG, "TestView#onLayout");
+    }
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+
+        Log.i(TAG, "TestView#onSizeChanged");
     }
 }
