@@ -64,6 +64,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_unregister.setOnClickListener(this);
 
         btn.getLeft();
+        btn.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        Log.i(TAG, "btn.setOnTouchListener#onTouch ACTION_DOWN");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        Log.i(TAG, "btn.setOnTouchListener#onTouch ACTION_MOVE");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        Log.i(TAG, "btn.setOnTouchListener#onTouch ACTION_UP");
+                        break;
+                    case MotionEvent.ACTION_CANCEL:
+                        Log.i(TAG, "btn.setOnTouchListener#onTouch ACTION_CANCEL");
+                        break;
+                    default:
+                        break;
+                }
+
+                return true;
+            }
+        });
+
 
         busHandler = new BusHandler();
         busHandler.start();
@@ -147,6 +171,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_test:
+                Log.i(TAG, "btn clicked");
                 Intent intent = new Intent(MainActivity.this, TestActivity.class);
                 startActivity(intent);
                 break;

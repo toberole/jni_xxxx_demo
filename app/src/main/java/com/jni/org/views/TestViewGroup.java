@@ -1,11 +1,15 @@
 package com.jni.org.views;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
 
 public class TestViewGroup extends ViewGroup {
+    public static final String TAG = TestViewGroup.class.getSimpleName();
+
     public TestViewGroup(Context context) {
         super(context);
     }
@@ -21,11 +25,18 @@ public class TestViewGroup extends ViewGroup {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        Log.i(TAG, "TestViewGroup#onMeasure");
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        Log.i(TAG, "TestViewGroup#onDraw");
     }
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-
+        Log.i(TAG, "TestViewGroup#onLayout");
     }
 
     @Override
