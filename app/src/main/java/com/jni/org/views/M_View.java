@@ -15,6 +15,8 @@ import com.jni.org.R;
 /**
  * 自定义view 继承自View
  * 需要处理wrap_content 和 padding
+ * 在onMeasure中处理wrap_content
+ * 在onDraw中处理padding
  */
 public class M_View extends View {
     public static final String TAG = M_View.class.getSimpleName();
@@ -52,7 +54,7 @@ public class M_View extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        // 处理wrap_content
+        // 处理 wrap_content
         int widthSpecMode = MeasureSpec.getMode(widthMeasureSpec);
         int widthSize = MeasureSpec.getSize(widthMeasureSpec);
 
