@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        app:m_view_color="#6600FF00" />
+        app:m_view_color="#00FF00" />
 
 
 </LinearLayout>

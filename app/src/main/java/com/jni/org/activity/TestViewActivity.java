@@ -2,6 +2,7 @@ package com.jni.org.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.jni.org.R;
