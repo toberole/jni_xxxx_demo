@@ -3,6 +3,7 @@ package com.jni.org.activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
@@ -15,18 +16,21 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
+import com.jni.bus.Callback;
 import com.jni.bus.JNI_Bus;
+import com.jni.org.App;
 import com.jni.org.R;
 import com.jni.org.bean.IOnNewUserAdded;
 import com.jni.org.bean.IUserManager;
 import com.jni.org.bean.User;
 import com.jni.org.service.ManagerUserService;
 
+import java.io.File;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, ServiceConnection {
     public static final String TAG = MainActivity.class.getSimpleName();
-
+private JNI_Bus jni_bus = new JNI_Bus();
     private Button btn;
     private Button btn_add_user;
     private Button btn_bind_serice;
@@ -45,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Log.i(TAG, "IOnNewUserAdded#onAddUser user name: " + u.name + " age: " + u.age);
         }
     };
+
+    private Callback callback = new Callback();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +106,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         busHandler.post();
 
-        boolean b = JNI_Bus.init("123", "123");
+        long b = jni_bus.init(Environment.getExternalStorageDirectory() + File.separator + "sogou_lip_modules" + "/shape_predictor_68_face_landmarks.dat", "10.142.8.51", 8888, callback);
+
         Log.i(TAG, "b = " + b);
     }
 

@@ -4,21 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical"
-    tools:context=".activity.TestActivity">
+    tools:context=".activity.AITipActivity">
 
-    <com.jni.org.views.RecordingView_x
-        android:id="@+id/rv"
-        android:layout_width="240dp"
-        android:layout_height="240dp"
-        android:background="#00FFFFFF" />
+    <com.jni.org.views.AITipView
+        android:id="@+id/ai_tip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp" />
 
     <Button
         android:id="@+id/btn_start"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="click" />
-
+        android:layout_marginTop="50dp"
+        android:text="start" />
 </LinearLayout>

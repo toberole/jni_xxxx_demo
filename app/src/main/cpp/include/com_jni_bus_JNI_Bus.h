@@ -10,10 +10,10 @@ extern "C" {
 /*
  * Class:     com_jni_bus_JNI_Bus
  * Method:    init
- * Signature: (Ljava/lang/String;Ljava/lang/String;)Z
+ * Signature: (Ljava/lang/String;Ljava/lang/String;ILcom/jni/bus/Callback;)J
  */
-JNIEXPORT jboolean JNICALL Java_com_jni_bus_JNI_1Bus_init
-  (JNIEnv *, jclass, jstring, jstring);
+JNIEXPORT jlong JNICALL Java_com_jni_bus_JNI_1Bus_init
+  (JNIEnv *, jobject, jstring, jstring, jint, jobject);
 
 #ifdef __cplusplus
 }

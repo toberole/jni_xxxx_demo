@@ -4,21 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:background="@android:color/darker_gray"
     android:orientation="vertical"
-    tools:context=".activity.TestActivity">
+    tools:context=".activity.SceneActivity">
 
-    <com.jni.org.views.RecordingView_x
-        android:id="@+id/rv"
-        android:layout_width="240dp"
-        android:layout_height="240dp"
-        android:background="#00FFFFFF" />
+    <com.jni.org.views.SceneView
+        android:visibility="invisible"
+        android:id="@+id/scene_vv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/btn_start"
+        android:id="@+id/btn_xxx"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="click" />
-
+        android:text="xxxxxx" />
 </LinearLayout>
+
