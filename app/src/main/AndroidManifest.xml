@@ -10,8 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!--<activity android:name=".activity.AITipActivity"></activity>-->
-
+        <!--<activity android:name=".activity.AITipScrollViewActivity"></activity>-->
+        <!-- <activity android:name=".activity.ViewPagerActivity"></activity> -->
+        <!-- <activity android:name=".activity.AITipActivity"></activity> -->
         <service
             android:name=".service.CalService"
             android:enabled="true"
@@ -20,9 +21,10 @@
         <!-- android:icon="@mipmap/ic_launcher" -->
         <!-- android:label="@string/app_name" -->
         <!-- android:process=":xxxtest" /> -->
-        <activity android:name=".activity.AITipActivity">
+        <activity android:name=".activity.AITip_X_Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

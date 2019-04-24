@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">jni_xxxx_demo</string>
+
+    <array name="ai_tip_strs">
+        <item>明天提醒我上班</item>
+        <item>好的呀</item>
+        <item>今天天气不错啊</item>
+        <item>社会主义好</item>
+    </array>
 </resources>
