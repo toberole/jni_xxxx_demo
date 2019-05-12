@@ -1,5 +1,6 @@
 package com.jni.org.activity;
 
+import android.media.ImageReader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,6 +36,9 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
                 Log.i(TAG, "onProgress: " + p);
             }
         });
+
+        ImageReader reader;
+        // ImageUtils utils;
     }
 
     @Override
