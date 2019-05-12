@@ -7,4 +7,10 @@
         <item>今天天气不错啊</item>
         <item>社会主义好</item>
     </array>
+
+    <string name="start_record">开始录制</string>
+    <string name="stop_record">停止录制</string>
+    <string name="start_preview">开始预览</string>
+    <string name="stop_preview">停止预览</string>
+
 </resources>

@@ -4,7 +4,6 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.graphics.SurfaceTexture;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCaptureSession;
@@ -16,7 +15,6 @@ import android.media.MediaRecorder;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.support.annotation.UiThread;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,20 +23,18 @@ import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
 import com.jni.org.R;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class CameraActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = CameraActivity.class.getSimpleName();
+
     public static final String ps[] = new String[]{
             Manifest.permission.RECORD_AUDIO,
             Manifest.permission.CAMERA,
@@ -55,6 +51,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
     private Button btn_record;
 
     private boolean isReccrding = false;
+    private boolean isPreViewing = false;
 
     private HandlerThread handlerThread;
     private Handler bg_handler;
@@ -70,7 +67,6 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
         @Override
         public void onOpened(CameraDevice camera) {
             Log.i(TAG, "cameraDevice_cb onOpened");
-
             CameraActivity.this.camera = camera;
             createCameraPreviewSession();
         }
@@ -106,6 +102,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
             super.onCaptureStarted(session, request, timestamp, frameNumber);
         }
     };
+
     private MediaRecorder mMediaRecorder;
 
     private void setCameraCaptureSession() {
@@ -149,18 +146,19 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
         }
 
         @Override
-        public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height) {
+        public void onSurfaceTextureUpdated(SurfaceTexture surface) {
+            Log.i(TAG, "******* SurfaceTextureListener onSurfaceTextureUpdated *******");
+        }
 
+        @Override
+        public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height) {
+            Log.i(TAG, "SurfaceTextureListener onSurfaceTextureSizeChanged");
         }
 
         @Override
         public boolean onSurfaceTextureDestroyed(SurfaceTexture surface) {
+            Log.i(TAG, "SurfaceTextureListener onSurfaceTextureDestroyed");
             return false;
-        }
-
-        @Override
-        public void onSurfaceTextureUpdated(SurfaceTexture surface) {
-
         }
     };
 
@@ -195,19 +193,26 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        Log.i(TAG, "onClick");
         switch (v.getId()) {
             case R.id.btn_pre:
-                if (isReccrding) {
-                    stopRecord();
+                if (isPreViewing) {
+                    btn_pre.setText(R.string.start_preview);
+                    stopPreview();
                 } else {
+                    btn_pre.setText(R.string.stop_preview);
                     startPreView();
                 }
-
-                isReccrding = !isReccrding;
+                isPreViewing = !isPreViewing;
                 break;
             case R.id.btn_record:
-                startRecord();
+                if (isReccrding) {
+                    btn_record.setText(R.string.start_record);
+                    stopRecordVideo();
+                } else {
+                    btn_record.setText(R.string.stop_record);
+                    startRecordVideo();
+                }
+                isReccrding = !isReccrding;
                 break;
             default:
                 break;
@@ -215,7 +220,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
-    private void startRecord() {
+    private void startRecordVideo() {
         if (mMediaRecorder != null) {
             mMediaRecorder.start();
         }
@@ -243,15 +248,20 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
     private void startPreView() {
         try {
             if (cameraPreViewInited) {
+                String camera = null;
                 cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
                 String[] ids = cameraManager.getCameraIdList();
                 for (String id : ids) {
                     CameraCharacteristics cameraCharacteristics = cameraManager.getCameraCharacteristics(id);
                     int face = cameraCharacteristics.get(CameraCharacteristics.LENS_FACING);
-                    Log.i(TAG, "face: " + face);
+                    Log.i("face", "face: " + face);
+                    if (face == camera_id) {
+                        camera = id;
+                        break;
+                    }
                 }
 
-                cameraManager.openCamera(String.valueOf(camera_id), cameraDevice_cb, bg_handler);
+                cameraManager.openCamera(camera, cameraDevice_cb, bg_handler);
             } else {
                 initCameraPreView();
             }
@@ -270,9 +280,17 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
         tv_camera_pre.setSurfaceTextureListener(listener);
     }
 
-    private void stopRecord() {
+    private void destroyCameraPreView() {
         cameraPreViewInited = false;
         pre_view_container.removeAllViews();
+    }
+
+    private void stopRecordVideo() {
+        bg_handler.removeCallbacksAndMessages(null);
+
+        cameraPreViewInited = false;
+
+        destroyCameraPreView();
 
         if (camera != null) {
             camera.close();
@@ -289,6 +307,23 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
             mMediaRecorder.reset();
             mMediaRecorder.release();
             mMediaRecorder = null;
+        }
+    }
+
+    private void stopPreview() {
+        bg_handler.removeCallbacksAndMessages(null);
+
+        cameraPreViewInited = false;
+        pre_view_container.removeAllViews();
+
+        if (camera != null) {
+            camera.close();
+            camera = null;
+        }
+
+        if (capture_session != null) {
+            capture_session.close();
+            capture_session = null;
         }
     }
 }

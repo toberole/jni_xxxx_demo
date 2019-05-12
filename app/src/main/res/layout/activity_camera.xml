@@ -24,13 +24,13 @@
             android:id="@+id/btn_pre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="预览" />
+            android:text="@string/start_preview" />
 
         <Button
             android:id="@+id/btn_record"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="录制" />
+            android:text="@string/start_record" />
 
     </LinearLayout>
 </RelativeLayout>
