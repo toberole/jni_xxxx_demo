@@ -5,6 +5,8 @@
 #include <thread>
 #include "log.h"
 
+#include "libavcodec/avcodec.h"
+
 bool b = false;
 
 JNIEXPORT jint JNI_OnLoad(JavaVM *jvm, void *reserved) {
@@ -32,6 +34,8 @@ JNIEXPORT jlong JNICALL Java_com_jni_bus_JNI_1Bus_init
     });
 
     task.join();
+
+    AVCodecID avCodecID = AV_CODEC_ID_NONE;
 
     return b;
 }

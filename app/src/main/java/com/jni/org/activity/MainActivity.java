@@ -29,7 +29,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, ServiceConnection {
     public static final String TAG = MainActivity.class.getSimpleName();
-private JNI_Bus jni_bus = new JNI_Bus();
+    private JNI_Bus jni_bus = new JNI_Bus();
     private Button btn;
     private Button btn_add_user;
     private Button btn_bind_serice;
@@ -124,35 +124,35 @@ private JNI_Bus jni_bus = new JNI_Bus();
     protected void onStart() {
         super.onStart();
 
-        Log.i(TAG, "MainActivity#onStart");
+        Log.i(TAG, "MainActivity_X#onStart");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        Log.i(TAG, "MainActivity#onResume");
+        Log.i(TAG, "MainActivity_X#onResume");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
 
-        Log.i(TAG, "MainActivity#onRestart");
+        Log.i(TAG, "MainActivity_X#onRestart");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
 
-        Log.i(TAG, "MainActivity#onPause");
+        Log.i(TAG, "MainActivity_X#onPause");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
 
-        Log.i(TAG, "MainActivity#onStop");
+        Log.i(TAG, "MainActivity_X#onStop");
     }
 
     @Override
@@ -170,7 +170,7 @@ private JNI_Bus jni_bus = new JNI_Bus();
             }
         }
 
-        Log.i(TAG, "MainActivity#onDestroy");
+        Log.i(TAG, "MainActivity_X#onDestroy");
     }
 
     @Override

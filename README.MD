@@ -1,4 +1,6 @@
 javah -d "生成头文件的位置" "类全限定名称"
+eg: javah -d ./../cpp/include xxxx
+
 
 javap -s 查看签名信息
 
