@@ -18,9 +18,6 @@ JNIEXPORT jlong JNICALL Java_com_jni_bus_JNI_1Bus_init
     jclass cls = env->GetObjectClass(jcb);
     jmethodID jmid = env->GetMethodID(cls, "callback","(JLjava/lang/String;Ljava/lang/Object;)V");
     env->CallVoidMethod(jcb, jmid, NULL, NULL, NULL);
-    if (1)return 0;
-
-
 
     const char *name = env->GetStringUTFChars(jstr_name, NULL);
     const char *pwd = env->GetStringUTFChars(jstr_pwd, NULL);

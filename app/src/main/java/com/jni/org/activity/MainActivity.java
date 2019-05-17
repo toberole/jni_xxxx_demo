@@ -9,7 +9,7 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.os.RemoteException;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -18,7 +18,6 @@ import android.widget.Button;
 
 import com.jni.bus.Callback;
 import com.jni.bus.JNI_Bus;
-import com.jni.org.App;
 import com.jni.org.R;
 import com.jni.org.bean.IOnNewUserAdded;
 import com.jni.org.bean.IUserManager;

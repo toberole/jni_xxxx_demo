@@ -1,7 +1,7 @@
 package com.jni.org.activity;
 
 import android.media.ImageReader;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;

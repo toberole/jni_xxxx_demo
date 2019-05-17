@@ -1,12 +1,11 @@
 package com.jni.org.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
 import com.jni.org.R;
-import com.jni.org.views.AITipView;
 import com.jni.org.views.AITipView_X;
 
 public class AITip_X_Activity extends AppCompatActivity implements View.OnClickListener {
