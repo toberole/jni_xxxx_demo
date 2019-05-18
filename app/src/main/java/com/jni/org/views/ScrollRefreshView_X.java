@@ -1,5 +1,6 @@
 package com.jni.org.views;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -105,16 +106,35 @@ public class ScrollRefreshView_X extends LinearLayout {
 
     private void hideHead() {
         LayoutParams params = (LayoutParams) head.getLayoutParams();
-        Log.i("xxxxx", "hideHead: " + params.topMargin);
-        params.topMargin = -head_margin_top;
-        head.setLayoutParams(params);
+        ValueAnimator animator = ValueAnimator.ofFloat(params.topMargin, -head_margin_top);
+        animator.setDuration(500);
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                float f = (float) animation.getAnimatedValue();
+                params.topMargin = (int) f;
+                head.setLayoutParams(params);
+                Log.i("xxxxx", "hideHead after: " + getCurMargin());
+            }
+        });
+        animator.start();
     }
 
     private void showHead() {
         LayoutParams params = (LayoutParams) head.getLayoutParams();
-        params.topMargin = 0;
-        head.setLayoutParams(params);
-        Log.i("xxxxx", "showHead after: " + getCurMargin());
+        int cur = params.topMargin;
+        ValueAnimator animator = ValueAnimator.ofFloat(cur, 0);
+        animator.setDuration(500);
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                float f = (float) animation.getAnimatedValue();
+                params.topMargin = (int) f;
+                head.setLayoutParams(params);
+                Log.i("xxxxx", "showHead after: " + getCurMargin());
+            }
+        });
+        animator.start();
     }
 
     private void setMarginTopDex(int dex) {
