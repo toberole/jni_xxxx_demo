@@ -29,12 +29,10 @@ public class ScrollRefreshView_X extends LinearLayout {
 
     public ScrollRefreshView_X(Context context) {
         this(context, null);
-        Log.i(TAG, "ScrollRefreshView_X 1");
     }
 
     public ScrollRefreshView_X(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
-        Log.i(TAG, "ScrollRefreshView_X 2");
     }
 
     public ScrollRefreshView_X(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {

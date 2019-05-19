@@ -1,78 +1,97 @@
 package com.jni.org.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.ObservableSource;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
+import io.reactivex.schedulers.Schedulers;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
 import com.jni.org.R;
+
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 public class RxJavaActivity extends AppCompatActivity {
     public static final String TAG = RxJavaActivity.class.getSimpleName();
 
-//    private Observable observable = Observable.create(new ObservableOnSubscribe<String>() {
-//        @Override
-//        public void subscribe(ObservableEmitter<String> emitter) throws Exception {
-//            Log.i(TAG, "Observable subscribe " + emitter.serialize());
-//        }
-//    });
-//
-//    private Observable observable_1 = Observable.just("hello", "world");
+    private Observable observable = Observable.create(new ObservableOnSubscribe<String>() {
+        @Override
+        public void subscribe(ObservableEmitter<String> emitter) throws Exception {
+            Log.i(TAG, "Observable subscribe " + emitter.serialize());
+        }
+    });
+
+    private Observable observable_1 = Observable.just("hello", "world");
 
     String[] arr = new String[]{"C++", "Java"};
 
-//    private Observable observable_2 = Observable.fromArray(arr);
-//
-//    private Observer<String> observer = new Observer<String>() {
-//        @Override
-//        public void onSubscribe(Disposable d) {
-//            Log.i(TAG, "Observer onSubscribe");
-//        }
-//
-//        @Override
-//        public void onNext(String s) {
-//            Log.i(TAG, "Observer onNext");
-//        }
-//
-//        @Override
-//        public void onError(Throwable e) {
-//            Log.i(TAG, "Observer onError");
-//        }
-//
-//        @Override
-//        public void onComplete() {
-//            Log.i(TAG, "Observer onComplete");
-//        }
-//    };
-//
-//    private Subscriber<String> subscriber = new Subscriber<String>() {
-//
-//        @Override
-//        public void onSubscribe(Subscription s) {
-//            Log.i(TAG, "Subscriber onSubscribe");
-//        }
-//
-//        @Override
-//        public void onNext(String s) {
-//            Log.i(TAG, "Subscriber onNext");
-//        }
-//
-//        @Override
-//        public void onError(Throwable t) {
-//            Log.i(TAG, "Subscriber onError");
-//        }
-//
-//        @Override
-//        public void onComplete() {
-//            Log.i(TAG, "Subscriber onComplete");
-//        }
-//    };
+    private Observable observable_2 = Observable.fromArray(arr);
+
+    private Observer<String> observer = new Observer<String>() {
+        @Override
+        public void onSubscribe(Disposable d) {
+            Log.i(TAG, "Observer onSubscribe");
+        }
+
+        @Override
+        public void onNext(String s) {
+            Log.i(TAG, "Observer onNext");
+        }
+
+        @Override
+        public void onError(Throwable e) {
+            Log.i(TAG, "Observer onError");
+        }
+
+        @Override
+        public void onComplete() {
+            Log.i(TAG, "Observer onComplete");
+        }
+    };
+
+    private Subscriber<String> subscriber = new Subscriber<String>() {
+
+        @Override
+        public void onSubscribe(Subscription s) {
+            Log.i(TAG, "Subscriber onSubscribe");
+        }
+
+        @Override
+        public void onNext(String s) {
+            Log.i(TAG, "Subscriber onNext");
+        }
+
+        @Override
+        public void onError(Throwable t) {
+            Log.i(TAG, "Subscriber onError");
+        }
+
+        @Override
+        public void onComplete() {
+            Log.i(TAG, "Subscriber onComplete");
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rx_java);
-/*
+
         findViewById(R.id.btn_start).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,8 +99,7 @@ public class RxJavaActivity extends AppCompatActivity {
                 observable.just("A", "B", "C");
             }
         });
-*/
-/*
+
         findViewById(R.id.btn_start1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,8 +129,7 @@ public class RxJavaActivity extends AppCompatActivity {
                         });
             }
         });
-*/
-        /*
+
         findViewById(R.id.btn_create).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -146,9 +163,7 @@ public class RxJavaActivity extends AppCompatActivity {
                 });
             }
         });
-        */
 
-        /*
         findViewById(R.id.btn_consumer).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -167,37 +182,7 @@ public class RxJavaActivity extends AppCompatActivity {
                 });
             }
         });
-*/
 
-
-        /*findViewById(R.id.btn_map).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Observable.create(new ObservableOnSubscribe<String>() {
-                    @Override
-                    public void subscribe(ObservableEmitter<String> emitter) throws Exception {
-                        Log.i(TAG, "subscribe");
-                        emitter.onNext("hello");
-                        emitter.onNext("world");
-                    }
-                }).map(new Function<String*//* 回调的值 *//*, String*//* 返回值类型 *//*>() {// 相当与回调的拦截器
-                    @Override
-                    public String apply(String s) throws Exception {
-                        Log.i(TAG, "map apply: " + s);
-                        return s + "_" + System.currentTimeMillis();
-                    }
-                }).observeOn(AndroidSchedulers.mainThread())
-                        .subscribeOn(Schedulers.io())
-                        .subscribe(new Consumer<String>() {
-                            @Override
-                            public void accept(String s) throws Exception {
-                                Log.i(TAG, "accept: " + s);
-                            }
-                        });
-            }
-        });
-        */
-        /*
         findViewById(R.id.btn_flatMap).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -231,7 +216,5 @@ public class RxJavaActivity extends AppCompatActivity {
                         });
             }
         });
-
-        */
     }
 }
