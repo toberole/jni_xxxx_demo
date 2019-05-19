@@ -56,8 +56,6 @@ public class RxJavaActivity_X extends AppCompatActivity {
 
             }
         };
-
-        Observable.
     }
 
     /**
