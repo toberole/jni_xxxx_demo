@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.AITipActivity">
+    tools:context=".activity.view_activitys.AITipActivity">
 
     <com.jni.org.views.AITipView
         android:id="@+id/ai_tip"

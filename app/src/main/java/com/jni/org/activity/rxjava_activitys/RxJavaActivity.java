@@ -1,4 +1,4 @@
-package com.jni.org.activity;
+package com.jni.org.activity.rxjava_activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 import io.reactivex.Observable;

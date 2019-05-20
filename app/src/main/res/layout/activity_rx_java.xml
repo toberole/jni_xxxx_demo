@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.RxJavaActivity">
+    tools:context=".activity.rxjava_activitys.RxJavaActivity">
 
     <Button
         android:id="@+id/btn_start"
