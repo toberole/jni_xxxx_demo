@@ -45,6 +45,20 @@ public class GsonActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        try {
+            StringWriter sw = new StringWriter();
+            JsonWriter writer = new JsonWriter(sw);
+            writer.beginObject()
+                    .name("address")
+                    .value("china")
+                    .name("name")
+                    .value("zhangsan")
+                    .endObject();
+
+            Log.i(TAG, "JsonWriter: " + sw.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
