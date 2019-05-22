@@ -19,3 +19,11 @@ aidl文件
 4、ContentProvider
 
 单个对象SqliteDatabase内部会对数据库的操作作同步处理
+
+FileProvider:
+    root-path 对应DEVICE_ROOT,也就是File DEVICE_ROOT = new File("/")，即根目录，一般不需要配置。
+    files-path对应 content.getFileDir() 获取到的目录。
+    cache-path对应 content.getCacheDir() 获取到的目录
+    external-path对应 Environment.getExternalStorageDirectory() 指向的目录。
+    external-files-path对应 ContextCompat.getExternalFilesDirs() 获取到的目录。
+    external-cache-path对应 ContextCompat.getExternalCacheDirs() 获取到的目录。
