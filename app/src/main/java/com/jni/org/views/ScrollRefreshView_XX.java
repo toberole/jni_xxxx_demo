@@ -23,7 +23,7 @@ import java.util.Date;
 
 import androidx.annotation.Nullable;
 
-public class ScrollRefreshView_XX extends LinearLayout implements AbsListView.OnScrollListener {
+public class ScrollRefreshView_XX extends LinearLayout implements AbsListView.OnScrollListener, View.OnTouchListener {
     public static final String TAG = ScrollRefreshView_XX.class.getSimpleName();
 
     private ListAdapter adapter;
@@ -106,6 +106,8 @@ public class ScrollRefreshView_XX extends LinearLayout implements AbsListView.On
                 return true;
             }
         });
+
+        setOnTouchListener(this);
     }
 
     private int mLastYIntercept;
@@ -116,6 +118,7 @@ public class ScrollRefreshView_XX extends LinearLayout implements AbsListView.On
      * 直接调用自己的Ontouchevent方法
      */
     public boolean onInterceptTouchEvent(MotionEvent ev) {
+        Log.i(TAG, "onInterceptTouchEvent");
         boolean interceppt = false;
 
         switch (ev.getAction()) {
@@ -154,8 +157,22 @@ public class ScrollRefreshView_XX extends LinearLayout implements AbsListView.On
         return ret;
     }
 
+    /**
+     * onTouch是OnTouchListener
+     * 当设置了OnTouchListener，touch事件首先会交给OnTouchListener.onTouch
+     * onTouch返回true表示消费了该事件，那么此事件不会交给onTouchEvent处理
+     * onTouch返回flalse表示没有消费此事件，此事件会继续交给onTouchEvent处理
+     * 优先级：OnTouchListener.onTouch > onTouchEvent
+     */
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        Log.i(TAG, "onTouch");
+        return false;
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        Log.i(TAG, "onTouchEvent");
         switch (event.getAction()) {
             case MotionEvent.ACTION_MOVE:
                 int y = (int) event.getRawY();
