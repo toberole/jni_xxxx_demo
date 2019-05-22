@@ -5,10 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".activity.SinLineViewActivity">
 
     <com.jni.org.views.SinLineView
-        android:background="@android:color/darker_gray"
+        android:id="@+id/sin"
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_height="500dp"
+        android:background="@android:color/darker_gray" />
+
+    <Button
+        android:id="@+id/btn_record"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="start" />
 </LinearLayout>
