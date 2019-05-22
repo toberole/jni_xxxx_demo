@@ -12,24 +12,24 @@ import io.reactivex.Observable;
 import io.reactivex.subjects.PublishSubject;
 import io.reactivex.subjects.Subject;
 
-public class RxBus {
-    private static final String TAG = RxBus.class.getSimpleName();
+public class RxBus_X {
+    private static final String TAG = RxBus_X.class.getSimpleName();
 
-    private static RxBus instance;
+    private static RxBus_X instance;
     public static boolean DEBUG = false;
 
-    public static RxBus get() {
+    public static RxBus_X get() {
         if (instance == null) {
-            synchronized (RxBus.class) {
+            synchronized (RxBus_X.class) {
                 if (instance == null) {
-                    instance = new RxBus();
+                    instance = new RxBus_X();
                 }
             }
         }
         return instance;
     }
 
-    private RxBus() {
+    private RxBus_X() {
     }
 
     private ConcurrentHashMap<Object, List<Subject>> subjectMapper = new ConcurrentHashMap<>();
