@@ -18,8 +18,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.SinLineViewActivity" />
+        <activity android:name=".activity.VoiceLineViewActivity" />
+        <activity android:name=".activity.ScrollRefreshView_XXActivity" />
         <activity
-            android:name=".activity.ScrollRefreshView_XXActivity"
+            android:name=".activity.SplashActivity"
             android:hardwareAccelerated="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
