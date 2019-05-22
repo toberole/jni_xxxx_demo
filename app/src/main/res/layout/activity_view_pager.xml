@@ -7,7 +7,7 @@
     android:gravity="center"
     tools:context=".activity.ViewPagerActivity">
 
-    <com.jni.org.views.VerticalViewPager
+    <com.xiaoge.org.views.VerticalViewPager
         android:id="@+id/vp"
         android:layout_width="match_parent"
         android:layout_height="50dp" />

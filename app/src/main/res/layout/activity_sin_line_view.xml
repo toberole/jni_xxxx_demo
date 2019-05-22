@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context=".activity.SinLineViewActivity">
 
-    <com.jni.org.views.SinLineView
+    <com.xiaoge.org.views.SinLineView
         android:id="@+id/sin"
         android:layout_width="match_parent"
         android:layout_height="500dp"

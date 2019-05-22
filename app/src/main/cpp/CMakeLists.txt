@@ -5,13 +5,15 @@ cmake_minimum_required(VERSION 3.4.1)
 #set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -s")
 
 
-
 include_directories(${CMAKE_CURRENT_LIST_DIR}/include)
 
 aux_source_directory(${CMAKE_CURRENT_LIST_DIR}/src SRC_FILES)
 
 add_library(native-lib SHARED ${SRC_FILES})
 
-find_library(log-lib log)
+find_library(e_lib
+        log
+        OpenSLES
+        )
 
-target_link_libraries(native-lib ${log-lib})
+target_link_libraries(native-lib ${e_lib})

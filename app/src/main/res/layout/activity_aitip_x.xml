@@ -8,7 +8,7 @@
     android:padding="50dp"
     tools:context=".activity.view_activitys.AITipActivity">
 
-    <com.jni.org.views.AITipView_X
+    <com.xiaoge.org.views.AITipView_X
         android:id="@+id/ai_tip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

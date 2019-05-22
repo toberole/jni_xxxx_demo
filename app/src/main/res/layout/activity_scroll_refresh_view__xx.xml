@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".activity.ScrollRefreshView_XXActivity">
 
-    <com.jni.org.views.ScrollRefreshView_XX
+    <com.xiaoge.org.views.ScrollRefreshView_XX
         android:id="@+id/srv_xx"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="20dp" />
 
-    <com.jni.org.views.SegmentView
+    <com.xiaoge.org.views.SegmentView
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>
