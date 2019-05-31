@@ -1,7 +1,6 @@
 package com.xiaoge.org.activity;
 
 import android.media.ImageReader;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +8,8 @@ import android.widget.Button;
 
 import com.xiaoge.org.R;
 import com.xiaoge.org.views.RecordingView_x;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class TestActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = TestActivity.class.getSimpleName();

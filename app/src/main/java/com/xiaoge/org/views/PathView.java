@@ -29,6 +29,5 @@ public class PathView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        canvas.
     }
 }

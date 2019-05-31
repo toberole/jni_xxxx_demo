@@ -1,6 +1,6 @@
-package com.jni.org.bean;
+package com.xiaoge.org.bean;
 
-import com.jni.org.bean.User;
+import com.xiaoge.org.bean.User;
 
 interface IOnNewUserAdded{
     void onAddUser(in/*关键必须有*/ User user);

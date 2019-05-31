@@ -12,6 +12,18 @@ import com.xiaoge.org.Constant;
 import com.xiaoge.org.R;
 
 public class SplashActivity extends AppCompatActivity {
+    public static Class[] clazzs = new Class[]{
+            ConstraintlayoutActivity.class,
+            SinLineViewActivity.class
+    };
+
+    private int test_page = 0;
+
+    private void startNextPage() {
+        Intent intent = new Intent(SplashActivity.this, clazzs[test_page]);
+        startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,8 +37,5 @@ public class SplashActivity extends AppCompatActivity {
         startNextPage();
     }
 
-    private void startNextPage() {
-        Intent intent = new Intent(SplashActivity.this, SinLineViewActivity.class);
-        startActivity(intent);
-    }
+
 }
