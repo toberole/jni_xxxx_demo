@@ -3,7 +3,9 @@ package com.xiaoge.org;
 import android.app.Application;
 import android.util.Log;
 
+import com.tencent.bugly.crashreport.CrashReport;
 import com.xiaoge.org.util.AppUtil;
+import com.xiaoge.org.util.CrashHandler;
 
 import java.io.File;
 
@@ -19,6 +21,9 @@ public class App extends Application {
         Log.i(TAG, "App#onCreate " + getApplicationContext().getApplicationInfo().packageName + " count = " + count);
 
         init();
+
+        CrashHandler.getInstance().init(this);
+        CrashReport.initCrashReport(getApplicationContext(), "ff76ba0cbd", true);
     }
 
     private void init() {

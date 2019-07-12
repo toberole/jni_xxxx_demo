@@ -5,17 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="50dp">
-
-    <com.xiaoge.org.views.AITipView_X
-        android:id="@+id/ai_tip"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
+    tools:context="com.xiaoge.org.activity.TestServiceActivity">
     <Button
-        android:id="@+id/btn_start"
+        android:id="@+id/btn_test"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="start" />
+        android:text="btn_test" />
 </LinearLayout>

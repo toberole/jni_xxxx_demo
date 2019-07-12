@@ -10,7 +10,8 @@ aidl文件生成对应的通信代码。
 aidl文件
 2、构建工程，ide会自动的根据aidl文件生成对应的java文件
 
-注意：客户端通过aidl的方式调用服务端的方法是阻塞式的，且服务端的方法是在线程池中运行的[binder ipc底层的框架实现的],所以服务端的方法没有必要在开启线程去执行任务。
+注意：客户端通过aidl的方式调用服务端的方法是阻塞式的，且服务端的方法是在线程池中
+运行的[binder ipc底层的框架实现的],所以服务端的方法没有必要在开启线程去执行任务。
 
 跨进程通信
 1、共享文件
@@ -23,7 +24,13 @@ aidl文件
 FileProvider:
     root-path 对应DEVICE_ROOT,也就是File DEVICE_ROOT = new File("/")，即根目录，一般不需要配置。
     files-path对应 content.getFileDir() 获取到的目录。
-    cache-path对应 content.getCacheDir() 获取到的目录
+    cache-path对应 content.getCacheDir() 获取到的目录。
     external-path对应 Environment.getExternalStorageDirectory() 指向的目录。
     external-files-path对应 ContextCompat.getExternalFilesDirs() 获取到的目录。
     external-cache-path对应 ContextCompat.getExternalCacheDirs() 获取到的目录。
+    
+
+
+
+
+

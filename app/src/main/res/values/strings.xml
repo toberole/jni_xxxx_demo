@@ -25,5 +25,19 @@
 
     <string name="file_provider_authority">com.jni.org.fileProvider</string>
 
+    <string name="color">#FF0000</string>
+    <string name="back">back</string>
+    <string name="color_red">#FF0000</string>
+    <string name="color_green">#00FF00</string>
+    <string name="color_blue">#0000FF</string>
+    <string name="width">30</string>
+    <string name="width_1">30</string>
+    <string name="width_2">30</string>
+    <string name="width_3">30</string>
+    <string name="nothing">nothing</string>
+    <string name="clear">clear</string>
+    <string name="save">save</string>
+    <string name="save_camera">save_camera</string>
+
 
 </resources>

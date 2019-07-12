@@ -3,9 +3,11 @@
     package="com.xiaoge.org">
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
@@ -18,7 +20,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.ConstraintlayoutActivity"></activity>
+        <activity android:name=".activity.TestServiceActivity"></activity>
+
+        <service
+            android:name=".service.MyService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".activity.ServiceActivity" />
+        <activity android:name=".activity.DrawActivity" />
+        <activity android:name=".activity.ConstraintlayoutActivity" />
         <activity android:name=".activity.View_PathActivity" />
         <activity android:name=".activity.SinLineViewActivity" />
         <activity android:name=".activity.VoiceLineViewActivity" />
