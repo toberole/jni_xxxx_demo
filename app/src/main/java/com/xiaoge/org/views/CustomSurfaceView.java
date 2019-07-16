@@ -12,7 +12,6 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.LinkedBlockingDeque;
 
 /**
@@ -28,8 +27,6 @@ public class CustomSurfaceView extends SurfaceView implements SurfaceHolder.Call
     private volatile boolean isDrawing;
     private Paint paint;
     private Path path;
-
-    BlockingDeque<Point> event_queue = new LinkedBlockingDeque<>();
 
     public CustomSurfaceView(Context context) {
         this(context, null);
@@ -64,12 +61,6 @@ public class CustomSurfaceView extends SurfaceView implements SurfaceHolder.Call
     @Override
     public void surfaceCreated(SurfaceHolder holder_) {
         Log.i(TAG, "surfaceCreated " + Thread.currentThread().getName());
-
-//        Canvas canvas = holder.lockCanvas();
-//        if(canvas != null) {
-//            canvas.drawColor(Color.WHITE);
-//            holder.unlockCanvasAndPost(canvas);
-//        }
 
         startRender();
     }

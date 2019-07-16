@@ -5,7 +5,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.Point;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -14,6 +13,7 @@ import android.view.SurfaceView;
 
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 注意 draw方法和onTouch方法不在同一个线程
@@ -29,7 +29,7 @@ public class CustomSurfaceView_X extends SurfaceView implements SurfaceHolder.Ca
     private Paint paint;
     private Path path;
 
-    BlockingDeque<Point> event_queue = new LinkedBlockingDeque<>();
+    BlockingDeque<MyPoint> event_queue = new LinkedBlockingDeque<>();
 
     public CustomSurfaceView_X(Context context) {
         this(context, null);
@@ -81,16 +81,11 @@ public class CustomSurfaceView_X extends SurfaceView implements SurfaceHolder.Ca
 
     @Override
     public void run() {
-        long start = System.currentTimeMillis();
         while (isDrawing) {
-            draw();
-        }
-        long end = System.currentTimeMillis();
-        if (end - start < 100) {//保证线程运行时间不少于100ms
-            try {
-                Thread.sleep(100 - (end - start));
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            MyPoint point = getPoint();
+            if (point != null) {
+                path.lineTo(point.x, point.y);
+                draw();
             }
         }
     }
@@ -134,8 +129,19 @@ public class CustomSurfaceView_X extends SurfaceView implements SurfaceHolder.Ca
         path.moveTo(x, y);
     }
 
-    private void updatePath4LineTo(float x, float y) {
-        path.lineTo(x, y);
+    private synchronized void updatePath4LineTo(float x, float y) {
+        MyPoint point = new MyPoint(x, y);
+        event_queue.offer(point);
+    }
+
+    private synchronized MyPoint getPoint() {
+        try {
+            return event_queue.poll(5, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
     private synchronized void startRender() {
@@ -147,7 +153,13 @@ public class CustomSurfaceView_X extends SurfaceView implements SurfaceHolder.Ca
         isDrawing = false;
     }
 
-    private class MQ extends LinkedBlockingDeque<Point> {
+    private class MyPoint {
+        public float x;
+        public float y;
 
+        public MyPoint(float x, float y) {
+            this.x = x;
+            this.y = y;
+        }
     }
 }
