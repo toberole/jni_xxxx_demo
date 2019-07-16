@@ -13,6 +13,7 @@ import com.xiaoge.org.R;
 
 public class SplashActivity extends AppCompatActivity {
     public static Class[] clazzs = new Class[]{
+            CustomSurfaceViewActivity.class,
             TestServiceActivity.class,
             DrawActivity.class,
             ConstraintlayoutActivity.class,
