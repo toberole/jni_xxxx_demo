@@ -20,8 +20,8 @@ import java.util.concurrent.LinkedBlockingDeque;
  * 注意数据共享时需要同步处理
  * UI线程与draw线程可以采用消息队列通信
  */
-public class CustomSurfaceView extends SurfaceView implements SurfaceHolder.Callback, Runnable {
-    public static final String TAG = CustomSurfaceView.class.getSimpleName();
+public class CustomSurfaceView_X extends SurfaceView implements SurfaceHolder.Callback, Runnable {
+    public static final String TAG = CustomSurfaceView_X.class.getSimpleName();
 
     private SurfaceHolder holder;
     private Canvas canvas;
@@ -31,15 +31,15 @@ public class CustomSurfaceView extends SurfaceView implements SurfaceHolder.Call
 
     BlockingDeque<Point> event_queue = new LinkedBlockingDeque<>();
 
-    public CustomSurfaceView(Context context) {
+    public CustomSurfaceView_X(Context context) {
         this(context, null);
     }
 
-    public CustomSurfaceView(Context context, AttributeSet attrs) {
+    public CustomSurfaceView_X(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public CustomSurfaceView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public CustomSurfaceView_X(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs, defStyleAttr);
     }
@@ -64,13 +64,6 @@ public class CustomSurfaceView extends SurfaceView implements SurfaceHolder.Call
     @Override
     public void surfaceCreated(SurfaceHolder holder_) {
         Log.i(TAG, "surfaceCreated " + Thread.currentThread().getName());
-
-//        Canvas canvas = holder.lockCanvas();
-//        if(canvas != null) {
-//            canvas.drawColor(Color.WHITE);
-//            holder.unlockCanvasAndPost(canvas);
-//        }
-
         startRender();
     }
 
@@ -83,7 +76,6 @@ public class CustomSurfaceView extends SurfaceView implements SurfaceHolder.Call
     public void surfaceDestroyed(SurfaceHolder holder) {
         Log.i(TAG, "surfaceDestroyed " + Thread.currentThread().getName());
         holder.removeCallback(this);
-
         stopRender();
     }
 
