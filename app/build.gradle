@@ -49,4 +49,5 @@ dependencies {
 
     implementation 'com.tencent.bugly:crashreport:latest.release'
     implementation 'com.tencent.bugly:nativecrashreport:latest.release'
+    compile project(path: ':base_lib')
 }
