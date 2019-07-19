@@ -8,7 +8,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
@@ -20,7 +19,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.CustomSurfaceViewActivity"></activity>
+        <activity
+            android:name=".activity.demo.LifeActivity_B"
+            android:configChanges="orientation" />
+        <activity android:name=".activity.demo.LifeActivity"
+
+            />
+        <activity android:name=".activity.CustomSurfaceViewActivity" />
         <activity android:name=".activity.TestServiceActivity" />
 
         <service
@@ -36,7 +41,7 @@
         <activity android:name=".activity.VoiceLineViewActivity" />
         <activity android:name=".activity.ScrollRefreshView_XXActivity" />
         <activity
-            android:name=".activity.SplashActivity"
+            android:name=".activity.A_SplashActivity"
             android:hardwareAccelerated="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

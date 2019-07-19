@@ -10,9 +10,13 @@ import android.os.Bundle;
 
 import com.xiaoge.org.Constant;
 import com.xiaoge.org.R;
+import com.xiaoge.org.activity.demo.LifeActivity;
 
-public class SplashActivity extends AppCompatActivity {
+public class A_SplashActivity extends AppCompatActivity {
+    private int test_page = 0;
+
     public static Class[] clazzs = new Class[]{
+            LifeActivity.class,
             CustomSurfaceViewActivity.class,
             TestServiceActivity.class,
             DrawActivity.class,
@@ -20,10 +24,9 @@ public class SplashActivity extends AppCompatActivity {
             SinLineViewActivity.class
     };
 
-    private int test_page = 0;
 
     private void startNextPage() {
-        Intent intent = new Intent(SplashActivity.this, clazzs[test_page]);
+        Intent intent = new Intent(A_SplashActivity.this, clazzs[test_page]);
         startActivity(intent);
     }
 
