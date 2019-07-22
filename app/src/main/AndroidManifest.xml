@@ -22,9 +22,7 @@
         <activity
             android:name=".activity.demo.LifeActivity_B"
             android:configChanges="orientation" />
-        <activity android:name=".activity.demo.LifeActivity"
-
-            />
+        <activity android:name=".activity.demo.LifeActivity"/>
         <activity android:name=".activity.CustomSurfaceViewActivity" />
         <activity android:name=".activity.TestServiceActivity" />
 
