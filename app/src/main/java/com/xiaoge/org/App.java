@@ -1,6 +1,7 @@
 package com.xiaoge.org;
 
 import android.app.Application;
+import android.os.Process;
 import android.util.Log;
 
 import com.tencent.bugly.crashreport.CrashReport;
@@ -10,15 +11,18 @@ import com.xiaoge.org.util.CrashHandler;
 import java.io.File;
 
 public class App extends Application {
-    public static final String TAG = App.class.getSimpleName();
-    private static int count = 0;
+    public static final String TAG = "AppXXX";
+    public static int count = 0;
 
     @Override
     public void onCreate() {
         super.onCreate();
         AppUtil.getInstance().init(this);
         count++;
-        Log.i(TAG, "App#onCreate " + getApplicationContext().getApplicationInfo().packageName + " count = " + count);
+
+        Log.i(TAG, "App#onCreate " + getApplicationContext().getApplicationInfo().packageName +
+                " pid: " + Process.myPid() +
+                " uid: " + Process.myUid());
 
         init();
 

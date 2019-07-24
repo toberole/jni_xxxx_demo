@@ -75,4 +75,16 @@ public class LifeActivity extends AppCompatActivity {
         Intent intent = new Intent(LifeActivity.this, LifeActivity_B.class);
         LifeActivity.this.startActivity(intent);
     }
+
+    @OnClick(R.id.btn_click)
+    void btn_click() {
+        Intent intent = new Intent(LifeActivity.this, MultiProcessActivity.class);
+        LifeActivity.this.startActivity(intent);
+    }
+
+    @OnClick(R.id.btn_click2)
+    void btn_click2() {
+        Intent intent = new Intent(LifeActivity.this, MultiProcessActivity2.class);
+        LifeActivity.this.startActivity(intent);
+    }
 }

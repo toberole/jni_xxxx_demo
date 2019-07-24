@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
@@ -20,9 +21,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".activity.demo.MultiProcessActivity2"
+            android:process="com.xiaoge.org.remote" />
+        <activity
+            android:name=".activity.demo.MultiProcessActivity"
+            android:process=":remote" />
+        <activity
             android:name=".activity.demo.LifeActivity_B"
             android:configChanges="orientation" />
-        <activity android:name=".activity.demo.LifeActivity"/>
+        <activity android:name=".activity.demo.LifeActivity" />
         <activity android:name=".activity.CustomSurfaceViewActivity" />
         <activity android:name=".activity.TestServiceActivity" />
 
