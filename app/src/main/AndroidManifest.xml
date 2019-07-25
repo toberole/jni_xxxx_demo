@@ -68,7 +68,8 @@
 
         <provider
             android:name=".TestContentProvider"
-            android:authorities="com.xiaoge.org" />
+            android:authorities="com.xiaoge.org"
+            android:process="com.sogou.cp" />
     </application>
 
 </manifest>

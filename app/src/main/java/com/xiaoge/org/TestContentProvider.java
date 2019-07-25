@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -59,13 +60,6 @@ public class TestContentProvider extends ContentProvider {
 
     @Nullable
     @Override
-    public String getType(@NonNull Uri uri) {
-        Log.i(TAG, "TestContentProvider#getType " + Thread.currentThread().getName());
-        return null;
-    }
-
-    @Nullable
-    @Override
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
         Log.i(TAG, "TestContentProvider#insert " + Thread.currentThread().getName());
         return null;
@@ -81,5 +75,23 @@ public class TestContentProvider extends ContentProvider {
     public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
         Log.i(TAG, "TestContentProvider#update " + Thread.currentThread().getName());
         return 0;
+    }
+
+    @Nullable
+    @Override
+    public Bundle call(@NonNull String method, @Nullable String arg, @Nullable Bundle extras) {
+        Bundle bundle = new Bundle();
+        bundle.putBoolean("test", false);
+        Log.i(TAG, "TestContentProvider#call " + Thread.currentThread().getName());
+        Log.i(TAG, "TestContentProvider#call " + "method: " + method + " arg: " + arg + " extras: " + String.valueOf(extras));
+        return bundle;
+    }
+
+
+    @Nullable
+    @Override
+    public String getType(@NonNull Uri uri) {
+        Log.i(TAG, "TestContentProvider#getType " + Thread.currentThread().getName());
+        return null;
     }
 }
