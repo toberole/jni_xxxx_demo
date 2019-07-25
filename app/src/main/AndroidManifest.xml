@@ -20,6 +20,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.demo.ContentProviderActivity"></activity>
         <activity
             android:name=".activity.demo.MultiProcessActivity2"
             android:process="com.xiaoge.org.remote" />
@@ -64,6 +65,10 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
+
+        <provider
+            android:name=".TestContentProvider"
+            android:authorities="com.xiaoge.org" />
     </application>
 
 </manifest>

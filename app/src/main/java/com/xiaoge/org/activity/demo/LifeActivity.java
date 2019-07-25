@@ -4,13 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import android.content.ContentProvider;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.xiaoge.org.R;
 
-public class LifeActivity extends AppCompatActivity {
+
+public class LifeActivity extends AppCompatActivity  {
     public static final String TAG = LifeActivity.class.getSimpleName();
 
     @Override
