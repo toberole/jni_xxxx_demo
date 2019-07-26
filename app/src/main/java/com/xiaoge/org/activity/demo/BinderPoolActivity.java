@@ -10,7 +10,7 @@ import android.os.RemoteException;
 import android.widget.Toast;
 
 import com.xiaoge.org.R;
-import com.xiaoge.org.service.binderpool.BinderPool;
+import com.xiaoge.org.service.binderpool.Business_BinderPool;
 import com.xiaoge.org.service.binderpool.BinderTAG;
 import com.xiaoge.org.service.binderpool.Binder_1_Impl;
 import com.xiaoge.org.service.binderpool.Binder_2_Impl;
@@ -18,7 +18,7 @@ import com.xiaoge.org.service.binderpool.IBinder_1;
 import com.xiaoge.org.service.binderpool.IBinder_2;
 
 public class BinderPoolActivity extends AppCompatActivity {
-    private BinderPool binderPool;
+    private Business_BinderPool binderPool;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class BinderPoolActivity extends AppCompatActivity {
         getWindow().getDecorView().postDelayed(new Runnable() {
             @Override
             public void run() {
-                binderPool = new BinderPool(BinderPoolActivity.this);
+                binderPool = new Business_BinderPool(BinderPoolActivity.this);
                 binderPool.binderServiceBinderPool();
             }
         }, 500);

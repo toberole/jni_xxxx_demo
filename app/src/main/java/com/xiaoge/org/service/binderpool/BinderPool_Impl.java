@@ -3,6 +3,9 @@ package com.xiaoge.org.service.binderpool;
 import android.os.IBinder;
 import android.os.RemoteException;
 
+/**
+ * BinderPool 通信的服务端实现
+ */
 public class BinderPool_Impl extends IBinderPool.Stub {
     @Override
     public IBinder queryBinder(int binderTag) throws RemoteException {

@@ -4,17 +4,16 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.os.Binder;
 import android.os.IBinder;
 import android.os.RemoteException;
 
-public class BinderPool {
+public class Business_BinderPool {
     private IBinderPool binderPool_impl;
 
     private Context context;
     private MyServiceConnection conn;
 
-    public BinderPool(Context ctx) {
+    public Business_BinderPool(Context ctx) {
         this.context = ctx;
     }
 
