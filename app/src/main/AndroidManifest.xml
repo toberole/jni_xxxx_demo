@@ -20,7 +20,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.demo.ContentProviderActivity"></activity>
+        <activity android:name=".activity.demo.BinderPoolActivity"></activity>
+
+        <service
+            android:process="com.xxx.other"
+            android:name=".service.binderpool.BinderPoolService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".activity.demo.ContentProviderActivity" />
         <activity
             android:name=".activity.demo.MultiProcessActivity2"
             android:process="com.xiaoge.org.remote" />
@@ -31,21 +39,21 @@
             android:name=".activity.demo.LifeActivity_B"
             android:configChanges="orientation" />
         <activity android:name=".activity.demo.LifeActivity" />
-        <activity android:name=".activity.CustomSurfaceViewActivity" />
-        <activity android:name=".activity.TestServiceActivity" />
+        <activity android:name=".activity.demo0.CustomSurfaceViewActivity" />
+        <activity android:name=".activity.demo0.TestServiceActivity" />
 
         <service
             android:name=".service.MyService"
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".activity.ServiceActivity" />
-        <activity android:name=".activity.DrawActivity" />
-        <activity android:name=".activity.ConstraintlayoutActivity" />
-        <activity android:name=".activity.View_PathActivity" />
-        <activity android:name=".activity.SinLineViewActivity" />
-        <activity android:name=".activity.VoiceLineViewActivity" />
-        <activity android:name=".activity.ScrollRefreshView_XXActivity" />
+        <activity android:name=".activity.demo0.ServiceActivity" />
+        <activity android:name=".activity.demo0.DrawActivity" />
+        <activity android:name=".activity.demo0.ConstraintlayoutActivity" />
+        <activity android:name=".activity.demo0.View_PathActivity" />
+        <activity android:name=".activity.demo0.SinLineViewActivity" />
+        <activity android:name=".activity.demo0.VoiceLineViewActivity" />
+        <activity android:name=".activity.demo0.ScrollRefreshView_XXActivity" />
         <activity
             android:name=".activity.A_SplashActivity"
             android:hardwareAccelerated="true">
@@ -65,7 +73,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
-
         <provider
             android:name=".TestContentProvider"
             android:authorities="com.xiaoge.org"

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.CameraActivity">
+    tools:context=".activity.demo0.CameraActivity">
 
     <FrameLayout
         android:id="@+id/pre_view_container"

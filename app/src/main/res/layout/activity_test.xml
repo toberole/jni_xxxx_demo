@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".activity.TestActivity">
+    tools:context=".activity.demo0.TestActivity">
 
     <com.xiaoge.org.views.RecordingView_x
         android:id="@+id/rv"

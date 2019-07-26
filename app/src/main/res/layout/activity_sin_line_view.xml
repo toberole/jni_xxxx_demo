@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".activity.SinLineViewActivity">
+    tools:context=".activity.demo0.SinLineViewActivity">
 
     <com.xiaoge.org.views.SinLineView
         android:id="@+id/sin"

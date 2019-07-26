@@ -37,17 +37,19 @@ public class ContentProviderActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_modify)
     void btn_modify() {
-        Uri uri = Uri.parse("content://com.xiaoge.org/test_update");
-        ContentProviderActivity.this.getContentResolver().update(uri, null, null, null);
+//        Uri uri = Uri.parse("content://com.xiaoge.org/test_update");
+//        ContentProviderActivity.this.getContentResolver().update(uri, null, null, null);
+
+        test_modify_xxx();
     }
 
     @OnClick(R.id.btn_read)
     void btn_read() {
-        LogUtil.i("TestContentProvider", "ContentProviderActivity#btn_read Thread name: " + Thread.currentThread().getName());
-        Uri uri = Uri.parse("content://com.xiaoge.org/test_query");
-        ContentValues values = new ContentValues();
-        ContentProviderActivity.this.getContentResolver().insert(uri, values);
-
+//        LogUtil.i("TestContentProvider", "ContentProviderActivity#btn_read Thread name: " + Thread.currentThread().getName());
+//        Uri uri = Uri.parse("content://com.xiaoge.org/test_query");
+//        ContentValues values = new ContentValues();
+//        ContentProviderActivity.this.getContentResolver().insert(uri, values);
+        test_insert_xxx();
 //        new Thread(new Runnable() {
 //            @Override
 //            public void run() {
@@ -68,5 +70,33 @@ public class ContentProviderActivity extends AppCompatActivity {
         extras.putString("par", "btn_call");
         ContentProviderActivity.this.getContentResolver().call(uri, method, arg, extras);
 
+    }
+
+    private void test_insert_xxx() {
+        for (int i = 0; i < 20; i++) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    LogUtil.i("TestContentProvider", "ContentProviderActivity#btn_read Thread name: " + Thread.currentThread().getName());
+                    Uri uri = Uri.parse("content://com.xiaoge.org/test_query");
+                    ContentValues values = new ContentValues();
+                    ContentProviderActivity.this.getContentResolver().insert(uri, values);
+                }
+            }).start();
+        }
+    }
+
+    private void test_modify_xxx() {
+        for (int i = 0; i < 20; i++) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    LogUtil.i("TestContentProvider", "ContentProviderActivity#btn_read Thread name: " + Thread.currentThread().getName());
+                    Uri uri = Uri.parse("content://com.xiaoge.org/test_update");
+                    ContentValues values = new ContentValues();
+                    ContentProviderActivity.this.getContentResolver().update(uri, values, null, null);
+                }
+            }).start();
+        }
     }
 }

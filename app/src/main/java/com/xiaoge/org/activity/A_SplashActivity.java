@@ -10,25 +10,11 @@ import android.os.Bundle;
 
 import com.xiaoge.org.Constant;
 import com.xiaoge.org.R;
-import com.xiaoge.org.activity.demo.ContentProviderActivity;
-import com.xiaoge.org.activity.demo.LifeActivity;
+import com.xiaoge.org.TestIndex;
 
 public class A_SplashActivity extends AppCompatActivity {
-    private int test_page = 0;
-
-    public static Class[] clazzs = new Class[]{
-            ContentProviderActivity.class,
-            LifeActivity.class,
-            CustomSurfaceViewActivity.class,
-            TestServiceActivity.class,
-            DrawActivity.class,
-            ConstraintlayoutActivity.class,
-            SinLineViewActivity.class
-    };
-
-
     private void startNextPage() {
-        Intent intent = new Intent(A_SplashActivity.this, clazzs[test_page]);
+        Intent intent = new Intent(A_SplashActivity.this, TestIndex.clazzs[TestIndex.test_page]);
         startActivity(intent);
     }
 

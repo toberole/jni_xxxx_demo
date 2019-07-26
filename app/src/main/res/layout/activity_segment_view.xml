@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="10dp"
     android:orientation="vertical"
-    tools:context=".activity.SegmentViewActivity">
+    tools:context=".activity.demo0.SegmentViewActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
