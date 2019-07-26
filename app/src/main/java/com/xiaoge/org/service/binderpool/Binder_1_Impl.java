@@ -1,5 +1,6 @@
 package com.xiaoge.org.service.binderpool;
 
+import android.os.Process;
 import android.os.RemoteException;
 
 import com.xiaoge.org.util.LogUtil;
@@ -12,7 +13,7 @@ public class Binder_1_Impl extends IBinder_1.Stub {
 
     @Override
     public int add(int a, int b) throws RemoteException {
-        LogUtil.i(TAG, "Binder_1_Impl#add Thread-Name: " + Thread.currentThread().getName());
+        LogUtil.i(TAG, "Binder_1_Impl#add Thread-Name: " + Thread.currentThread().getName() + " pid: " + Process.myPid());
         return a + b;
     }
 }
