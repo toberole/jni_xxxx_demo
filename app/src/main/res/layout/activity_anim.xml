@@ -34,5 +34,11 @@
         android:layout_height="wrap_content"
         android:text="btn_change_param" />
 
+    <Button
+        android:id="@+id/btn_ValueAnimator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="btn_ValueAnimator" />
+
 
 </LinearLayout>

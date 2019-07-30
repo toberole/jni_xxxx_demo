@@ -6,8 +6,10 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.animation.AccelerateInterpolator;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -50,6 +52,11 @@ public class AnimActivity extends AppCompatActivity {
     @OnClick(R.id.btn_scroll)
     void btn_scroll() {
         tv_test.scrollBy(10, 10);
+
+        float x = tv_test.getX();
+        float y = tv_test.getY();
+
+        Log.i(TAG, "x: " + x + " y: " + y);
     }
 
     /**
@@ -71,5 +78,25 @@ public class AnimActivity extends AppCompatActivity {
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) tv_test.getLayoutParams();
         params.leftMargin = params.leftMargin + 20;
         tv_test.requestLayout();
+    }
+
+    /**
+     * 数字渐变
+     */
+    @OnClick(R.id.btn_ValueAnimator)
+    void btn_ValueAnimator() {
+        ValueAnimator valueAnimator = ValueAnimator.ofFloat(1, 10, 5);
+        valueAnimator.setDuration(2000);
+        // Interpolator 决定了变化规律
+        valueAnimator.setInterpolator(new AccelerateInterpolator());
+        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                float v = (float) animation.getAnimatedValue();
+                Log.i(TAG, "v = " + v);
+            }
+        });
+
+        valueAnimator.start();
     }
 }
