@@ -1,5 +1,6 @@
 package com.xiaoge.org;
 
+import com.xiaoge.org.activity.demo.AnimActivity;
 import com.xiaoge.org.activity.demo.BinderPoolActivity;
 import com.xiaoge.org.activity.demo.ContentProviderActivity;
 import com.xiaoge.org.activity.demo.DemoViewActivity;
@@ -14,6 +15,7 @@ public class TestIndex {
     public static int test_page = 0;
 
     public static Class[] clazzs = new Class[]{
+            AnimActivity.class,
             DemoViewActivity.class,
             BinderPoolActivity.class,
             ContentProviderActivity.class,
