@@ -2,6 +2,7 @@ package com.xiaoge.org;
 
 import com.xiaoge.org.activity.demo.BinderPoolActivity;
 import com.xiaoge.org.activity.demo.ContentProviderActivity;
+import com.xiaoge.org.activity.demo.DemoViewActivity;
 import com.xiaoge.org.activity.demo.LifeActivity;
 import com.xiaoge.org.activity.demo0.ConstraintlayoutActivity;
 import com.xiaoge.org.activity.demo0.CustomSurfaceViewActivity;
@@ -13,6 +14,7 @@ public class TestIndex {
     public static int test_page = 0;
 
     public static Class[] clazzs = new Class[]{
+            DemoViewActivity.class,
             BinderPoolActivity.class,
             ContentProviderActivity.class,
             LifeActivity.class,

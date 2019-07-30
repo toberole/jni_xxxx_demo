@@ -20,13 +20,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.demo.BinderPoolActivity"></activity>
+        <activity android:name=".activity.demo.DemoViewActivity"></activity>
+        <activity android:name=".activity.demo.BinderPoolActivity" />
 
         <service
-            android:process="com.xxx.other"
             android:name=".service.binderpool.BinderPoolService"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="true"
+            android:process="com.xxx.other" />
 
         <activity android:name=".activity.demo.ContentProviderActivity" />
         <activity
