@@ -32,22 +32,24 @@ public class DemoViewGroup extends LinearLayout {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
+        Log.i(TAG, "DemoViewGroup onInterceptTouchEvent ");
+
         boolean b = super.onInterceptTouchEvent(ev);
-        Log.i(TAG, "DemoViewGroup onInterceptTouchEvent");
         return b;
     }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        boolean b = super.dispatchTouchEvent(ev);
-        Log.i(TAG, "DemoViewGroup dispatchTouchEvent");
+        Log.i(TAG, "DemoViewGroup dispatchTouchEvent ");
+        boolean b;
+        b = super.dispatchTouchEvent(ev);
         return b;
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        Log.i(TAG, "DemoViewGroup onTouchEvent ");
         boolean b = super.onTouchEvent(event);
-        Log.i(TAG, "DemoViewGroup onTouchEvent");
         return b;
     }
 
