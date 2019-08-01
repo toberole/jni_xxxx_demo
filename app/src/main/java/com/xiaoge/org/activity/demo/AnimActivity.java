@@ -15,7 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.xiaoge.org.R;
-
 /**
  * view移动
  * 1、scroll

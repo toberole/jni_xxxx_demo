@@ -120,8 +120,8 @@ public class ScrollRefreshView_XX extends LinearLayout implements AbsListView.On
 
     @Override
     /**
-     * 一点拦截之后 后续的事件序列 就会回调此方法了
-     * 直接调用自己的Ontouchevent方法
+     * 一旦拦截之后 后续的事件序列 就不回调此方法了
+     * 直接调用自己的onTouchEvent方法
      */
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         Log.i(TAG, "onInterceptTouchEvent");

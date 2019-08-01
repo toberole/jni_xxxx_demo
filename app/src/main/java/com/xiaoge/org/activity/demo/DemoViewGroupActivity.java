@@ -24,28 +24,28 @@ public class DemoViewGroupActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        demoViewGroup.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                Log.i("DemoViewGroup", "DemoViewGroupActivity OnTouchListener onTouch");
-                return false;
-            }
-        });
-
-        demoViewGroup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i("DemoViewGroup", "DemoViewGroupActivity OnClickListener onClick");
-            }
-        });
-
-        demoViewGroup.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                Log.i("DemoViewGroup", "DemoViewGroupActivity OnLongClickListener onLongClick");
-                return true;
-            }
-        });
+//        demoViewGroup.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                Log.i("DemoViewGroup", "DemoViewGroupActivity OnTouchListener onTouch");
+//                return false;
+//            }
+//        });
+//
+//        demoViewGroup.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.i("DemoViewGroup", "DemoViewGroupActivity OnClickListener onClick");
+//            }
+//        });
+//
+//        demoViewGroup.setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View v) {
+//                Log.i("DemoViewGroup", "DemoViewGroupActivity OnLongClickListener onLongClick");
+//                return true;
+//            }
+//        });
     }
 
     /**
@@ -61,12 +61,13 @@ public class DemoViewGroupActivity extends AppCompatActivity {
     public boolean dispatchTouchEvent(MotionEvent ev) {
         Log.i("DemoViewGroup", "DemoViewGroupActivity dispatchTouchEvent");
 
-        //Log.i("DemoViewGroup", "------------------------------------------------------------------");
+        Log.i("DemoViewGroup", "------------------------------------------------------------------");
 
         // 打印调用链
-//        Thread.dumpStack();
+        Thread.dumpStack();
 
-        //Log.i("DemoViewGroup", "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        return super.dispatchTouchEvent(ev);
+        Log.i("DemoViewGroup", "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        boolean b =  super.dispatchTouchEvent(ev);
+        return false;
     }
 }
