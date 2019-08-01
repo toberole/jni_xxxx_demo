@@ -1,7 +1,5 @@
 package com.xiaoge.org.kotlin
 
-import com.tencent.bugly.proguard.s
-
 /**
  * constructor主构造函数
  * 在主构造函数中不能有任何的代码 必须放在init代码块中
@@ -58,7 +56,83 @@ class Student2 : Student1 {
 
     // 表达式函数
     fun cal(x: Int): Int = x * x
+
+    // 可变参数 vararg
+    fun printP(vararg ps: Int) {
+        for (i in ps) {
+            println(i)
+        }
+    }
+
+    // 内部类
+    inner class Inner {
+        fun sys() {
+            println(firstName)
+        }
+    }
 }
+
+// 接口 可以包含抽象方法的声明 也可以包含实现
+interface Receiver {
+    // 抽象方法
+    fun sys()
+
+    // 接口成员默认就是“open”的
+    fun sys1() {
+        println("Receiver sys1")
+    }
+
+    // 抽象属性
+    var i: Int
+
+    var ii: Int
+        get() = ii
+        set(value) {
+            ii = value
+        }
+
+    val p: String
+        get() = "test"
+}
+
+class ReceiverImpl(override var i: Int) : Receiver {
+    override fun sys() {
+        println(i)
+    }
+}
+
+// 扩展 给ReceiverImpl添加一个add函数
+fun ReceiverImpl.add() {
+    println("扩展函数： " + this.i)
+}
+
+// 可见性修饰符在 Kotlin 中有这四个可见性修饰符：
+// private、 protected、 internal 和 public。
+// 如果没有显式指定修饰符的话，默认可见性是 public
+// private 意味着只在这个类内部（包含其所有成员）可见；
+// protected—— 和 private一样 + 在子类中可见。
+// internal —— 能见到类声明的本模块内的任何客户端都可见其 internal 成员；
+// public —— 能见到类声明的任何客户端都可见其 public 成员。
+
+// 数据类
+//数据类必须满足以下要求：
+//主构造函数需要至少有一个参数；
+//主构造函数的所有参数需要标记为 val 或 var；
+//数据类不能是抽象、开放、密封或者内部的；
+data class User constructor(val name: String = "", val age: Int = 0) {
+    // 在很多情况下，需要复制一个对象改变它的一些属性
+    // 但其余部分保持不变。 copy() 函数就是为此而生成。
+    //fun copy(name: String = this.name, age: Int = this.age) = User(name, age)
+}
+
+// 密封类
+// 类名前面添加 sealed 修饰符。虽然密封类也可以 有子类，但是所有子类都必须在与密封类自身相同的文件中声明
+sealed class Expr
+
+data class Const(val number: Double) : Expr()
+data class Sum(val e1: Expr, val e2: Expr) : Expr()
+object NotANumber : Expr()
+
 
 fun main() {
     var student = Student("hello")
@@ -69,4 +143,19 @@ fun main() {
     stu2.sys()
     var i = stu2.cal(2)
     println(i)
+    println("---------------")
+    stu2.printP()
+    println("---------------")
+    stu2.printP(1, 2, 3, 4)
+
+    // 内部类
+    var innerClass = Student2("inner").Inner()
+    innerClass.sys()
+
+    var recv = ReceiverImpl(11)
+    recv.sys()
+    recv.i = 22
+    recv.sys()
+    // 调用扩展函数
+    recv.add()
 }
