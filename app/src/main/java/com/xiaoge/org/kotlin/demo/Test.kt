@@ -5,34 +5,6 @@ package com.xiaoge.org.kotlin.demo
  */
 var s_: String = ""
 
-fun main() {
-    println("hello main")
-
-    // 变量
-    var i = 10
-    println(i)
-    // 定义变量 显式指定类型
-    var a: Int = 1
-
-    // 常量
-    val ii = 11;
-    println(ii)
-
-    var name: String;
-    name = "hello name"
-    // 错误写法 不能为空
-    // name = null;
-
-    // 可以为空?
-    var name1: String?
-    name1 = "hello name1"
-    name1 = null
-
-    test()
-
-    test2()
-}
-
 // 字符串
 fun test() {
     var str: String;
@@ -68,3 +40,41 @@ fun test2() {
     val s2 = "${s1.replace("is", "was")}, but now is $a"
     println(s2)
 }
+
+fun test3() {
+    var arr = arrayOf(1, 2, 3, 4, 5)
+    for ((index, value) in arr.withIndex()) {
+        println("index = $index, value = $value")
+    }
+}
+
+fun main() {
+    println("hello main")
+
+    // 变量
+    var i = 10
+    println(i)
+    // 定义变量 显式指定类型
+    var a: Int = 1
+
+    // 常量
+    val ii = 11;
+    println(ii)
+
+    var name: String;
+    name = "hello name"
+    // 错误写法 不能为空
+    // name = null;
+
+    // 可以为空?
+    var name1: String?
+    name1 = "hello name1"
+    name1 = null
+
+    test()
+
+    test2()
+
+    test3()
+}
+

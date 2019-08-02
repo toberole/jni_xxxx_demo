@@ -54,10 +54,28 @@ fun test5_3() {
     }
 }
 
+fun test5_4() {
+    var str: String? = null
+    if (str.isNullOrBlank()) {
+        println("isNullOrBlank")
+    }
+
+    var str1: String? = "  "
+    if (str1.isNullOrBlank()) {// 空格 blank
+        println("isNullOrBlank")
+    }
+
+    if (str1.isNullOrEmpty()) {
+        println("isNullOrEmpty")// 空格不是empty
+    }
+}
+
 fun main() {
     test5_1(1)
     test5_1(10)
 
     test5_2("hello")
     test5_3()
+
+    test5_4()
 }

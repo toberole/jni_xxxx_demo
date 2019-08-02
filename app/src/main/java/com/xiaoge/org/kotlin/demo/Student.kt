@@ -134,6 +134,70 @@ data class Const(val number: Double) : Expr()
 data class Sum(val e1: Expr, val e2: Expr) : Expr()
 object NotANumber : Expr()
 
+open class ParentClass(name: String) {
+    var name: String?
+        get() {// get权限是和属性权限一致的
+            return name
+        }
+        private set(value) {// set的权限可以属性的权限不一致
+            name = value
+        }
+
+    init {
+        this.name = name
+        println("ParentClass#init")
+    }
+
+    open fun m1() {
+        println("ParentClass#m1")
+    }
+}
+
+interface ParentInterface {
+    fun m1() {
+        println("ParentInterface#m1")
+    }
+}
+
+// 类定义时写构造函数称为主构造函数
+// 类中定义的构造函数称为次级构造函数
+// 子类无次级构造函数
+class Child(name: String, age: Int) : ParentClass(name) {
+    init {
+        println("Child#init")
+    }
+}
+
+// 有次级构造函数
+class Child2 : ParentClass {
+    // super 调用父类构造函数
+    constructor(name: String) : super(name) {
+        println("Child2#init 1")
+    }
+
+    constructor(name: String, age: Int) : super(name) {
+        println("Child2#init 2")
+    }
+}
+
+// 继承类中和实现类中的方法相同
+class Child3(name: String) : ParentClass(name), ParentInterface {
+    override fun m1() {
+        // ParentClass.m1
+        super<ParentClass>.m1()
+        // ParentInterface.m1
+        super<ParentInterface>.m1()
+    }
+}
+
+abstract class AabstractParentClass {
+    abstract fun abstractMethod()
+
+    fun method() {
+        println("AabstractParentClass#method")
+    }
+}
+
 
 fun main() {
     var student = Student("hello")

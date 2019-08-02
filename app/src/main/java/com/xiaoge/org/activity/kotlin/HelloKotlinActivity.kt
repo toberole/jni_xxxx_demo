@@ -2,6 +2,8 @@ package com.xiaoge.org.activity.kotlin
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Message
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -16,11 +18,23 @@ import kotlinx.android.synthetic.main.hello_kotlin.*
  * this@HelloKotlinActivity
  */
 class HelloKotlinActivity : AppCompatActivity(), View.OnClickListener {
+
     // 需要引用kotlin反射包
-    private var TAG = HelloKotlinActivity::class.simpleName
+    // private var TAG = HelloKotlinActivity::class.simpleName
+    companion object {
+        // public static final String TAG = HelloKotlinActivity.class.getSimpleName();
+        private val TAG = HelloKotlinActivity::class.java.simpleName
+    }
 
     private lateinit var et_name: EditText
     private lateinit var btn_login: Button
+
+    // object
+    private var handler: Handler = object : Handler() {
+        override fun handleMessage(msg: Message?) {
+            super.handleMessage(msg)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +60,7 @@ class HelloKotlinActivity : AppCompatActivity(), View.OnClickListener {
         var id = v?.id
         when (id) {
             R.id.btn_login -> {
-                var name: String
+                var name: String?
                 name = et_name.text.toString().trim()
                 Log.i(TAG, "login name: " + name)
 
