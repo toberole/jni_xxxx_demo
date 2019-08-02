@@ -104,6 +104,7 @@ class ReceiverImpl(override var i: Int) : Receiver {
 
 // 扩展 给ReceiverImpl添加一个add函数
 fun ReceiverImpl.add() {
+    // this扩展对象实例
     println("扩展函数： " + this.i)
 }
 
@@ -135,6 +136,8 @@ data class Sum(val e1: Expr, val e2: Expr) : Expr()
 object NotANumber : Expr()
 
 open class ParentClass(name: String) {
+    lateinit var ss: String
+
     var name: String?
         get() {// get权限是和属性权限一致的
             return name
