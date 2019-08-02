@@ -1,7 +1,8 @@
-package com.xiaoge.org.kotlin
+package com.xiaoge.org.kotlin.demo
 
 /**
  * 在 Kotlin 中，if是一个表达式，即它会返回一个值
+ * if when for
  */
 fun test_if() {
     var i = 10

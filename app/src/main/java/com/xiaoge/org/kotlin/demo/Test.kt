@@ -1,5 +1,8 @@
-package com.xiaoge.org.kotlin
+package com.xiaoge.org.kotlin.demo
 
+/**
+ * 变量
+ */
 var s_: String = ""
 
 fun main() {

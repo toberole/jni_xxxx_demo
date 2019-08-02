@@ -25,7 +25,8 @@
         <activity android:name=".activity.demo.AnimActivity" />
         <activity android:name=".activity.demo.DemoViewActivity" />
         <activity android:name=".activity.demo.BinderPoolActivity" />
-        <activity android:name="com.xiaoge.org.kotlin.HelloKotlinActivity" />
+        <activity android:name="com.xiaoge.org.activity.kotlin.HelloKotlinActivity" />
+        <activity android:name=".activity.kotlin.DemoKotlinActivity" />
 
         <service
             android:name=".service.binderpool.BinderPoolService"

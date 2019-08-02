@@ -1,4 +1,4 @@
-package com.xiaoge.org.kotlin
+package com.xiaoge.org.kotlin.demo
 
 /**
  * constructor主构造函数
@@ -6,6 +6,7 @@ package com.xiaoge.org.kotlin
  * 如果主构造函数没有任何注解或者可见性修饰符.
  * 如果构造函数有注解或可见性修饰符，constructor 关键字是必需的，并且修饰符在它前面
  */
+// kotlin中的类定义同时也是构造函数
 class Student public constructor(firstName: String) {
     public var firstName: String
 
