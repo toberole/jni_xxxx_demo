@@ -14,6 +14,9 @@ import com.xiaoge.org.Constant
 import com.xiaoge.org.R
 import com.xiaoge.org.kotlin.demo.log_i
 import kotlinx.android.synthetic.main.hello_kotlin.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 /**
  * 引用this 类似java的Activity.this
@@ -45,8 +48,15 @@ class HelloKotlinActivity : AppCompatActivity(), View.OnClickListener {
 
         // 包级函数引用
         log_i(Constant.DREAM_LOG)
-
         LogUtils.d("hh", "hello")
+
+        // 协程
+//        GlobalScope.launch {
+//            kotlinx.coroutines.delay(3000)
+//            runOnUiThread {
+//                tv_title.text = "------------"
+//            }
+//        }
     }
 
     private fun initView() {

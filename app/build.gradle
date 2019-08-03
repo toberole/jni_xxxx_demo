@@ -3,6 +3,13 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.jakewharton.butterknife'
 
+
+kotlin {
+    experimental {
+        coroutines 'enable'
+    }
+}
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -53,10 +60,13 @@ dependencies {
     implementation 'com.tencent.bugly:nativecrashreport:latest.release'
     compile project(path: ':base_lib')
 
+    /////////////////////////// kotlin /////////////////////////////
     // 标准库
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     // 反射
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+    // 协程
+    compile group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-android', version: '1.2.2'
 
 }
 
