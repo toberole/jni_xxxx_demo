@@ -17,14 +17,13 @@ import com.xiaoge.org.service.binderpool.IBinder_1;
 import com.xiaoge.org.service.binderpool.IBinder_2;
 
 public class BinderPoolActivity extends AppCompatActivity {
+    private Business_BinderPool binderPool;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_binder_pool);
         ButterKnife.bind(this);
-
-        Button button;
 
         getWindow().getDecorView().postDelayed(new Runnable() {
             @Override

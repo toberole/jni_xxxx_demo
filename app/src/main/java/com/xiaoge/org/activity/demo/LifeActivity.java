@@ -21,7 +21,6 @@ public class LifeActivity extends AppCompatActivity  {
      */
     protected void onStart() {
         super.onStart();
-
         Log.i(TAG, "LifeActivity#onStart");
     }
 

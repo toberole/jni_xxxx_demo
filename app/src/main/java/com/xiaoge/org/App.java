@@ -4,7 +4,6 @@ import android.app.Application;
 import android.os.Process;
 import android.util.Log;
 
-import com.tencent.bugly.crashreport.CrashReport;
 import com.xiaoge.org.util.AppUtil;
 import com.xiaoge.org.util.CrashHandler;
 
@@ -27,7 +26,7 @@ public class App extends Application {
         init();
 
         CrashHandler.getInstance().init(this);
-        CrashReport.initCrashReport(getApplicationContext(), "ff76ba0cbd", true);
+        //CrashReport.initCrashReport(getApplicationContext(), "ff76ba0cbd", true);
     }
 
     private void init() {
