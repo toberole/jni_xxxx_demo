@@ -12,11 +12,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.xiaoge.org.Constant
 import com.xiaoge.org.R
+import com.xiaoge.org.R2.id.async
 import com.xiaoge.org.kotlin.demo.log_i
 import kotlinx.android.synthetic.main.hello_kotlin.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 /**
  * 引用this 类似java的Activity.this
@@ -50,13 +49,21 @@ class HelloKotlinActivity : AppCompatActivity(), View.OnClickListener {
         log_i(Constant.DREAM_LOG)
         LogUtils.d("hh", "hello")
 
-        // 协程
-//        GlobalScope.launch {
-//            kotlinx.coroutines.delay(3000)
+        // 协程 默认是运行在当前线程
+        GlobalScope.launch {
+            delay(3000)
+
+            // 指定协程在主线程中运行
+            launch(Dispatchers.Main) { tv_title.text = "更新UI" }
 //            runOnUiThread {
-//                tv_title.text = "------------"
+//
 //            }
-//        }
+        }
+
+        //
+        GlobalScope.launch(newSingleThreadContext("default")) {
+            launch(Dispatchers.Main) { tv_title.text = "***更新UI***" }
+        }
     }
 
     private fun initView() {
@@ -98,6 +105,9 @@ class HelloKotlinActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btn_test1 -> {
                 // 调用kotlin包级别函数
                 log_i("hahahaha")
+            }
+
+            R.id.btn_c -> {
             }
         }
     }
