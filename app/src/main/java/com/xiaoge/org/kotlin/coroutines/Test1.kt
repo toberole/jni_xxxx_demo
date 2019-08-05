@@ -34,7 +34,7 @@ fun test_c2(): Int {
     return 2
 }
 
-fun test_c() {
+fun test_c0() {
     runBlocking {
         var a = null
         var b = null
@@ -75,8 +75,9 @@ fun test_c4() {
     runBlocking {
         // 启动一个协程来处理某种传入请求（request）
         val request = launch {
-            repeat(3) { i -> // 启动少量的子作业
-                launch  {
+            repeat(3) { i ->
+                // 启动少量的子作业
+                launch {
                     delay((i + 1) * 200L) // 延迟 200 毫秒、400 毫秒、600 毫秒的时间
                     println("Coroutine $i is done")
                 }
@@ -109,6 +110,43 @@ suspend fun doSomethingUsefulTwo(): Int {
     return 29
 }
 
+
+fun log(msg: String) = println("[${Thread.currentThread().name}] $msg")
+
+fun test_c5() = runBlocking(CoroutineName("main")) {
+    // sampleStart
+    log("Started main coroutine")
+    // run two background value computations
+    val v1 = async(CoroutineName("v1coroutine")) {
+        delay(500)
+        log("Computing v1")
+        252
+    }
+    val v2 = async(CoroutineName("v2coroutine")) {
+        delay(1000)
+        log("Computing v2")
+        6
+    }
+    log("The answer for v1 / v2 = ${v1.await() / v2.await()}")
+    // sampleEnd
+}
+
+val threadLocal = ThreadLocal<String?>() // declare thread-local variable
+
+fun test_c6() = runBlocking<Unit> {
+    //sampleStart
+    threadLocal.set("main")
+    println("Pre-main, current thread: ${Thread.currentThread()}, thread local value: '${threadLocal.get()}'")
+    val job = launch(Dispatchers.Default + threadLocal.asContextElement(value = "launch")) {
+        println("Launch start, current thread: ${Thread.currentThread()}, thread local value: '${threadLocal.get()}'")
+        yield()
+        println("After yield, current thread: ${Thread.currentThread()}, thread local value: '${threadLocal.get()}'")
+    }
+    job.join()
+    println("Post-main, current thread: ${Thread.currentThread()}, thread local value: '${threadLocal.get()}'")
+    //sampleEnd
+}
+
 fun main() {
-    test_c4()
+    test_c6()
 }
