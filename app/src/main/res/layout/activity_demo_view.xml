@@ -8,10 +8,16 @@
     android:orientation="vertical"
     tools:context="com.xiaoge.org.activity.demo.DemoViewActivity">
 
+    <!--<com.xiaoge.org.view_study.DemoView-->
+        <!--android:id="@+id/demoView"-->
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_height="100dp"-->
+        <!--android:background="@android:color/darker_gray" />-->
+
     <com.xiaoge.org.view_study.DemoView
         android:id="@+id/demoView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@android:color/darker_gray" />
 
     <View
