@@ -19,12 +19,12 @@ public class TestIndex {
     public static int test_page = 0;
 
     public static Class[] clazzs = new Class[]{
+            DemoViewActivity.class,
             DemoKotlinActivity_1.class,
             HelloKotlinActivity.class,
             ScrollConflictActivity.class,
             DemoViewGroupActivity.class,
             AnimActivity.class,
-            DemoViewActivity.class,
             BinderPoolActivity.class,
             ContentProviderActivity.class,
             LifeActivity.class,

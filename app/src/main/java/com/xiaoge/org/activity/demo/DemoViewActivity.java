@@ -5,7 +5,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import android.app.IntentService;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -28,7 +27,7 @@ public class DemoViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_demo_view);
         ButterKnife.bind(this);
 
-        IntentService intentService;
+        Log.i(TAG, "------------: " + String.valueOf(findViewById(android.R.id.content)));
     }
 
     @OnClick(R.id.demoView)
