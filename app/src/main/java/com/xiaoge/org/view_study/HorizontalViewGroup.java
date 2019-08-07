@@ -19,6 +19,8 @@ import com.xiaoge.org.util.DisplayUtil;
 public class HorizontalViewGroup extends ViewGroup {
     public static final String TAG = HorizontalViewGroup.class.getSimpleName();
 
+    private static final long DURATION = 800;
+
     private Context ctx;
 
     private int default_width = 200;
@@ -29,6 +31,8 @@ public class HorizontalViewGroup extends ViewGroup {
     private float lastX;
     private float lastY;
     private int childCount;
+
+    private volatile boolean isScrolling = false;
 
     public HorizontalViewGroup(Context context) {
         this(context, null);
@@ -64,14 +68,37 @@ public class HorizontalViewGroup extends ViewGroup {
         Log.i(TAG, "childCount: " + childCount);
 
         if (childCount != 0) {
-            View v = getChildAt(0);
-            int w_p = v.getMeasuredWidth() * childCount;
+            int w_p = 0;
+            for (int i = 0; i < childCount; i++) {
+                View v = getChildAt(0);
+                w_p += v.getMeasuredWidth();
+            }
             setMeasuredDimension(w_p, h);
         }
     }
 
     @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        int childCount = getChildCount();
+        View v = getChildAt(0);
+        int w = v.getMeasuredWidth();
+        int h = v.getMeasuredHeight();
+
+        Log.i(TAG, "w: " + w + " h: " + h);
+
+        for (int i = 0; i < childCount; i++) {
+            v = getChildAt(i);
+            int left = w * i;
+            int top = 0;
+            int right = w * (i + 1);
+            int bottom = h;
+            v.layout(left, top, right, bottom);
+        }
+    }
+
+    @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
+        super.dispatchTouchEvent(event);
         boolean b = true;
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
@@ -105,8 +132,6 @@ public class HorizontalViewGroup extends ViewGroup {
         return super.onTouchEvent(event);
     }
 
-    private volatile boolean isScrolling = false;
-
     private void scroll_left() {
         Log.i(TAG, "scroll_left index: " + index + " isScrolling: " + isScrolling);
         int w = getWidth();
@@ -124,7 +149,7 @@ public class HorizontalViewGroup extends ViewGroup {
         isScrolling = true;
 
         ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(this, "translationX", start, end);
-        objectAnimator.setDuration(2000);
+        objectAnimator.setDuration(DURATION);
         objectAnimator.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationEnd(Animator animation) {
@@ -172,7 +197,7 @@ public class HorizontalViewGroup extends ViewGroup {
         isScrolling = true;
 
         ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(this, "translationX", start, end);
-        objectAnimator.setDuration(2000);
+        objectAnimator.setDuration(DURATION);
         objectAnimator.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationEnd(Animator animation) {
@@ -201,24 +226,5 @@ public class HorizontalViewGroup extends ViewGroup {
         });
 
         objectAnimator.start();
-    }
-
-    @Override
-    protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        int childCount = getChildCount();
-        View v = getChildAt(0);
-        int w = v.getMeasuredWidth();
-        int h = v.getMeasuredHeight();
-
-        Log.i(TAG, "w: " + w + " h: " + h);
-
-        for (int i = 0; i < childCount; i++) {
-            v = getChildAt(i);
-            int left = w * i;
-            int top = 0;
-            int right = w * (i + 1);
-            int bottom = h;
-            v.layout(left, top, right, bottom);
-        }
     }
 }
