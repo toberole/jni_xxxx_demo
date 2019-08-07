@@ -9,16 +9,30 @@
     tools:context="com.xiaoge.org.activity.demo.DemoViewActivity">
 
     <!--<com.xiaoge.org.view_study.DemoView-->
-        <!--android:id="@+id/demoView"-->
-        <!--android:layout_width="100dp"-->
-        <!--android:layout_height="100dp"-->
-        <!--android:background="@android:color/darker_gray" />-->
+    <!--android:id="@+id/demoView"-->
+    <!--android:layout_width="100dp"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:background="@android:color/darker_gray" />-->
+
+    <com.xiaoge.org.view_study.CircleView
+        android:id="@+id/cv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <com.xiaoge.org.view_study.DemoView
         android:id="@+id/demoView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@android:color/darker_gray"
+        android:visibility="gone" />
+
+
+    <com.xiaoge.org.view_study.DemoView_1
+        android:id="@+id/demoView_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@android:color/darker_gray" />
+
 
     <View
         android:layout_width="match_parent"

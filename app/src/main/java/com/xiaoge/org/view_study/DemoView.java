@@ -2,10 +2,15 @@ package com.xiaoge.org.view_study;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+
+import com.xiaoge.org.kotlin.demo.P;
+import com.xiaoge.org.util.DisplayUtil;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,7 +18,7 @@ import androidx.annotation.Nullable;
 public class DemoView extends View {
     public static final String TAG = DemoView.class.getSimpleName();
 
-    // private Scroller scroller = new Scroller()
+    private Paint paint;
 
     public DemoView(Context context) {
         super(context);
@@ -33,6 +38,55 @@ public class DemoView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        Log.i(TAG, "onDraw");
+
+        if (paint == null) {
+            paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+            paint.setColor(Color.RED);
+        }
+
+//        paint.setTextSize(DisplayUtil.dip2px(getContext(), 20));
+//
+//        /**
+//         * 绘制文本的时候，参数X,Y并不是绘制的起点，而是文字的底部
+//         * 这个x,y 是左下角的坐标
+//         * 获取text的长度 使用 paint.measureText(text)
+//         * 获取text的高度 使用float height = paint.ascent()+paint.descent()
+//         *
+//         */
+//        float x = -DisplayUtil.dip2px(getContext(), 30);
+//        float y = 0;
+//        canvas.drawText("hello view", x, y, paint);
+
+        int w = getWidth();
+        int h = getHeight();
+        int r = w < h ? w / 2 : h / 2;
+        canvas.drawCircle(w / 2, h / 2, r, paint);
+
+//        canvas.save();
+//        canvas.restore();
+//        canvas.translate();
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        Log.i(TAG, "onMeasure");
+
+        int w_mode = MeasureSpec.getMode(widthMeasureSpec);
+        int width = MeasureSpec.getSize(widthMeasureSpec);
+
+        if (w_mode == MeasureSpec.AT_MOST) {
+            width = DisplayUtil.dip2px(getContext(), 200);
+        }
+
+        int h_mode = MeasureSpec.getMode(heightMeasureSpec);
+        int height = MeasureSpec.getSize(heightMeasureSpec);
+
+        if (h_mode == MeasureSpec.AT_MOST) {
+            height = DisplayUtil.dip2px(getContext(), 300);
+        }
+
+        setMeasuredDimension(width, height);
     }
 
     @Override
@@ -72,6 +126,12 @@ public class DemoView extends View {
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
         Log.i(TAG, "onAttachedToWindow");
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasWindowFocus) {
+        super.onWindowFocusChanged(hasWindowFocus);
+        Log.i(TAG, "onWindowFocusChanged");
     }
 
     @Override

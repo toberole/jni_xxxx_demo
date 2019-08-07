@@ -4,6 +4,7 @@ import com.xiaoge.org.activity.demo.AnimActivity;
 import com.xiaoge.org.activity.demo.BinderPoolActivity;
 import com.xiaoge.org.activity.demo.ContentProviderActivity;
 import com.xiaoge.org.activity.demo.DemoViewActivity;
+import com.xiaoge.org.activity.demo.DemoViewActivity1;
 import com.xiaoge.org.activity.demo.DemoViewGroupActivity;
 import com.xiaoge.org.activity.demo.LifeActivity;
 import com.xiaoge.org.activity.demo.ScrollConflictActivity;
@@ -19,6 +20,7 @@ public class TestIndex {
     public static int test_page = 0;
 
     public static Class[] clazzs = new Class[]{
+            DemoViewActivity1.class,
             DemoViewActivity.class,
             DemoKotlinActivity_1.class,
             HelloKotlinActivity.class,
