@@ -1,6 +1,7 @@
 package com.xiaoge.org.view_study;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -10,6 +11,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
+import com.xiaoge.org.R;
 import com.xiaoge.org.util.DisplayUtil;
 
 import androidx.annotation.Nullable;
@@ -46,6 +48,14 @@ public class CircleView extends View {
         this.ctx = context;
         default_width = DisplayUtil.dip2px(ctx, default_width);
         default_height = DisplayUtil.dip2px(ctx, default_height);
+
+        // 处理自定义属性
+        if (null != attrs) {
+            TypedArray typedArray = ctx.obtainStyledAttributes(attrs, R.styleable.CircleView);
+            color = typedArray.getColor(R.styleable.CircleView_color, Color.RED);
+            default_width = (int) typedArray.getDimension(R.styleable.CircleView_u_w, default_width);
+            default_height = (int) typedArray.getDimension(R.styleable.CircleView_u_w, default_height);
+        }
         this.paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setColor(color);
     }

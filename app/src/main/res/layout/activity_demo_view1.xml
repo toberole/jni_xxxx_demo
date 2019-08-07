@@ -13,5 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:background="@android:color/darker_gray"
-        android:padding="20dp" />
+        android:padding="20dp"
+        app:color="#FF8866"
+        app:u_h="200dp"
+        app:u_w="200dp" />
 </LinearLayout>
