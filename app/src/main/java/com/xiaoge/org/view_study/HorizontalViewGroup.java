@@ -1,7 +1,6 @@
 package com.xiaoge.org.view_study;
 
 import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -14,7 +13,7 @@ import android.widget.Toast;
 import com.xiaoge.org.util.DisplayUtil;
 
 /**
- * 自定义ViewGroup是需要处理margin和padding、wrap_content
+ * 自定义ViewGroup是需要处理子View的margin和自身padding、wrap_content
  */
 public class HorizontalViewGroup extends ViewGroup {
     public static final String TAG = HorizontalViewGroup.class.getSimpleName();

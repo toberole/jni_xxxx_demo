@@ -55,6 +55,7 @@ public class CircleView extends View {
             color = typedArray.getColor(R.styleable.CircleView_color, Color.RED);
             default_width = (int) typedArray.getDimension(R.styleable.CircleView_u_w, default_width);
             default_height = (int) typedArray.getDimension(R.styleable.CircleView_u_w, default_height);
+            typedArray.recycle();
         }
         this.paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setColor(color);
