@@ -8,7 +8,9 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.os.RemoteException;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -205,6 +207,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.btn_bind_serice:
+                Log.i("xxxx", "btn_bind_serice");
                 Intent bind_service = new Intent(MainActivity.this, ManagerUserService.class);
                 MainActivity.this.bindService(bind_service, this, BIND_AUTO_CREATE);
                 break;
@@ -214,17 +217,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
+    /**
+     * 当调用的client与service在同一个进程里面，service即为本地实现
+     * 否则就是android.os.BinderProxy
+     */
     public void onServiceConnected(ComponentName name, IBinder service) {
-        userManager = IUserManager.Stub.asInterface(service);
+        // 打印查看具体的service类[同进程与非同进程的区别]
+        Log.i("xxxxx", "onServiceConnected service: " + service);
 
-        // 通信异常中断 会回调deathRecipient
-        userManager.asBinder().unlinkToDeath(deathRecipient, 0);
-
-        try {
-            userManager.registerListener(listener);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
+//        userManager = IUserManager.Stub.asInterface(service);
+//
+//        // 通信异常中断 会回调deathRecipient
+//        userManager.asBinder().unlinkToDeath(deathRecipient, 0);
+//
+//        try {
+//            userManager.registerListener(listener);
+//        } catch (RemoteException e) {
+//            e.printStackTrace();
+//        }
     }
 
     @Override

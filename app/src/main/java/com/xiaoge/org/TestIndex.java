@@ -12,6 +12,7 @@ import com.xiaoge.org.activity.demo.ScrollConflictActivity;
 import com.xiaoge.org.activity.demo0.ConstraintlayoutActivity;
 import com.xiaoge.org.activity.demo0.CustomSurfaceViewActivity;
 import com.xiaoge.org.activity.demo0.DrawActivity;
+import com.xiaoge.org.activity.demo0.MainActivity;
 import com.xiaoge.org.activity.demo0.SinLineViewActivity;
 import com.xiaoge.org.activity.demo0.TestServiceActivity;
 import com.xiaoge.org.activity.kotlin.DemoKotlinActivity_1;
@@ -21,6 +22,7 @@ public class TestIndex {
     public static int test_page = 0;
 
     public static Class[] clazzs = new Class[]{
+            MainActivity.class,
             DemoViewGroupActivity2.class,
             DemoViewActivity1.class,
             DemoViewActivity.class,

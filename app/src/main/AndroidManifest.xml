@@ -20,6 +20,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.demo0.MainActivity" />
         <activity android:name=".activity.demo.DemoViewGroupActivity2"></activity>
         <activity android:name=".activity.demo.DemoViewActivity1" />
         <activity android:name=".activity.demo.ScrollConflictActivity" />
@@ -55,6 +56,10 @@
             android:name=".service.MyService"
             android:enabled="true"
             android:exported="true" />
+
+        <service
+            android:name=".service.ManagerUserService"
+            android:process="com.xxx.yyy" />
 
         <activity android:name=".activity.demo0.ServiceActivity" />
         <activity android:name=".activity.demo0.DrawActivity" />
