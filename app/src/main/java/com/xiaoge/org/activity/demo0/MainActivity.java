@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void test() {
         startActivity(null);
+        startService(null);
         bindService(null, null, 0);
     }
 

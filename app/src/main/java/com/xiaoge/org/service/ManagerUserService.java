@@ -103,9 +103,11 @@ public class ManagerUserService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.i(TAG, "ManagerUserService#onStartCommand");
+        int ret = super.onStartCommand(intent, flags, startId);
 
-        return super.onStartCommand(intent, flags, startId);
+        Log.i(TAG, "ManagerUserService#onStartCommand flags: " + flags + " startId: " + startId);
+
+        return ret;
     }
 
     @Override
