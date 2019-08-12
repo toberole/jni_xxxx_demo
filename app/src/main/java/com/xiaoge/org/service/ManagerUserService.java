@@ -66,6 +66,7 @@ public class ManagerUserService extends Service {
 //
 //                Log.i(TAG, "ManagerUserService#registerListener");
 //            }
+            Log.i("xxxxx", "registerListener listener: " + listener);
 
             listeners.register(listener);
             Log.i(TAG, "ManagerUserService#registerListener");

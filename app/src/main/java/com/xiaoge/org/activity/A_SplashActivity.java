@@ -15,6 +15,10 @@ import com.xiaoge.org.TestIndex;
 public class A_SplashActivity extends AppCompatActivity {
     private void startNextPage() {
         Intent intent = new Intent(A_SplashActivity.this, TestIndex.clazzs[TestIndex.test_page]);
+        // binder 传递数据有大小限制
+        // E/Binder: Unreasonably large binder buffer
+//        byte[] data = new byte[1024 * 1024];
+//        intent.putExtra("hhhh", data);
         startActivity(intent);
     }
 
@@ -30,6 +34,4 @@ public class A_SplashActivity extends AppCompatActivity {
     void next() {
         startNextPage();
     }
-
-
 }

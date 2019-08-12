@@ -101,6 +101,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         busHandler.post();
     }
 
+    private void test() {
+        startActivity(null);
+        bindService(null, null, 0);
+    }
+
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         return super.dispatchTouchEvent(ev);
@@ -224,12 +229,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onServiceConnected(ComponentName name, IBinder service) {
         // 打印查看具体的service类[同进程与非同进程的区别]
         Log.i("xxxxx", "onServiceConnected service: " + service);
+        Log.i("xxxxx", "onServiceConnected listener: " + listener);
 
-//        userManager = IUserManager.Stub.asInterface(service);
-//
-//        // 通信异常中断 会回调deathRecipient
-//        userManager.asBinder().unlinkToDeath(deathRecipient, 0);
-//
+        userManager = IUserManager.Stub.asInterface(service);
+
+        // 通信异常中断 会回调deathRecipient
+        service.unlinkToDeath(deathRecipient, 0);
+
 //        try {
 //            userManager.registerListener(listener);
 //        } catch (RemoteException e) {
