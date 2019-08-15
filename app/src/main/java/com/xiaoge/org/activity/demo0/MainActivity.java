@@ -1,6 +1,9 @@
 package com.xiaoge.org.activity.demo0;
 
+import android.app.IntentService;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Handler;
@@ -105,6 +108,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(null);
         startService(null);
         bindService(null, null, 0);
+
+        registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+            }
+        }, null);
+        sendBroadcast(null);
+
+        IntentService intentService;
+
+        getContentResolver().query(null, null, null, null, null);
     }
 
     @Override
@@ -229,6 +244,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     public void onServiceConnected(ComponentName name, IBinder service) {
         // 打印查看具体的service类[同进程与非同进程的区别]
+        Log.i("xxxxx", "onServiceConnected ComponentName: " + name.toShortString());
         Log.i("xxxxx", "onServiceConnected service: " + service);
         Log.i("xxxxx", "onServiceConnected listener: " + listener);
 

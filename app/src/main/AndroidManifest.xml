@@ -20,7 +20,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.demo.IntentActivity"></activity>
+        <activity android:name=".activity.demo.IntentServiceActivity"></activity>
+
+        <service
+            android:name=".service.TestService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".activity.demo.TestServiceActivity" />
+        <activity android:name=".activity.demo.IntentActivity" />
         <activity android:name=".activity.demo.BinderActivity" />
         <activity android:name=".activity.demo0.MainActivity" />
         <activity android:name=".activity.demo.DemoViewGroupActivity2" />
@@ -61,6 +69,8 @@
         <service
             android:name=".service.ManagerUserService"
             android:process="com.xxx.yyy" />
+
+        <service android:name=".service.IntentService_Test" />
 
         <activity android:name=".activity.demo0.ServiceActivity" />
         <activity android:name=".activity.demo0.DrawActivity" />
