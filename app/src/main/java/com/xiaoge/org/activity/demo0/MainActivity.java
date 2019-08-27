@@ -6,6 +6,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.Camera;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
@@ -117,9 +118,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }, null);
         sendBroadcast(null);
 
+        Camera camera = new Camera();
+        camera.translate(1.0f, 1.0f, 1.0f);
+
         IntentService intentService;
 
         getContentResolver().query(null, null, null, null, null);
+
+
     }
 
     @Override
