@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.xiaoge.org.R;
 
@@ -110,5 +111,12 @@ public class WindowManagerActivity extends AppCompatActivity {
                 }
             }
         }, 1500);
+    }
+
+    @OnClick(R.id.btn_toast_50)
+    void btn_toast_50() {
+        for (int i = 0; i < 100; i++) {
+            Toast.makeText(WindowManagerActivity.this, "i = " + i, Toast.LENGTH_SHORT).show();
+        }
     }
 }

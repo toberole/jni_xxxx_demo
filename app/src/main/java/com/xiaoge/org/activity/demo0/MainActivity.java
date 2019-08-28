@@ -23,6 +23,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.xiaoge.org.R;
 import com.xiaoge.org.bean.IOnNewUserAdded;
@@ -133,10 +134,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         animator.start();
         animator.cancel();
 
-
-
         Dialog dialog = null;
         dialog.setContentView(null);
+
+        Toast toast = Toast.makeText(null, "hello", Toast.LENGTH_SHORT);
+        toast.setView(null);
+        toast.show();
     }
 
     @Override

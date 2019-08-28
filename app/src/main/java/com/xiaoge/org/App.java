@@ -3,6 +3,7 @@ package com.xiaoge.org;
 import android.app.Application;
 import android.os.Process;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.xiaoge.org.util.AppUtil;
 import com.xiaoge.org.util.CrashHandler;
@@ -24,6 +25,8 @@ public class App extends Application {
                 " uid: " + Process.myUid());
 
         init();
+
+        Toast.makeText(this, "test", Toast.LENGTH_SHORT).show();
 
         CrashHandler.getInstance().init(this);
         //CrashReport.initCrashReport(getApplicationContext(), "ff76ba0cbd", true);
