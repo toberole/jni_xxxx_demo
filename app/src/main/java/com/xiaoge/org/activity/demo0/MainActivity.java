@@ -1,5 +1,6 @@
 package com.xiaoge.org.activity.demo0;
 
+import android.animation.ObjectAnimator;
 import android.app.IntentService;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -19,6 +20,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import com.xiaoge.org.R;
@@ -93,7 +95,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-
         busHandler = new BusHandler();
         busHandler.start();
 
@@ -125,6 +126,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         IntentService intentService;
 
         getContentResolver().query(null, null, null, null, null);
+
+        ObjectAnimator animator = ObjectAnimator.ofFloat(null, "xx", 1);
+        animator.addUpdateListener(null);
+        animator.start();
+        animator.cancel();
+
 
 
     }
