@@ -31,6 +31,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, ServiceConnection {
     public static final String TAG = MainActivity.class.getSimpleName();
+
     private Button btn;
     private Button btn_add_user;
     private Button btn_bind_serice;
