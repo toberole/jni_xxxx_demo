@@ -1,6 +1,7 @@
 package com.xiaoge.org.activity.demo0;
 
 import android.animation.ObjectAnimator;
+import android.app.Dialog;
 import android.app.IntentService;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -134,6 +135,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
+        Dialog dialog = null;
+        dialog.setContentView(null);
     }
 
     @Override

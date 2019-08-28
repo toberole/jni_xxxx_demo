@@ -6,7 +6,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.os.Build;
@@ -17,7 +16,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.xiaoge.org.R;
@@ -27,6 +25,8 @@ public class WindowManagerActivity extends AppCompatActivity {
 
     @BindView(R.id.ll_container)
     LinearLayout ll_container;
+    private WindowManager windowManager;
+    private View view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,5 +71,44 @@ public class WindowManagerActivity extends AppCompatActivity {
         }
 
         windowManager.addView(view, params);
+    }
+
+    /**
+     * Windowmanager 添加一个view
+     * 可以模拟Toast
+     */
+    @OnClick(R.id.btn_toast)
+    void btn_toast() {
+        Log.i(TAG, "btn_wm");
+
+        windowManager = getWindowManager();
+        view = View.inflate(WindowManagerActivity.this, R.layout.wm_layout, null);
+        WindowManager.LayoutParams params = new WindowManager.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                0, 0, PixelFormat.OPAQUE
+        );
+        params.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+                | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED;
+        params.gravity = Gravity.CENTER;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            params.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
+//            params.type = WindowManager.LayoutParams.TYPE_APPLICATION_STARTING;
+        } else {
+            params.type = WindowManager.LayoutParams.TYPE_PHONE;
+        }
+
+        windowManager.addView(view, params);
+
+        ll_container.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (view != null && windowManager != null) {
+                    windowManager.removeView(view);
+                }
+            }
+        }, 1500);
     }
 }
