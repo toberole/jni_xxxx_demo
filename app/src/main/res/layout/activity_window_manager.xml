@@ -25,4 +25,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="模拟Toast DOS" />
+
+    <Button
+        android:id="@+id/btn_toast_aysn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="非UI线程Toast" />
+
+    <Button
+        android:id="@+id/btn_NonUiThread"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="非UI线程添加View" />
+
 </LinearLayout>

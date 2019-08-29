@@ -6,10 +6,13 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.PixelFormat;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Looper;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.Gravity;
@@ -17,9 +20,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.xiaoge.org.R;
+import com.xiaoge.org.activity.demo0.MainActivity;
 
 public class WindowManagerActivity extends AppCompatActivity {
     public static final String TAG = WindowManagerActivity.class.getSimpleName();
@@ -117,6 +122,45 @@ public class WindowManagerActivity extends AppCompatActivity {
     void btn_toast_50() {
         for (int i = 0; i < 100; i++) {
             Toast.makeText(WindowManagerActivity.this, "i = " + i, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @OnClick(R.id.btn_toast_aysn)
+    void btn_toast_aysn() {
+        new Thread() {
+            @Override
+            public void run() {
+                try {
+                    Looper.prepare();
+                    Toast.makeText(getApplicationContext(), "非UI线程弹Toast", Toast.LENGTH_SHORT).show();
+                    Looper.loop();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+    }
+
+    @OnClick(R.id.btn_NonUiThread)
+    void btn_NonUiThread() {
+        new NonUiThread().start();
+    }
+
+    class NonUiThread extends Thread {
+        @Override
+        public void run() {
+            Looper.prepare();
+            TextView tx = new TextView(WindowManagerActivity.this);
+            tx.setTextColor(Color.RED);
+            tx.setBackgroundColor(Color.WHITE);
+            tx.setText("non-UiThread update textview");
+
+            WindowManager windowManager = WindowManagerActivity.this.getWindowManager();
+            WindowManager.LayoutParams params = new WindowManager.LayoutParams(
+                    200, 200, 200, 200, WindowManager.LayoutParams.FIRST_SUB_WINDOW,
+                    WindowManager.LayoutParams.TYPE_TOAST, PixelFormat.OPAQUE);
+            windowManager.addView(tx, params);
+            Looper.loop();
         }
     }
 }
