@@ -20,7 +20,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.demo.WindowManagerActivity"></activity>
+        <activity android:name=".activity.demo.ListViewActivityX"></activity>
+        <activity android:name=".activity.demo.WindowManagerActivity" />
         <activity android:name=".activity.demo.IntentServiceActivity" />
 
         <service

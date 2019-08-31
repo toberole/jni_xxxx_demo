@@ -9,6 +9,7 @@ import com.xiaoge.org.activity.demo.DemoViewGroupActivity;
 import com.xiaoge.org.activity.demo.DemoViewGroupActivity2;
 import com.xiaoge.org.activity.demo.IntentServiceActivity;
 import com.xiaoge.org.activity.demo.LifeActivity;
+import com.xiaoge.org.activity.demo.ListViewActivityX;
 import com.xiaoge.org.activity.demo.ScrollConflictActivity;
 import com.xiaoge.org.activity.demo.WindowManagerActivity;
 import com.xiaoge.org.activity.demo0.ConstraintlayoutActivity;
@@ -24,6 +25,7 @@ public class TestIndex {
     public static int test_page = 0;
 
     public static Class[] clazzs = new Class[]{
+            ListViewActivityX.class,
             WindowManagerActivity.class,
             IntentServiceActivity.class,
             com.xiaoge.org.activity.demo.TestServiceActivity.class,

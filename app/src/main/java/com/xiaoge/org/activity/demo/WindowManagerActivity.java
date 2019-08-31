@@ -8,7 +8,6 @@ import butterknife.OnClick;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,7 +23,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.xiaoge.org.R;
-import com.xiaoge.org.activity.demo0.MainActivity;
 
 public class WindowManagerActivity extends AppCompatActivity {
     public static final String TAG = WindowManagerActivity.class.getSimpleName();
