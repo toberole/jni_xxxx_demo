@@ -139,6 +139,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Toast toast = Toast.makeText(null, "hello", Toast.LENGTH_SHORT);
         toast.setView(null);
         toast.show();
+
+//        Lock lock = new ReentrantLock();
+//        lock.lock();
+    }
+
+    private void test1() {
+
     }
 
     @Override

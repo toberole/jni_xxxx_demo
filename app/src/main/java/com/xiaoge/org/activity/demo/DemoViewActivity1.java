@@ -18,5 +18,6 @@ public class DemoViewActivity1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_demo_view1);
         ButterKnife.bind(this);
+
     }
 }

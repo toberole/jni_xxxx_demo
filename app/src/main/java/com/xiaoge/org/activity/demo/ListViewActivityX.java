@@ -5,6 +5,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -15,6 +16,8 @@ import com.xiaoge.org.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class ListViewActivityX extends AppCompatActivity {
     @BindView(R.id.lv_tt)
@@ -31,6 +34,22 @@ public class ListViewActivityX extends AppCompatActivity {
         ButterKnife.bind(this);
         initData();
         initView();
+
+        test();
+    }
+
+    private void test() {
+        Lock lock = new ReentrantLock();
+        ((ReentrantLock) lock).hasQueuedThreads();
+        lock.lock();
+        lock.lock();
+        Log.i("lock", "---------------");
+        int holdCount = ((ReentrantLock) lock).getHoldCount();
+        Log.i("lock", "--------------- " + holdCount);
+        lock.unlock();
+        lock.unlock();
+
+
     }
 
     private void initView() {
