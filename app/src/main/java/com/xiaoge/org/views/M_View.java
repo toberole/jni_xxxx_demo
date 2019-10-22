@@ -8,6 +8,7 @@ import android.graphics.Paint;
 import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.xiaoge.org.R;
@@ -120,5 +121,10 @@ public class M_View extends View {
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
         Log.i(TAG, "M_View#onDetachedFromWindow");
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return super.onTouchEvent(event);
     }
 }

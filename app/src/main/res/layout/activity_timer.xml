@@ -5,17 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.xiaoge.org.activity.demo.ListViewActivityX">
+    tools:context="com.xiaoge.org.activity.demo.TimerActivity">
 
     <Button
-        android:id="@+id/btn1"
+        android:id="@+id/btn_AlarmManager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="btn" />
+        android:text="AlarmManager" />
 
-    <ListView
-        android:id="@+id/lv_tt"
+    <Button
+        android:id="@+id/btn_JobScheduler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1" />
+        android:layout_height="wrap_content"
+        android:text="JobScheduler" />
 </LinearLayout>
