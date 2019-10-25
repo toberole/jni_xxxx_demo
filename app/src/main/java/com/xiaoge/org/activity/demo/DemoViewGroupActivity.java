@@ -7,10 +7,8 @@ import butterknife.ButterKnife;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
-import android.view.View;
 
 import com.xiaoge.org.R;
-import com.xiaoge.org.activity.demo0.ListViewActivity;
 import com.xiaoge.org.view_study.DemoViewGroup;
 
 public class DemoViewGroupActivity extends AppCompatActivity {
@@ -67,7 +65,7 @@ public class DemoViewGroupActivity extends AppCompatActivity {
         Thread.dumpStack();
 
         Log.i("DemoViewGroup", "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        boolean b =  super.dispatchTouchEvent(ev);
+        boolean b = super.dispatchTouchEvent(ev);
         return false;
     }
 }

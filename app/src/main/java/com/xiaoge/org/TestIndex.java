@@ -15,6 +15,7 @@ import com.xiaoge.org.activity.demo.TimerActivity;
 import com.xiaoge.org.activity.demo.WindowManagerActivity;
 import com.xiaoge.org.activity.demo0.ConstraintlayoutActivity;
 import com.xiaoge.org.activity.demo0.CustomSurfaceViewActivity;
+import com.xiaoge.org.activity.demo0.DemoViewGroup1Activity;
 import com.xiaoge.org.activity.demo0.DrawActivity;
 import com.xiaoge.org.activity.demo0.MainActivity;
 import com.xiaoge.org.activity.demo0.SinLineViewActivity;
@@ -26,6 +27,8 @@ public class TestIndex {
     public static int test_page = 0;
 
     public static Class[] clazzs = new Class[]{
+            DemoViewGroup1Activity.class,
+            DemoViewGroupActivity.class,
             TimerActivity.class,
             ListViewActivityX.class,
             WindowManagerActivity.class,

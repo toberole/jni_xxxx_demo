@@ -20,7 +20,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.demo.TimerActivity"></activity>
+        <activity android:name=".activity.demo0.DemoViewGroup1Activity"></activity>
+        <activity android:name=".activity.demo.TimerActivity" />
         <activity android:name=".activity.demo.ListViewActivityX" />
         <activity android:name=".activity.demo.WindowManagerActivity" />
         <activity android:name=".activity.demo.IntentServiceActivity" />
@@ -29,8 +30,7 @@
             android:name=".service.TestService"
             android:enabled="true"
             android:exported="true" />
-
-        <service android:name="com.xiaoge.org.activity.demo.WorkerService" />
+        <service android:name=".activity.demo.WorkerService" />
 
         <activity android:name=".activity.demo.TestServiceActivity" />
         <activity android:name=".activity.demo.IntentActivity" />
