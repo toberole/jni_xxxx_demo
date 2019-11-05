@@ -1,7 +1,11 @@
 package com.xiaoge.org.test;
 
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.os.Looper;
 
+import java.lang.ref.ReferenceQueue;
+import java.lang.ref.SoftReference;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,13 +17,31 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.ConcurrentSkipListMap;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.PriorityBlockingQueue;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicStampedReference;
+import java.util.concurrent.locks.AbstractQueuedSynchronizer;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public abstract class TT {
     public static final String TAG = TT.class.getSimpleName();
@@ -110,5 +132,209 @@ public abstract class TT {
         linkedHashMap.put("", "");
 
         HashSet hashSet1;
+
+        ReentrantLock reentrantLock = null;
+        Condition condition = reentrantLock.newCondition();
+        try {
+            condition.wait();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        condition.notify();
+        condition.signal();
+
+        Thread thread = null;
+        thread.interrupt();
+        ThreadLocal<Object> threadLocal = new ThreadLocal<>();
+        threadLocal.set(new Object());
+        threadLocal.get();
+        threadLocal.remove();
+
+        SoftReference<Object> softReference = new SoftReference<Object>(new Object(), new ReferenceQueue<>());
+
+        Executors.callable(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
+
+        AtomicStampedReference atomicStampedReference;
+        AtomicInteger atomicInteger;
+        CopyOnWriteArrayList copyOnWriteArrayList;
+        ConcurrentLinkedQueue concurrentLinkedQueue;
+        ArrayBlockingQueue arrayBlockingQueue;
+        LinkedBlockingQueue linkedBlockingQueue;
+        PriorityBlockingQueue priorityBlockingQueue;
+        ConcurrentSkipListMap concurrentSkipListMap;
+
+        AtomicInteger atomicInteger1;
+
+        Thread thread1 = null;
+        thread.interrupt();
+        thread.stop();
+        InterruptedException interruptedException;
+    }
+
+    private void test() {
+        ReentrantReadWriteLock reentrantReadWriteLock = new ReentrantReadWriteLock();
+        ReentrantReadWriteLock.ReadLock readLock = reentrantReadWriteLock.readLock();
+        ReentrantReadWriteLock.WriteLock writeLock = reentrantReadWriteLock.writeLock();
+
+        BlockingQueue<String> bq = new ArrayBlockingQueue<>(0);
+
+        ExecutorService executorService = Executors.newFixedThreadPool(1);
+        Future<String> future = executorService.submit(new Callable<String>() {
+            @Override
+            public String call() throws Exception {
+                Thread.sleep(1000);
+                return String.valueOf(System.currentTimeMillis());
+            }
+        });
+
+        future.cancel(true);
+
+        // ForkJoinPool pool = new ForkJoinPool();
+
+        Semaphore semaphore = new Semaphore(2);
+        try {
+            semaphore.acquire();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        semaphore.release();
+
+
+    }
+
+    private static void test1() {
+        CyclicBarrier cyclicBarrier = new CyclicBarrier(3);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(200);
+                    cyclicBarrier.await();
+
+                    System.out.println(System.currentTimeMillis());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (BrokenBarrierException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }).start();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(200);
+                    cyclicBarrier.await();
+
+                    System.out.println(System.currentTimeMillis());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (BrokenBarrierException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }).start();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(200);
+                    cyclicBarrier.await();
+
+                    System.out.println(System.currentTimeMillis());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (BrokenBarrierException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+    public static void main1(String[] args) {
+        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+            @Override
+            public void uncaughtException(Thread t, Throwable e) {
+                System.out.println(t.getName());
+                e.printStackTrace(System.out);
+            }
+        });
+
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                try {
+//                    List<String> lStrings = new ArrayList<String>();
+//                    lStrings.add("hello");
+//                    lStrings.add("world");
+//
+//                    Iterator<String> iterator = lStrings.iterator();
+//                    while (iterator.hasNext()) {
+//                        iterator.remove();
+//                    }
+//                } catch (Exception e) {
+//
+//                }
+//
+//            }
+//        }).start();
+
+        test1();
+        System.out.println("end");
+    }
+
+    private static void test2() {
+        AbstractQueuedSynchronizer abstractQueuedSynchronizer = null;
+    }
+
+
+    private void test3() {
+        HandlerThread handlerThread = new HandlerThread("");
+        handlerThread.start();
+        Handler handler = new Handler(handlerThread.getLooper());
+    }
+
+    private void test4() {
+        Future<String> future = null;
+        try {
+            future.get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void test5() {
+        Callable<String> callable = new Callable<String>() {
+            @Override
+            public String call() throws Exception {
+                String res = String.valueOf(System.currentTimeMillis());
+                if (true) throw new RuntimeException("hello world");
+                return res;
+            }
+        };
+
+        ExecutorService executorService = Executors.newFixedThreadPool(1);
+        Future<String> future = executorService.submit(callable);
+        try {
+            String res = future.get();
+            System.out.println("res: " + res);
+        } catch (Exception e) {
+            System.out.println("error before");
+            e.printStackTrace(System.out);
+            System.out.println("error after");
+        }
+    }
+
+    public static void main(String[] args) {
+        test5();
+
+        System.out.println("end");
     }
 }
