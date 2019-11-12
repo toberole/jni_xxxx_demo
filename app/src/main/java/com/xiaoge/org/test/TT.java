@@ -132,6 +132,7 @@ public abstract class TT {
         linkedHashMap.put("", "");
 
         HashSet hashSet1;
+        hashSet.add(null);
 
         ReentrantLock reentrantLock = null;
         Condition condition = reentrantLock.newCondition();
