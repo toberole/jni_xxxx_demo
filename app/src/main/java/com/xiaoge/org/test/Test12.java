@@ -7,6 +7,11 @@ class Node {
 
 public class Test12 {
     public static void main(String[] args) {
+        // test1();
+    }
+
+
+    private static void test1() {
         int n = 10;
         Node list = createList(n);
 
@@ -33,6 +38,11 @@ public class Test12 {
             System.out.println(node.data);
             list2.next = node.next;
         }
+    }
+
+    private static void merge(Node list1, Node list2) {
+
+
 
     }
 
@@ -78,7 +88,7 @@ public class Test12 {
         Node last = node;
         for (int i = 0; i < n; i++) {
             Node temp = new Node();
-            temp.data = i;
+            temp.data = i * n / 3;
             last.next = temp;
             last = temp;
         }
