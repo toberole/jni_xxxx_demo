@@ -27,6 +27,7 @@ public class TestIndex {
     public static int test_page = 0;
 
     public static Class[] clazzs = new Class[]{
+            LifeActivity.class,
             DemoViewGroup1Activity.class,
             DemoViewGroupActivity.class,
             TimerActivity.class,

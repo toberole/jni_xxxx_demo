@@ -7,12 +7,13 @@ import butterknife.OnClick;
 import android.content.ContentProvider;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.util.Log;
 
 import com.xiaoge.org.R;
 
 
-public class LifeActivity extends AppCompatActivity  {
+public class LifeActivity extends AppCompatActivity {
     public static final String TAG = LifeActivity.class.getSimpleName();
 
     @Override
@@ -60,6 +61,24 @@ public class LifeActivity extends AppCompatActivity  {
         super.onDestroy();
 
         Log.i(TAG, "LifeActivity#onDestroy");
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        Log.i(TAG, "LifeActivity#onSaveInstanceState");
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        Log.i(TAG, "LifeActivity#onRestoreInstanceState");
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        Log.i(TAG, "LifeActivity#onNewIntent");
     }
 
     @Override
