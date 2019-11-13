@@ -20,18 +20,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.demo0.DemoViewGroup1Activity"></activity>
+        <service
+            android:name=".activity.demo.IntentServiceTest"
+            android:exported="false"></service>
+        <service
+            android:name=".activity.demo.ServiceTest"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".activity.demo.ServiceActivity" />
+        <activity android:name=".activity.demo0.DemoViewGroup1Activity" />
         <activity android:name=".activity.demo.TimerActivity" />
         <activity android:name=".activity.demo.ListViewActivityX" />
         <activity android:name=".activity.demo.WindowManagerActivity" />
         <activity android:name=".activity.demo.IntentServiceActivity" />
-
-        <service
-            android:name=".service.TestService"
-            android:enabled="true"
-            android:exported="true" />
-        <service android:name=".activity.demo.WorkerService" />
-
         <activity android:name=".activity.demo.TestServiceActivity" />
         <activity android:name=".activity.demo.IntentActivity" />
         <activity android:name=".activity.demo.BinderActivity" />
@@ -46,13 +48,6 @@
         <activity android:name=".activity.kotlin.HelloKotlinActivity" />
         <activity android:name=".activity.kotlin.DemoKotlinActivity" />
         <activity android:name=".activity.kotlin.DemoKotlinActivity_1" />
-
-        <service
-            android:name=".service.binderpool.BinderPoolService"
-            android:enabled="true"
-            android:exported="true"
-            android:process="com.xxx.other" />
-
         <activity android:name=".activity.demo.ContentProviderActivity" />
         <activity
             android:name=".activity.demo.MultiProcessActivity2"
@@ -62,20 +57,17 @@
             android:process=":remote" />
         <activity
             android:name=".activity.demo.LifeActivity_B"
-            android:configChanges="orientation" />
+            android:configChanges="orientation" /> <!-- <activity android:name=".activity.demo.LifeActivity"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="com.sogou.test" /> -->
+        <!-- <category android:name="com.sogou.xxx" /> -->
+        <!-- <category android:name="com.sogou.xxx1" /> -->
+        <!-- <category android:name="android.intent.category.DEFAULT" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
         <activity android:name=".activity.demo.LifeActivity" />
         <activity android:name=".activity.demo0.CustomSurfaceViewActivity" />
         <activity android:name=".activity.demo0.TestServiceActivity" />
-
-        <service
-            android:name=".service.MyService"
-            android:enabled="true"
-            android:exported="true" />
-        <service
-            android:name=".service.ManagerUserService"
-            android:process="com.xxx.yyy" />
-        <service android:name=".service.IntentService_Test" />
-
         <activity android:name=".activity.demo0.ServiceActivity" />
         <activity android:name=".activity.demo0.DrawActivity" />
         <activity android:name=".activity.demo0.ConstraintlayoutActivity" />
@@ -106,6 +98,25 @@
             android:name=".TestContentProvider"
             android:authorities="com.xiaoge.org"
             android:process="com.sogou.cp" />
+
+        <service
+            android:name=".service.MyService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".service.ManagerUserService"
+            android:process="com.xxx.yyy" />
+        <service android:name=".service.IntentService_Test" />
+        <service
+            android:name=".service.TestService"
+            android:enabled="true"
+            android:exported="true" />
+        <service android:name=".activity.demo.WorkerService" />
+        <service
+            android:name=".service.binderpool.BinderPoolService"
+            android:enabled="true"
+            android:exported="true"
+            android:process="com.xxx.other" />
     </application>
 
 </manifest>

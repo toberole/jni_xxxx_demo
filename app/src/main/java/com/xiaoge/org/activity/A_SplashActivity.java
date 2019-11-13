@@ -22,6 +22,14 @@ public class A_SplashActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private void startNextPage1() {
+        // Intent intent = new Intent(A_SplashActivity.this, TestIndex.clazzs[TestIndex.test_page]);
+        Intent intent = new Intent();
+        intent.setAction("com.sogou.test");
+        intent.addCategory("com.sogou.xxx");
+        startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
