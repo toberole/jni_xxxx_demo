@@ -19,7 +19,6 @@ public class DemoViewGroupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_demo_view_group);
-
         ButterKnife.bind(this);
 
 //        demoViewGroup.setOnTouchListener(new View.OnTouchListener() {
