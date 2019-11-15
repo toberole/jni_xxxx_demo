@@ -21,6 +21,17 @@ public class IntentServiceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intent_service);
         ButterKnife.bind(this);
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
+
+        // start_service.setOnClickListener(null);
+
+        // registerReceiver()
     }
 
     @OnClick(R.id.start_service)

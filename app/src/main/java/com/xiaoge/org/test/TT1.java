@@ -16,10 +16,12 @@ public class TT1 {
         HandlerThread handlerThread = new HandlerThread("");
         handlerThread.start();
         Handler handler = new Handler(handlerThread.getLooper());
+        handler = new Handler();
         Message msg = Message.obtain();
         handler.sendMessage(msg);
         Looper.prepare();
         Looper.loop();
+
 
         AsyncTask asyncTask = null;
         asyncTask.execute(null, null);
