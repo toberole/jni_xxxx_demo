@@ -10,6 +10,7 @@ import java.lang.ref.ReferenceQueue;
 import java.lang.ref.SoftReference;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 
 public class TT1 {
     public void test() {
@@ -21,10 +22,10 @@ public class TT1 {
         handler.sendMessage(msg);
         Looper.prepare();
         Looper.loop();
-
-
         AsyncTask asyncTask = null;
         asyncTask.execute(null, null);
+
+        AbstractQueuedSynchronizer abstractQueuedSynchronizer;
     }
 
     /**

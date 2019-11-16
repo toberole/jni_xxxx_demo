@@ -106,23 +106,6 @@ public class Test22 {
     }
 
     /**
-     * 非0元素前移 保持元素的前后相对位置不变
-     */
-    private static void move(int[] arr) {
-        int index = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] != 0) {
-                if (index != i) {
-                    arr[index] = arr[i];
-                    arr[i] = 0;
-                }
-
-                index++;
-            }
-        }
-    }
-
-    /**
      * 奇数 保持元素的前后相对位置不变 有问题
      */
     // int arr1[] = {8, 7, 6, 5, 4, 3, 2, 1};
@@ -141,7 +124,22 @@ public class Test22 {
         }
     }
 
+    /**
+     * 非0元素前移 保持元素的前后相对位置不变
+     */
+    private static void move(int[] arr) {
+        int index = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] != 0) {
+                if (index != i) {
+                    arr[index] = arr[i];
+                    arr[i] = 0;
+                }
 
+                index++;
+            }
+        }
+    }
 }
 
 

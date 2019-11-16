@@ -17,9 +17,13 @@ class Realizetype implements Cloneable {
 
 public class PrototypeTest {
     public static void main(String[] args) throws CloneNotSupportedException {
+
         Realizetype obj1 = new Realizetype("hello");
+
         Realizetype obj2 = (Realizetype) obj1.clone();
+
         System.out.println("obj1==obj2 ? " + (obj1 == obj2));
+
         System.out.println(obj1.s);
         System.out.println(obj2.s);
     }
