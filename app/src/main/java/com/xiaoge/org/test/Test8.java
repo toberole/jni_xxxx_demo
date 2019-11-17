@@ -1,5 +1,8 @@
 package com.xiaoge.org.test;
 
+/**
+ * 计算最长回文字符串
+ */
 public class Test8 {
     private int index;
     private int len;

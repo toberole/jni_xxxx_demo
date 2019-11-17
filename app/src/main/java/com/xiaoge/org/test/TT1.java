@@ -10,6 +10,9 @@ import java.lang.ref.ReferenceQueue;
 import java.lang.ref.SoftReference;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 
 public class TT1 {
@@ -24,6 +27,17 @@ public class TT1 {
         Looper.loop();
         AsyncTask asyncTask = null;
         asyncTask.execute(null, null);
+
+        CountDownLatch countDownLatch;
+        CyclicBarrier cyclicBarrier;
+        Semaphore semaphore = new Semaphore(1);
+        try {
+            semaphore.acquire(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            semaphore.release(1);
+        }
 
         AbstractQueuedSynchronizer abstractQueuedSynchronizer;
     }
