@@ -3,8 +3,6 @@ package com.xiaoge.org.test;
 import android.util.ArrayMap;
 import android.util.SparseArray;
 
-import com.xiaoge.org.kotlin.demo.A;
-
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;

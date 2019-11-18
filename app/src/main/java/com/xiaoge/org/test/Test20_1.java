@@ -67,7 +67,7 @@ public class Test20_1 {
 
     private static void printCircle(List<Integer> res, int[][] nums, int rows, int cols, int start) {
         int endX = cols - start - 1;// 水平方向终止最后元素的index[左到右]
-        int endY = rows - start - 1;// 水平方向终止最后元素的index[上到下]
+        int endY = rows - start - 1;// 垂直方向终止最后元素的index[上到下]
 
         //第一步：从左到右打印一行
         for (int i = start; i <= endX; ++i) {
