@@ -10,10 +10,10 @@ include_directories(${CMAKE_CURRENT_LIST_DIR}/include)
 aux_source_directory(${CMAKE_CURRENT_LIST_DIR}/src SRC_FILES)
 
 add_library(native-lib SHARED ${SRC_FILES})
-#target_sources(native-lib PRIVATE ${CMAKE_CURRENT_LIST_DIR}/src/c_func.c)
 
 find_library(e_lib
         log
+        android
         )
 
 target_link_libraries(native-lib ${e_lib})

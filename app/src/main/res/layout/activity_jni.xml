@@ -1,32 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:scrollbars="none"
     tools:context="com.xiaoge.org.activity.demo.JNIActivity">
-    <Button
-        android:text="test"
-        android:id="@+id/btn_test"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
-    <Button
-        android:text="test1"
-        android:id="@+id/btn_test1"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:text="test2"
-        android:id="@+id/btn_test2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn_test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="test" />
 
-    <Button
-        android:text="test3"
-        android:id="@+id/btn_test3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+        <Button
+            android:id="@+id/btn_test1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="test1" />
+
+        <Button
+            android:id="@+id/btn_test2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="test2" />
+
+        <Button
+            android:id="@+id/btn_test3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="test3" />
+
+        <Button
+            android:id="@+id/data_test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="data_test" />
+
+        <Button
+            android:id="@+id/data_test1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="data_test1" />
+
+        <Button
+            android:id="@+id/data_test2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="data_test2" />
+
+        <Button
+            android:id="@+id/data_test3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="data_test3" />
+
+        <Button
+            android:id="@+id/data_test4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="data_test4" />
+
+        <Button
+            android:id="@+id/data_test5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="data_test5" />
+
+        <Button
+            android:id="@+id/data_test5_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="data_test5_1" />
+
+        <Button
+            android:id="@+id/data_test5_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="data_test5_2" />
+
+        <Button
+            android:id="@+id/data_test5_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="data_test5_3" />
+
+        <Button
+            android:id="@+id/data_test5_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="data_test5_4" />
+
+        <Button
+            android:id="@+id/data_test5_4_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="data_test5_4_1" />
+
+        <Button
+            android:id="@+id/data_test5_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="data_test5_5" />
+
+        <Button
+            android:id="@+id/data_test6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="data_test6" />
+
+        <Button
+            android:id="@+id/data_test7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="data_test7" />
+
+        <Button
+            android:id="@+id/data_test8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="data_test8" />
+
+        <Button
+            android:id="@+id/data_test9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="data_test9" />
+
+        <Button
+            android:id="@+id/data_test10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="data_test10" />
+
+
+    </LinearLayout>
+</ScrollView>
