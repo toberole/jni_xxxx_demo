@@ -20,9 +20,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.demo.JNIActivity"></activity>
+
         <service
             android:name=".activity.demo.IntentServiceTest"
-            android:exported="false"></service>
+            android:exported="false" />
         <service
             android:name=".activity.demo.ServiceTest"
             android:enabled="true"

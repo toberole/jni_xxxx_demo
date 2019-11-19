@@ -8,6 +8,7 @@ import com.xiaoge.org.activity.demo.DemoViewActivity1;
 import com.xiaoge.org.activity.demo.DemoViewGroupActivity;
 import com.xiaoge.org.activity.demo.DemoViewGroupActivity2;
 import com.xiaoge.org.activity.demo.IntentServiceActivity;
+import com.xiaoge.org.activity.demo.JNIActivity;
 import com.xiaoge.org.activity.demo.LifeActivity;
 import com.xiaoge.org.activity.demo.ListViewActivityX;
 import com.xiaoge.org.activity.demo.ScrollConflictActivity;
@@ -28,6 +29,7 @@ public class TestIndex {
     public static int test_page = 0;
 
     public static Class[] clazzs = new Class[]{
+            JNIActivity.class,
             ServiceActivity.class,
             LifeActivity.class,
             DemoViewGroup1Activity.class,
