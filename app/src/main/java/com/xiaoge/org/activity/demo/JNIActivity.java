@@ -86,7 +86,10 @@ public class JNIActivity extends AppCompatActivity {
 
     @OnClick(R.id.data_test4)
     void data_test4() {
-        Data.test4("hello test4");
+        // String s = "hello test4 中国";
+        String s = "hello test4 china";
+        Data.test4(s);
+        LogUtil.i("jni-log", "data_test4: " + s);
     }
 
     @OnClick(R.id.data_test5)
@@ -200,5 +203,10 @@ public class JNIActivity extends AppCompatActivity {
     void data_test12() {
         Bean bean = Data.test12();
         LogUtil.i("jni-log", "data_test12 bean: " + String.valueOf(bean));
+    }
+
+    @OnClick(R.id.data_test13)
+    void data_test13() {
+        Data.test13();
     }
 }

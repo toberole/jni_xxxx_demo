@@ -92,7 +92,11 @@ Data_test3(JNIEnv *env, jclass jclazz, jobject jbean) {
  */
 JNIEXPORT void JNICALL Data_test4
         (JNIEnv *env, jclass jclazz, jstring jstr) {
-    const char *str = env->GetStringUTFChars(jstr, nullptr);
+    jboolean b;
+    const char *str = env->GetStringUTFChars(jstr, &b);
+    if (b != 0) {
+        LOGI("Data_test4 b != 0");
+    }
     LOGI("Data_test4 str: %s", str);
     env->ReleaseStringUTFChars(jstr, str);
 }
@@ -242,13 +246,20 @@ JNIEXPORT void JNICALL Data_test5_14
  * Method:    test5_4_1
  * Signature: (Lcom/xiaoge/org/jni/Data$Callback;)V
  */
+
 JNIEXPORT void JNICALL Data_test5_14_11
         (JNIEnv *env, jclass jclazz, jobject jcb) {
     jclass jcb_clazz = env->FindClass("com/xiaoge/org/jni/Data$Callback");
     if (jcb_clazz != nullptr) {
         jmethodID onError_id = env->GetMethodID(jcb_clazz, "onError", "(ILjava/lang/String;)V");
         jstring errormsg = env->NewStringUTF("hello error");
+        // 错误写法直接使用"hello error"
+        // JNI DETECTED ERROR IN APPLICATION: use of deleted global reference
+        // "hello error" 是在 native C++栈上开辟的内存 「jni会用"全局引用变量-> 引用=指针"指向它」 方法结束栈内存就释放 全局引用变量也删除了
+        // env->CallVoidMethod(jcb, onError_id, -1, "hello error");
         env->CallVoidMethod(jcb, onError_id, -1, errormsg);
+        // DeleteLocalRef 相当于引用计数减1
+        env->DeleteLocalRef(errormsg);
 
         jmethodID onCallback_Short_id = env->GetMethodID(jcb_clazz, "onCallback_Short", "(I[S)V");
         short arr[] = {1, 2, 3};
@@ -360,7 +371,6 @@ JNIEXPORT jobject JNICALL Data_test11
     return ret;
 }
 
-
 jobject newJavaobj(JNIEnv *env) {
     jclass obj_clazz = env->FindClass("com/xiaoge/org/jni/Bean");
     // 注意构造函数的名字"<init>" 而不是类名，获取有参构造函数的
@@ -396,5 +406,29 @@ jobject newJavaobj1(JNIEnv *env) {
  */
 JNIEXPORT jobject JNICALL Data_test12
         (JNIEnv *env, jclass jclazz) {
-    return newJavaobj1(env);
+    return newJavaobj(env);
+}
+
+/**
+ * Push/PopLocalFrame函数对提供了对局部引用的生命周期更方便的管理。
+ * 可以在本地函数的入口处调用PushLocalFrame，然后在出口处调用PopLocalFrame，
+ * 这样的话，在两个函数之间任何位置创建的局部引用都会被释放。
+ * 如果在函数的入口处调用了PushLocalFrame，那么一定要在函数返回时调用PopLocalFrame。
+ */
+/*
+ * Class:     com_xiaoge_org_jni_Data
+ * Method:    test13
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Data_test13(JNIEnv *env, jobject jobj) {
+    LOGI("Data_test13 Push/PopLocalFrame 管理jni局部变量");
+    int expect_localVar_count = 10;
+    jint ret = env->PushLocalFrame(expect_localVar_count);
+
+    if (ret == JNI_ERR) {
+        LOGI("Data_test13 PushLocalFrame不支持%d个局部变量", expect_localVar_count);
+        return;
+    }
+    jstring jstr = env->NewStringUTF("hello Push/PopLocalFrame");
+    env->PopLocalFrame(nullptr);
 }

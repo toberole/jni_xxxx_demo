@@ -92,6 +92,11 @@ public class Data {
      */
     public static native Bean test12();
 
+    /**
+     * Push/PopLocalFrame 管理jni局部变量
+     */
+    public static native void test13();
+
     public interface Callback {
         void onError(int errorcode, String errormsg);
 

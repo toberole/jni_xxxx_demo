@@ -83,7 +83,7 @@ JNIEXPORT void JNICALL Data_test4
  * Signature: ([II)V
  */
 JNIEXPORT void JNICALL Data_test5
-        (JNIEnv *, jclass, jintArray,jint);
+        (JNIEnv *, jclass, jintArray, jint);
 
 /*
  * Class:     com_xiaoge_org_jni_Data
@@ -189,6 +189,15 @@ JNIEXPORT jobject JNICALL Data_test11
  */
 JNIEXPORT jobject JNICALL Data_test12
         (JNIEnv *, jclass);
+
+/*
+ * Class:     com_xiaoge_org_jni_Data
+ * Method:    test13
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Data_test13
+        (JNIEnv *, jobject);
+
 #ifdef __cplusplus
 }
 #endif
