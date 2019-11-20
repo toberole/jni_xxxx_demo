@@ -108,8 +108,9 @@ JNIEXPORT void JNICALL
 Data_test5(JNIEnv *env, jclass jclazz, jintArray jiarr, jint jlen) {
     // 方法一
     //  获取到数组
-    jint *arr = env->GetIntArrayElements(jiarr, nullptr);
-
+    jboolean jb;
+    jint *arr = env->GetIntArrayElements(jiarr, &jb);// JNI_TRUE：表示临时缓冲区数组指针，JNI_FALSE：表示临时原始数组指针
+    LOGI("test5 jboolean: %d", jb);
     // 获取数组的长度
     int len = env->GetArrayLength(jiarr);
     int total = 0;
@@ -343,4 +344,57 @@ JNIEXPORT jintArray JNICALL Data_test10
     jintArray jintArr = env->NewIntArray(len);
     env->SetIntArrayRegion(jintArr, 0, len, arr);
     return jintArr;
+}
+
+/*
+ * Class:     com_xiaoge_org_jni_Data
+ * Method:    test11
+ * Signature: ()Lcom/xiaoge/org/jni/Bean;
+ */
+JNIEXPORT jobject JNICALL Data_test11
+        (JNIEnv *env, jclass jclazz) {
+    jclass obj_clazz = env->FindClass("com/xiaoge/org/jni/Bean");
+    // 注意构造函数的名字"<init>" 而不是类名，获取无参构造函数的
+    jmethodID constructor_id = env->GetMethodID(obj_clazz, "<init>", "()V");
+    jobject ret = env->NewObject(obj_clazz, constructor_id);
+    return ret;
+}
+
+
+jobject newJavaobj(JNIEnv *env) {
+    jclass obj_clazz = env->FindClass("com/xiaoge/org/jni/Bean");
+    // 注意构造函数的名字"<init>" 而不是类名，获取有参构造函数的
+    jmethodID constructor_id = env->GetMethodID(obj_clazz, "<init>", "(Ljava/lang/String;)V");
+    jstring jstr = env->NewStringUTF("hello bean");
+    jobject ret = env->NewObject(obj_clazz, constructor_id, jstr);
+    env->DeleteLocalRef(jstr);
+    return ret;
+}
+
+/* AllocObject */
+/**
+ * 使用函数AllocObject可以根据传入的jclass创建一个Java对象，
+ * 但是他的状态时非初始化的，在使用这个对象之前绝对要用CallNonvirtualVoidMethod来调用该jclass的构造函数，
+ * 这样就可以延迟构造函数的调用
+ */
+jobject newJavaobj1(JNIEnv *env) {
+    jclass obj_clazz = env->FindClass("com/xiaoge/org/jni/Bean");
+    // AllocObject创建一个java对象
+    jobject jobj = env->AllocObject(obj_clazz);
+    // 获取构造方法
+    jmethodID constructor_id = env->GetMethodID(obj_clazz, "<init>", "(Ljava/lang/String;)V");
+    // 调用构造方法
+    jstring jstr = env->NewStringUTF("hello AllocObject");
+    env->CallNonvirtualVoidMethod(jobj, obj_clazz, constructor_id, jstr);
+    env->DeleteLocalRef(jstr);
+    return jobj;
+}
+/*
+ * Class:     com_xiaoge_org_jni_Data
+ * Method:    test12
+ * Signature: ()Lcom/xiaoge/org/jni/Bean;
+ */
+JNIEXPORT jobject JNICALL Data_test12
+        (JNIEnv *env, jclass jclazz) {
+    return newJavaobj1(env);
 }

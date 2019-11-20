@@ -124,6 +124,16 @@ static const JNINativeMethod Data_Methods[] = {
                 "test10",// java层的方法
                 "()[I",
                 (void *) Data_test10// native 层方法
+        },
+        {
+                "test11",// java层的方法
+                "()Lcom/xiaoge/org/jni/Bean;",
+                (void *) Data_test11// native 层方法
+        },
+        {
+                "test12",// java层的方法
+                "()Lcom/xiaoge/org/jni/Bean;",
+                (void *) Data_test12// native 层方法
         }
 };
 

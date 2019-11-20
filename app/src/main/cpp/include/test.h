@@ -174,6 +174,21 @@ JNIEXPORT jstring JNICALL Data_test9
 JNIEXPORT jintArray JNICALL Data_test10
         (JNIEnv *, jclass);
 
+/*
+ * Class:     com_xiaoge_org_jni_Data
+ * Method:    test11
+ * Signature: ()Lcom/xiaoge/org/jni/Bean;
+ */
+JNIEXPORT jobject JNICALL Data_test11
+        (JNIEnv *, jclass);
+
+/*
+ * Class:     com_xiaoge_org_jni_Data
+ * Method:    test12
+ * Signature: ()Lcom/xiaoge/org/jni/Bean;
+ */
+JNIEXPORT jobject JNICALL Data_test12
+        (JNIEnv *, jclass);
 #ifdef __cplusplus
 }
 #endif

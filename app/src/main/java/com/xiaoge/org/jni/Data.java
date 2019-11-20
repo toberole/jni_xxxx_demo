@@ -82,6 +82,16 @@ public class Data {
     public static native int[] test10();
 
 
+    /**
+     * 返回值 java 对象
+     */
+    public static native Bean test11();
+
+    /**
+     * 返回值 java 对象
+     */
+    public static native Bean test12();
+
     public interface Callback {
         void onError(int errorcode, String errormsg);
 

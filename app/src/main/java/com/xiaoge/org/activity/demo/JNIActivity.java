@@ -189,4 +189,16 @@ public class JNIActivity extends AppCompatActivity {
             LogUtil.i("jni-log", "data_test10 data: " + arr[i]);
         }
     }
+
+    @OnClick(R.id.data_test11)
+    void data_test11() {
+        Bean bean = Data.test11();
+        LogUtil.i("jni-log", "data_test11 bean: " + String.valueOf(bean));
+    }
+
+    @OnClick(R.id.data_test12)
+    void data_test12() {
+        Bean bean = Data.test12();
+        LogUtil.i("jni-log", "data_test12 bean: " + String.valueOf(bean));
+    }
 }
