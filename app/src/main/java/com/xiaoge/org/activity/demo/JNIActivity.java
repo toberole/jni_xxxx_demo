@@ -5,6 +5,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 import android.os.Bundle;
+import android.os.HandlerThread;
 
 import com.xiaoge.org.R;
 import com.xiaoge.org.jni.Bean;
@@ -23,6 +24,8 @@ public class JNIActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jni);
         ButterKnife.bind(this);
+
+        HandlerThread handlerThread;
     }
 
     @OnClick(R.id.btn_test)
@@ -208,5 +211,15 @@ public class JNIActivity extends AppCompatActivity {
     @OnClick(R.id.data_test13)
     void data_test13() {
         Data.test13();
+    }
+
+    @OnClick(R.id.data_test14)
+    void data_test14() {
+        Data.test14();
+    }
+
+    @OnClick(R.id.data_test14_1)
+    void data_test14_1() {
+        Data.test14_1();
     }
 }

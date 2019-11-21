@@ -1,7 +1,16 @@
-#include "test.h"
 #include <jni.h>
 #include <cstdlib>
+#include <thread>
 #include "log.h"
+#include "Global.h"
+#include "test.h"
+
+/**
+ * 可以通过 JavaVM获取到当前线程的JNIEnv
+    vm->AttachCurrentThread() 调用AttachCurrentThread 附加当前线程到虚拟机VM当中，并返回线程对应的JNIEnv
+    vm->GetEnv() AttachCurrentThread 之后调用才能获取到JNIEnv
+    vm->DetachCurrentThread()
+ */
 
 /*
  * Class:     com_xiaoge_org_jni_Data
@@ -414,6 +423,8 @@ JNIEXPORT jobject JNICALL Data_test12
  * 可以在本地函数的入口处调用PushLocalFrame，然后在出口处调用PopLocalFrame，
  * 这样的话，在两个函数之间任何位置创建的局部引用都会被释放。
  * 如果在函数的入口处调用了PushLocalFrame，那么一定要在函数返回时调用PopLocalFrame。
+ *
+ * GC在回收java对象时 如果native局部引用变量引用的上层java对象不释放 那么VM GC收集器可能会暂时关闭垃圾收集GCLocker[不同的收集器有不同的策略]。
  */
 /*
  * Class:     com_xiaoge_org_jni_Data
@@ -432,3 +443,70 @@ JNIEXPORT void JNICALL Data_test13(JNIEnv *env, jobject jobj) {
     jstring jstr = env->NewStringUTF("hello Push/PopLocalFrame");
     env->PopLocalFrame(nullptr);
 }
+
+void func() {
+    LOGI("thread func");
+}
+/*
+ * Class:     com_xiaoge_org_jni_Data
+ * Method:    test14
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Data_test14
+        (JNIEnv *env, jclass jclazz) {
+    LOGI("Data_test14 enter");
+    std::thread th(func);
+    th.join();
+
+    jmethodID callback_id = env->GetStaticMethodID(jclazz, "callback", "(ILjava/lang/String;)V");
+    env->CallStaticVoidMethod(jclazz, callback_id, 110, env->NewStringUTF("hello callback"));
+
+    LOGI("Data_test14 out");
+}
+
+jclass jsc;
+
+void func1() {
+    int status;
+    JNIEnv *env;
+    bool isAttached = false;
+    status = g_jvm->GetEnv((void **) &env, JNI_VERSION_1_6);
+    if (status < 0) {
+        g_jvm->AttachCurrentThread(&env, NULL);//将当前线程注册到虚拟机中．
+        isAttached = true;
+    }
+
+    jmethodID callback_id = env->GetStaticMethodID(jsc, "callback", "(ILjava/lang/String;)V");
+    env->CallStaticVoidMethod(jsc, callback_id, 120,
+                              env->NewStringUTF("hello Data_test14_1 callback"));
+    if (isAttached) {
+        g_jvm->DetachCurrentThread();
+    }
+}
+/*
+ * Class:     com_xiaoge_org_jni_Data
+ * Method:    test14
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Data_test14_1
+        (JNIEnv *env, jclass jclazz) {
+    LOGI("Data_test14_1 enter");
+    jsc = static_cast<jclass>(env->NewGlobalRef(jclazz));
+    std::thread th(func1);
+    th.join();
+    LOGI("Data_test14_1 out");
+}
+
+/*
+
+处理 JNI 临界区需要 VM 的帮助，或者关闭 GC，或者采用 GCLocker 类似的机制，
+或者钉住包含对象的子空间，或者仅仅钉住对象。不同的 GCs 采用不同的策略处理 JNI 临界区，
+某个收集器的副作用 —— 比如延迟 GC 周期 —— 可能并不会出现在另一个收集器中。
+
+请注意规范中：在临界区中，本地代码不能调用其它 JNI 方法，这仅仅是最低的要求。
+测试表明，在规范允许的范围内，实现的质量决定了打破规范时的严重程度。某些 GC 更宽松，而某些会更严格。
+如果想要保证可移植性，那么请遵循规范，而不是实现细节。
+
+
+
+ */

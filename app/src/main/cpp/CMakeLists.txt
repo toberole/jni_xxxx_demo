@@ -11,9 +11,9 @@ aux_source_directory(${CMAKE_CURRENT_LIST_DIR}/src SRC_FILES)
 
 add_library(native-lib SHARED ${SRC_FILES})
 
-find_library(e_lib
+find_library(libs
         log
         android
         )
 
-target_link_libraries(native-lib ${e_lib})
+target_link_libraries(native-lib ${libs})

@@ -1,7 +1,8 @@
-#include <jni.h>
-
 #ifndef _Included_com_xiaoge_org_jni_Test
 #define _Included_com_xiaoge_org_jni_Test
+
+#include <jni.h>
+
 /**
  * 按照C语言的方式生成方法签名
  */
@@ -197,6 +198,23 @@ JNIEXPORT jobject JNICALL Data_test12
  */
 JNIEXPORT void JNICALL Data_test13
         (JNIEnv *, jobject);
+
+/*
+ * Class:     com_xiaoge_org_jni_Data
+ * Method:    test14
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Data_test14
+        (JNIEnv *, jclass);
+
+/*
+ * Class:     com_xiaoge_org_jni_Data
+ * Method:    test14
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Data_test14_1
+        (JNIEnv *, jclass);
+
 
 #ifdef __cplusplus
 }
