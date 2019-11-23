@@ -476,6 +476,8 @@ void func1() {
         isAttached = true;
     }
 
+    LOGI("jvm: %ld",env->GetJavaVM());
+
     jmethodID callback_id = env->GetStaticMethodID(jsc, "callback", "(ILjava/lang/String;)V");
     env->CallStaticVoidMethod(jsc, callback_id, 120,
                               env->NewStringUTF("hello Data_test14_1 callback"));
@@ -506,7 +508,5 @@ JNIEXPORT void JNICALL Data_test14_1
 请注意规范中：在临界区中，本地代码不能调用其它 JNI 方法，这仅仅是最低的要求。
 测试表明，在规范允许的范围内，实现的质量决定了打破规范时的严重程度。某些 GC 更宽松，而某些会更严格。
 如果想要保证可移植性，那么请遵循规范，而不是实现细节。
-
-
 
  */

@@ -143,11 +143,9 @@ const JNINativeMethod Data_Methods[] = {
                 "()V",// java层方法对应的签名
                 (void *) Data_test14_1// native 层方法
         }
-
-
 };
 
-jint RegisterNativeMethods(JNIEnv *env) {
+jint startReg(JNIEnv *env) {
     jclass cla = env->FindClass(Test_Clazz);
     if (cla == nullptr) {
         LOGI("找不到类 %s", Test_Clazz);
@@ -201,7 +199,7 @@ jint JNI_OnLoad(JavaVM *vm, void *reserved) {
         return JNI_ERR;
     }
 
-    jint result = RegisterNativeMethods(env);
+    jint result = startReg(env);
 
     g_jvm = vm;
     LOGD("RegisterNatives result: %d", result);

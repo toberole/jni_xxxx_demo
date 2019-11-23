@@ -16,6 +16,11 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 
 public class TT1 {
+    public void test2() {
+        ProcessBuilder builder = new ProcessBuilder();
+//        builder.start();
+    }
+
     public void test() {
         HandlerThread handlerThread = new HandlerThread("");
         handlerThread.start();
