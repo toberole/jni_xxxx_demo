@@ -18,4 +18,6 @@ public interface AbstractBinaryTree {
     void printMaxWidth();
 
     void printLevelOrder();
+
+    void printK(int k);
 }

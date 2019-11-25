@@ -23,6 +23,8 @@ public class BinaryTreeTest {
         binaryTree.printHeight();
 
         binaryTree.printMaxWidth();
+
+        binaryTree.printK(3);
     }
 
     public static AbstractBinaryTree proxyBinaryTree(String treeStr) {

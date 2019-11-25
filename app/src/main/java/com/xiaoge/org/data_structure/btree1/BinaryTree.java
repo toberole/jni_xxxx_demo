@@ -224,6 +224,29 @@ public class BinaryTree implements AbstractBinaryTree {
         }
     }
 
+    /**
+     * 打印第K层元素
+     */
+    public void printK(int k) {
+        printK(root, k);
+    }
+
+    public void printK(Node node, int k) {
+        // System.out.println("k: " + k);
+
+        if (k == 1 && node != null) {
+            printNode(node);
+        } else {
+            if (k > 1 && node.left != null) {
+                printK(node.left, k - 1);
+            }
+
+            if (k > 1 && node.right != null) {
+                printK(node.right, k - 1);
+            }
+        }
+    }
+
     // 树高 递归，分别求出左子树的深度、右子树的深度，两个深度的较大值+1
     public int getHeightByRecursion(Node node) {
         if (node == null) {
