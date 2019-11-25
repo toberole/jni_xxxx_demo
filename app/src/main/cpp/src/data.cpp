@@ -476,8 +476,6 @@ void func1() {
         isAttached = true;
     }
 
-    LOGI("jvm: %ld",env->GetJavaVM());
-
     jmethodID callback_id = env->GetStaticMethodID(jsc, "callback", "(ILjava/lang/String;)V");
     env->CallStaticVoidMethod(jsc, callback_id, 120,
                               env->NewStringUTF("hello Data_test14_1 callback"));
