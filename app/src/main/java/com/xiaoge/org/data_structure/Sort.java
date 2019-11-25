@@ -38,7 +38,9 @@ public class Sort {
     }
 
     public static void main(String[] args) {
-        int arr[] = {5, 1, 2, 4, 3};
+        // int arr[] = {5, 1, 2, 4, 3};
+        // int arr[] = {1, 2, 3, 4, 5};
+        int arr[] = {5, 4, 3, 2, 1};
 
         quickSort(arr, 0, arr.length - 1);
 
