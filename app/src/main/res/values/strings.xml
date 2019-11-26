@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">jni_xxxx_demo</string>
+    <string name="app_name">android_demo</string>
 
     <array name="ai_tip_strs">
         <item>明天提醒我上班</item>

@@ -20,16 +20,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.demo.JNIActivity"></activity>
 
-        <service
-            android:name=".activity.demo.IntentServiceTest"
-            android:exported="false" />
-        <service
-            android:name=".activity.demo.ServiceTest"
-            android:enabled="true"
-            android:exported="true" />
-
+        <activity android:name=".activity.demo.FragmentActivity2" />
+        <activity android:name=".activity.demo.FragmentActivity1" />
+        <activity android:name=".activity.demo.FragmentActivity" />
+        <activity android:name=".activity.demo.JNIActivity" />
         <activity android:name=".activity.demo.ServiceActivity" />
         <activity android:name=".activity.demo0.DemoViewGroup1Activity" />
         <activity android:name=".activity.demo.TimerActivity" />
@@ -100,6 +95,14 @@
             android:name=".TestContentProvider"
             android:authorities="com.xiaoge.org"
             android:process="com.sogou.cp" />
+
+        <service
+            android:name=".activity.demo.IntentServiceTest"
+            android:exported="false" />
+        <service
+            android:name=".activity.demo.ServiceTest"
+            android:enabled="true"
+            android:exported="true" />
 
         <service
             android:name=".service.MyService"

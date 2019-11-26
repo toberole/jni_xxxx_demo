@@ -1,5 +1,8 @@
 package com.xiaoge.org.jbase;
 
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.locks.AbstractQueuedSynchronizer;
+
 public class Test {
     public void test() {
         Integer integer = Integer.parseInt("");
@@ -8,7 +11,14 @@ public class Test {
         threadLocal.set("hello");
         threadLocal.get();
 
-        Thread thread;
+        Thread thread = null;
+
+        AbstractQueuedSynchronizer synchronizer;
+
+        AtomicReference atomicReference = null;
+        atomicReference.set(null);
+        atomicReference.compareAndSet(null, null);
+
     }
 
     /**
@@ -64,9 +74,7 @@ public class Test {
 
     }
 
-    public static void main(String args[]) {
-        test1();
-
+    public static void test2() {
         Short cache[] = new Short[-(-128) + 127 + 1];
 
         for (int i = 0; i < cache.length; i++)
@@ -75,5 +83,18 @@ public class Test {
         for (int i = 0; i < cache.length; i++) {
             System.out.print(cache[i] + " ");
         }
+    }
+
+    public static void test3() {
+        AtomicReference<String> s = new AtomicReference<>();
+        s.set("hello");
+        // boolean b = s.compareAndSet("hello", "world");
+        boolean b = s.compareAndSet("hello1", "world");
+
+        System.out.println("b: " + b);
+    }
+
+    public static void main(String args[]) {
+        test3();
     }
 }
