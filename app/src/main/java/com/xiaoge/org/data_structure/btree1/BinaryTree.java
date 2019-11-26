@@ -247,7 +247,7 @@ public class BinaryTree implements AbstractBinaryTree {
         }
     }
 
-    // 树高 递归，分别求出左子树的深度、右子树的深度，两个深度的较大值+1
+    // 树高 递归分别求出左子树的深度、右子树的深度，两个深度的较大值+1
     public int getHeightByRecursion(Node node) {
         if (node == null) {
             return 0;
@@ -271,6 +271,7 @@ public class BinaryTree implements AbstractBinaryTree {
     public void printMaxWidth() {
         Queue<Node> queue = new LinkedList<>();
         Queue<Node> queueTemp = new LinkedList<>();
+
         int maxWidth = 1;
         Node tempNode = root;
         queue.offer(tempNode);
