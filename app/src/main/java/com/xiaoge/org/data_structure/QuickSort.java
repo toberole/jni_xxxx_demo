@@ -1,6 +1,6 @@
 package com.xiaoge.org.data_structure;
 
-public class Sort {
+public class QuickSort {
     // 时间复杂度为O(NlogN)。
     public static void quickSort(int arr[], int low, int high) {
         if (low > high) return;
