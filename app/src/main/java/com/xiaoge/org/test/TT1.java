@@ -15,6 +15,8 @@ import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 
+import dalvik.system.PathClassLoader;
+
 public class TT1 {
     public void test2() {
         ProcessBuilder builder = new ProcessBuilder();
@@ -44,7 +46,9 @@ public class TT1 {
             semaphore.release(1);
         }
 
-        AbstractQueuedSynchronizer abstractQueuedSynchronizer;
+        AbstractQueuedSynchronizer abstraceuedSynchronizer;
+
+        PathClassLoader pathClassLoader;
     }
 
     /**
