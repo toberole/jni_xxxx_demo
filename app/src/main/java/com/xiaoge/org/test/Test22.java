@@ -38,19 +38,22 @@ public class Test22 {
     /**
      * 奇数位于偶数前面 保持元素的前后相对位置不变
      * <p>
+     * 方法1：
      * 用空间换时间，如果遇到奇数就用一个数组存起来，
      * 遇到偶数再用另一个数组存起来就需要2个额外的数组，
-     * 再最后合并到一个数组里。
-     * 优化一下，只申请一个额外的数组，将原来的数组从左往右扫，
+     * 最后合并到一个数组里。
+     * 方法2：
+     * 只申请一个额外的数组，将原来的数组从左往右扫，
      * 遇到奇数就存到新数组的左边，同时将原来的数组从右往左扫，
      * 遇到偶数就存到新数组的右边，这样就可以保证左边是奇数，
      * 右边是偶数，且奇数之间、偶数之间相对位置不变，再合并到原数组。
      */
     public static void move4(int[] array) {
-        int len = array.length;
-        int[] temp = new int[len];
         int start = 0;
+        int len = array.length;
         int end = len - 1;
+
+        int[] temp = new int[len];
         for (int i = 0; i < len; ++i) {
             if ((array[i] & 1) == 1) {
                 temp[start++] = array[i];

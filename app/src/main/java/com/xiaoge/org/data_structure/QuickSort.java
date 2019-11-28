@@ -11,12 +11,14 @@ public class QuickSort {
         int j = high;
 
         while (i < j) {
-            // 从右往左扫描 找到第一个小于temp的值
+            // 从右往左扫描
+            // 找到第一个小于temp的值
             while (i < j && arr[j] >= temp) {
                 j--;
             }
 
-            // 从左往右扫描 找到第一个大于temp的值
+            // 从左往右扫描
+            // 找到第一个大于temp的值
             while (i < j && arr[i] <= temp) {
                 i++;
             }
