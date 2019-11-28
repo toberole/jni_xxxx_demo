@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
+import android.view.ViewGroup;
 
 import java.lang.ref.ReferenceQueue;
 import java.lang.ref.SoftReference;
@@ -49,6 +50,10 @@ public class TT1 {
         AbstractQueuedSynchronizer abstraceuedSynchronizer;
 
         PathClassLoader pathClassLoader;
+
+        ViewGroup viewGroup;
+
+        Integer integer = Integer.parseInt("");
     }
 
     /**
