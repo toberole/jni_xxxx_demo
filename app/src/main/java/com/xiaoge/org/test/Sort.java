@@ -68,10 +68,9 @@ public class Sort {
      */
     private static void bubble(int[] arr, boolean rank_b) {
         for (int i = 0; i < arr.length; i++) {
-            System.out.println("round: " + i);
             boolean b = false;
             for (int j = 0; j < arr.length - 1 - i; j++) {
-                if (rank_b) {// 大到小
+                if (rank_b) {
                     if (arr[j] < arr[j + 1]) {
                         int temp = arr[j];
                         arr[j] = arr[j + 1];
