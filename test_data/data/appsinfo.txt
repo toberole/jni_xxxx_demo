@@ -1,12 +1,12 @@
 [
 {
 	"name": "hello1",
-	"img":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1575982307225&di=13f6eb5ea650f943a7517b9c911f72b3&imgtype=0&src=http%3A%2F%2Fwww.17qq.com%2Fimg_qqtouxiang%2F76746585.jpeg",
+	"img":"https://github.com/toberole/jni_xxxx_demo/blob/master/test_data/imgs/1.png",
 	"apk":"https://github.com/toberole/jni_xxxx_demo/blob/master/test_data/file/app1.data"
 },
 {
 	"name": "hello2",
-	"img":"https://github.com/toberole/jni_xxxx_demo/blob/master/test_data/imgs/2.png",
+	"img":"https://github.com/toberole/jni_xxxx_demo/blob/master/test_data/imgs/2.txt",
 	"apk":"https://github.com/toberole/jni_xxxx_demo/blob/master/test_data/file/app1.data"
 },
 {
