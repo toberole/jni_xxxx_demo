@@ -1,33 +1,32 @@
 [
 {
 	"name": "hello1",
-	"img": 1.png
-	"apk":""
+	"img":"https://github.com/toberole/jni_xxxx_demo/blob/master/test_data/imgs/1.png"
+	"apk":"https://github.com/toberole/jni_xxxx_demo/blob/master/test_data/file/app1.data"
 },
 {
 	"name": "hello2",
-	"img":
-	"apk":""
+	"img":"https://github.com/toberole/jni_xxxx_demo/blob/master/test_data/imgs/2.png"
+	"apk":"https://github.com/toberole/jni_xxxx_demo/blob/master/test_data/file/app1.data"
 },
 {
-	"name": "hello1",
-	"img": 11
-	"apk":""
+	"name": "hello3",
+	"img":"https://github.com/toberole/jni_xxxx_demo/blob/master/test_data/imgs/3.png"
+	"apk":"https://github.com/toberole/jni_xxxx_demo/blob/master/test_data/file/app1.data"
 },
 {
-	"name": "hello1",
-	"img": 11
-	"apk":""
+	"name": "hello4",
+	"img":"https://github.com/toberole/jni_xxxx_demo/blob/master/test_data/imgs/4.png"
+	"apk":"https://github.com/toberole/jni_xxxx_demo/blob/master/test_data/file/app1.data"
 },
 {
-	"name": "hello1",
-	"img": 11
-	"apk":""
+	"name": "hello5",
+	"img":"https://github.com/toberole/jni_xxxx_demo/blob/master/test_data/imgs/5.png"
+	"apk":"https://github.com/toberole/jni_xxxx_demo/blob/master/test_data/file/app1.data"
 },
 {
-	"name": "hello1",
-	"img": 11
-	"apk":""
-},
-
+	"name": "hello6",
+	"img":"https://github.com/toberole/jni_xxxx_demo/blob/master/test_data/imgs/6.png"
+	"apk":"https://github.com/toberole/jni_xxxx_demo/blob/master/test_data/file/app1.data"
+}
 ]
