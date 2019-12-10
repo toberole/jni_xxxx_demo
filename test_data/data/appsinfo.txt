@@ -28,5 +28,15 @@
 	"name": "hello6",
 	"img":"https://github.com/toberole/jni_xxxx_demo/blob/master/test_data/imgs/6.png",
 	"apk":"https://github.com/toberole/jni_xxxx_demo/blob/master/test_data/file/app1.data"
+},
+{
+    "name": "hello7",
+    "img":"https://github.com/toberole/jni_xxxx_demo/blob/master/test_data/imgs/6.png",
+    "apk":"https://github.com/toberole/jni_xxxx_demo/blob/master/test_data/file/app1.data"
+},
+{
+     "name": "hello7",
+     "img":"https://github.com/toberole/jni_xxxx_demo/blob/master/test_data/imgs/6.png",
+     "apk":"https://github.com/toberole/jni_xxxx_demo/blob/master/test_data/file/app1.data"
 }
 ]
