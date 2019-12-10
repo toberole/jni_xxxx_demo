@@ -6,7 +6,7 @@
 },
 {
 	"name": "hello2",
-	"img":"https://github.com/toberole/jni_xxxx_demo/blob/master/test_data/imgs/2.txt",
+	"img":"https://github.com/toberole/jni_xxxx_demo/blob/master/test_data/imgs/2.png",
 	"apk":"https://github.com/toberole/jni_xxxx_demo/blob/master/test_data/file/app1.data"
 },
 {
