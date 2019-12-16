@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     // 注册给aidl服务端回调
     private IOnNewUserAdded listener = new IOnNewUserAdded.Stub() {
-
         @Override
         public void onAddUser(User u) throws RemoteException {
             Log.i(TAG, "IOnNewUserAdded#onAddUser user name: " + u.name + " age: " + u.age);
