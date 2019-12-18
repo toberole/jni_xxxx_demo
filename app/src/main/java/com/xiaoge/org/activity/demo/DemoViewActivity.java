@@ -37,8 +37,6 @@ public class DemoViewActivity extends AppCompatActivity {
 
         HandlerThreadTest1 handlerThreadTest1 = new HandlerThreadTest1();
         handlerThreadTest1.start();
-
-
         Log.i(TAG, "------------: " + String.valueOf(findViewById(android.R.id.content)));
     }
 
@@ -46,8 +44,6 @@ public class DemoViewActivity extends AppCompatActivity {
     void demoView() {
         Log.i(TAG, "demoView clicked");
         btn_test.scrollBy(0, 20);
-
-
     }
 
     @OnClick(R.id.btn_test)
