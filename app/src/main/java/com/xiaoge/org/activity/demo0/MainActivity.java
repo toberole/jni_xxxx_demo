@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private BusHandler busHandler;
 
-    // 注册给aidl服务端回调
+    // 注册给aidl服务端回调 注意写法 IOnNewUserAdded.Stub
     private IOnNewUserAdded listener = new IOnNewUserAdded.Stub() {
         @Override
         public void onAddUser(User u) throws RemoteException {
@@ -278,11 +278,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // 通信异常中断 会回调deathRecipient
         service.unlinkToDeath(deathRecipient, 0);
 
-//        try {
-//            userManager.registerListener(listener);
-//        } catch (RemoteException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            userManager.registerListener(listener);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

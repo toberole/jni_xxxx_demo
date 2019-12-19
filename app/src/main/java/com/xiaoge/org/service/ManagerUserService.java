@@ -148,17 +148,6 @@ public class ManagerUserService extends Service {
     }
 
     private void addUser_notify() {
-//        for (IOnNewUserAdded l : listeners) {
-//            try {
-//                User user = new User();
-//                user.age = 100;
-//                user.name = "hello world";
-//                l.onAddUser(user);
-//            } catch (RemoteException e) {
-//                e.printStackTrace();
-//            }
-//        }
-
         // 注意：beginBroadcast 和 finishBroadcast 必须配对使用
         int n = listeners.beginBroadcast();
         User user = new User();
