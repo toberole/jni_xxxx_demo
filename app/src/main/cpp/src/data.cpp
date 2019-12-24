@@ -505,6 +505,10 @@ JNIEXPORT void JNICALL Data_test14_1
  */
 JNIEXPORT void JNICALL Data_test_fork
         (JNIEnv *env, jclass jclazz) {
+    LOGI("fork ......");
+
+    if (1)
+        return;
     /**
      * 注意arm架构没有除0异常
      */
@@ -518,8 +522,8 @@ JNIEXPORT void JNICALL Data_test_fork
         LOGI("I am the child process, my process id is %d", getpid());
 
         // 子进程死亡 不影响主进程
-        int *p = nullptr;
-        *p = 1;
+//        int *p = nullptr;
+//        *p = 1;
     } else {// fpid为子进程的pid
         int i = 1 / 0;
         LOGI("I am the child process, res is %d", i);
