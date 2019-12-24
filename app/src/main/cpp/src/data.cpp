@@ -1,6 +1,7 @@
 #include <jni.h>
 #include <cstdlib>
 #include <thread>
+#include <zconf.h>
 #include "log.h"
 #include "Global.h"
 #include "test.h"
@@ -495,6 +496,35 @@ JNIEXPORT void JNICALL Data_test14_1
     std::thread th(func1);
     th.join();
     LOGI("Data_test14_1 out");
+}
+
+/*
+ * Class:     com_xiaoge_org_jni_Data
+ * Method:    test_fork
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Data_test_fork
+        (JNIEnv *env, jclass jclazz) {
+    /**
+     * 注意arm架构没有除0异常
+     */
+    pid_t fpid;
+    fpid = fork();
+    if (fpid < 0) {
+        LOGI("fork error ...");
+    } else if (fpid == 0) {
+        int i = 1 / 0;
+        LOGI("I am the child process, res is %d", i);
+        LOGI("I am the child process, my process id is %d", getpid());
+
+        // 子进程死亡 不影响主进程
+        int *p = nullptr;
+        *p = 1;
+    } else {// fpid为子进程的pid
+        int i = 1 / 0;
+        LOGI("I am the child process, res is %d", i);
+        LOGI("I am the parent process, my process id is %d", getpid());
+    }
 }
 
 /*

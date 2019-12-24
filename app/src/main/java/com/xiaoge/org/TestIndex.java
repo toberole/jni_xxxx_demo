@@ -31,6 +31,7 @@ public class TestIndex {
     public static int test_page = 0;
 
     public static Class[] clazzs = new Class[]{
+            JNIActivity.class,
             MainActivity.class,
             FragmentActivity1.class,
             FragmentActivity.class,

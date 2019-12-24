@@ -216,6 +216,15 @@ JNIEXPORT void JNICALL Data_test14_1
         (JNIEnv *, jclass);
 
 
+/*
+ * Class:     com_xiaoge_org_jni_Data
+ * Method:    test_fork
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Data_test_fork
+        (JNIEnv *, jclass);
+
+
 #ifdef __cplusplus
 }
 #endif

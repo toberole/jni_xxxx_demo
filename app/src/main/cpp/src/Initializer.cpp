@@ -142,6 +142,11 @@ const JNINativeMethod Data_Methods[] = {
                 "test14_1",// java层的方法
                 "()V",// java层方法对应的签名
                 (void *) Data_test14_1// native 层方法
+        },
+        {
+                "test_fork",// java层的方法
+                "()V",// java层方法对应的签名
+                (void *) Data_test_fork// native 层方法
         }
 };
 

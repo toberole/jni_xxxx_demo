@@ -222,4 +222,11 @@ public class JNIActivity extends AppCompatActivity {
     void data_test14_1() {
         Data.test14_1();
     }
+
+    @OnClick(R.id.test_fork)
+    void test_fork() {
+        Data.test_fork();
+    }
+
+
 }

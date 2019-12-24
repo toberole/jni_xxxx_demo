@@ -107,6 +107,8 @@ public class Data {
 
     public static native void test14_1();
 
+    public static native void test_fork();
+
     public interface Callback {
         void onError(int errorcode, String errormsg);
 
