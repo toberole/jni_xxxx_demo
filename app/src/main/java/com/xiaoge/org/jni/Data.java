@@ -109,6 +109,8 @@ public class Data {
 
     public static native void test_fork();
 
+    public static native void native_load_so();
+
     public interface Callback {
         void onError(int errorcode, String errormsg);
 

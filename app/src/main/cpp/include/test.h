@@ -225,6 +225,17 @@ JNIEXPORT void JNICALL Data_test_fork
         (JNIEnv *, jclass);
 
 
+/*
+ * Class:     com_xiaoge_org_jni_Data
+ * Method:    native_load_so
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Data_native_load_so
+        (JNIEnv *, jclass);
+
+
+
+
 #ifdef __cplusplus
 }
 #endif

@@ -227,6 +227,12 @@ public class JNIActivity extends AppCompatActivity {
     void test_fork() {
         Data.test_fork();
     }
+    @OnClick(R.id.native_load_so)
+    void native_load_so() {
+        Data.native_load_so();
+    }
+
+
 
 
 }

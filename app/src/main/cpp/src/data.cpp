@@ -528,6 +528,16 @@ JNIEXPORT void JNICALL Data_test_fork
 }
 
 /*
+ * Class:     com_xiaoge_org_jni_Data
+ * Method:    native_load_so
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Data_native_load_so
+        (JNIEnv *env, jclass jclazz){
+    LOGI(".... native_load_so ....");
+}
+
+/*
 
 处理 JNI 临界区需要 VM 的帮助，或者关闭 GC，或者采用 GCLocker 类似的机制，
 或者钉住包含对象的子空间，或者仅仅钉住对象。不同的 GCs 采用不同的策略处理 JNI 临界区，
