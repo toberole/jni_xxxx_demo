@@ -31,4 +31,11 @@ public class Response implements Parcelable {
             return new Response[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "Response{" +
+                "data='" + data + '\'' +
+                '}';
+    }
 }

@@ -6,6 +6,11 @@ import java.lang.reflect.Method;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ZeusIPC {
+    //得到对象
+    public static final int TYPE_NEW = 0;
+    //得到单例
+    public static final int TYPE_GET = 1;
+
     private ConcurrentHashMap<String, Class<?>> annotatedClasses = new ConcurrentHashMap<>();
     private ConcurrentHashMap<Class<?>, ConcurrentHashMap<String, Method>> rawMethods = new ConcurrentHashMap<>();
 
@@ -34,7 +39,6 @@ public class ZeusIPC {
         }
     }
 
-
     private void registerClass(Class<?> clazz) {
         String className = clazz.getName();
         if (!annotatedClasses.containsKey(className)) {
@@ -43,7 +47,7 @@ public class ZeusIPC {
     }
 
     public static ZeusIPC getInstance() {
-        return ZeusIPCHolder.xxipc;
+        return ZeusIPCHolder.zeusIpc;
     }
 
     private ZeusIPC() {
@@ -51,6 +55,6 @@ public class ZeusIPC {
     }
 
     private static class ZeusIPCHolder {
-        public static ZeusIPC xxipc = new ZeusIPC();
+        public static ZeusIPC zeusIpc = new ZeusIPC();
     }
 }

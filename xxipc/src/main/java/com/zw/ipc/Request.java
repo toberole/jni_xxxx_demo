@@ -34,4 +34,12 @@ public class Request implements Parcelable {
             return new Request[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "Request{" +
+                "data='" + data + '\'' +
+                ", requestType=" + requestType +
+                '}';
+    }
 }

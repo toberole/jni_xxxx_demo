@@ -11,12 +11,16 @@ public class ZeusService extends Service {
     IZeusService.Stub zeusService = new IZeusService.Stub() {
         @Override
         public Response postRequest(Request request) throws RemoteException {
+            LogUtil.i(TAG, "postRequest: " + request);
+            switch (request.requestType) {
+                case ZeusIPC.TYPE_NEW:
+                    break;
+                case ZeusIPC.TYPE_GET:
+                    break;
+                default:
+                    break;
+            }
             return null;
-        }
-
-        @Override
-        public void basicTypes(int anInt, long aLong, boolean aBoolean, float aFloat, double aDouble, String aString) throws RemoteException {
-
         }
     };
 
