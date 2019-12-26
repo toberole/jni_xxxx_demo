@@ -15,6 +15,7 @@ import com.xiaoge.org.activity.demo.LifeActivity;
 import com.xiaoge.org.activity.demo.ListViewActivityX;
 import com.xiaoge.org.activity.demo.ScrollConflictActivity;
 import com.xiaoge.org.activity.demo.ServiceActivity;
+import com.xiaoge.org.activity.demo.TestBaseActivity;
 import com.xiaoge.org.activity.demo.TimerActivity;
 import com.xiaoge.org.activity.demo.WindowManagerActivity;
 import com.xiaoge.org.activity.demo0.ConstraintlayoutActivity;
@@ -31,6 +32,8 @@ public class TestIndex {
     public static int test_page = 0;
 
     public static Class[] clazzs = new Class[]{
+            TestBaseActivity.class,
+            FragmentActivity1.class,
             JNIActivity.class,
             MainActivity.class,
             FragmentActivity1.class,

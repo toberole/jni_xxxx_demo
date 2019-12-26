@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.org.zw.utils.LogUtil;
 import com.xiaoge.org.App;
 import com.xiaoge.org.R;
+import com.xiaoge.org.util.LogUtil;
 
 public class MultiProcessActivity2 extends AppCompatActivity {
     public static final String TAG = MultiProcessActivity2.class.getSimpleName();

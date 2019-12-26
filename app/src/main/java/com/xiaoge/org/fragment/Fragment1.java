@@ -19,7 +19,7 @@ public class Fragment1 extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        LogUtil.i(TAG, "Fragment1#onAttach");
+        LogUtil.i(TAG, "Fragment1#onAttach context: " + context);
     }
 
     @Override
@@ -40,6 +40,20 @@ public class Fragment1 extends Fragment {
         LogUtil.i(TAG, "Fragment1#onCreate");
     }
 
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        LogUtil.i(TAG, "Fragment1#onCreateView");
+        View v = inflater.inflate(R.layout.fragment1, container, false);
+        return v;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        LogUtil.i(TAG, "Fragment1#onViewCreated");
+    }
+
     @Override
     public void onPause() {
         super.onPause();
@@ -50,6 +64,12 @@ public class Fragment1 extends Fragment {
     public void onResume() {
         super.onResume();
         LogUtil.i(TAG, "Fragment1#onResume");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        LogUtil.i(TAG, "Fragment1#onDestroyView");
     }
 
     @Override
@@ -64,17 +84,5 @@ public class Fragment1 extends Fragment {
         LogUtil.i(TAG, "Fragment1#onDetach");
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        LogUtil.i(TAG, "Fragment1#onDestroyView");
-    }
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        LogUtil.i(TAG, "Fragment1#onCreateView");
-        View v = inflater.inflate(R.layout.fragment1, container, false);
-        return v;
-    }
 }

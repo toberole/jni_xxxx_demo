@@ -1,7 +1,6 @@
 package com.xiaoge.org.activity.demo;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -12,8 +11,9 @@ import android.os.Debug;
 import android.os.Environment;
 import android.widget.LinearLayout;
 
+import com.cat.zeus.page.ZeusFragment;
 import com.xiaoge.org.R;
-import com.xiaoge.org.fragment.Fragment1;
+import com.xiaoge.org.fragment.Fragment2;
 import com.xiaoge.org.util.LogUtil;
 
 import java.io.File;
@@ -91,8 +91,15 @@ public class FragmentActivity1 extends AppCompatActivity {
 
     @OnClick(R.id.btn_1)
     void btn1() {
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        Fragment f = new Fragment1();
+//        fragmentManager.
+//                beginTransaction()
+//                .replace(R.id.ll_container, f, "f1")
+//                .commit();
+
         FragmentManager fragmentManager = getSupportFragmentManager();
-        Fragment f = new Fragment1();
+        Fragment2 f = ZeusFragment.newInstance(Fragment2.class);
         fragmentManager.
                 beginTransaction()
                 .replace(R.id.ll_container, f, "f1")

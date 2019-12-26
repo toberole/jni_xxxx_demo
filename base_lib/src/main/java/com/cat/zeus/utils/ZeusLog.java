@@ -1,4 +1,4 @@
-package com.org.zw.utils;
+package com.cat.zeus.utils;
 
 import android.text.TextUtils;
 import android.util.Log;
@@ -6,7 +6,7 @@ import android.util.Log;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class LogUtil {
+public class ZeusLog {
     public static final String TAG = "com-org-cn";
 
     public static final int ORIGIN_STACK_INDEX = 4;
@@ -16,7 +16,7 @@ public class LogUtil {
     private static boolean enableLog = true;
 
     public static void enableLog(boolean enableLog) {
-        LogUtil.enableLog = enableLog;
+        ZeusLog.enableLog = enableLog;
     }
 
     public static void v(String msg) {
