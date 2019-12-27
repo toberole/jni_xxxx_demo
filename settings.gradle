@@ -1,1 +1,1 @@
-include ':app', ':baselib', ':exp_other', ':xxipc'
+include ':app', ':baselib', ':exp_other', ':xxipc', ':apt_processor', ':apt_annotation'

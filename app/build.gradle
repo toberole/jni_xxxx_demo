@@ -56,7 +56,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar','*.aar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
     implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
 
@@ -70,7 +70,7 @@ dependencies {
 
     implementation 'com.tencent.bugly:crashreport:latest.release'
     implementation 'com.tencent.bugly:nativecrashreport:latest.release'
-    compile project(path: ':baselib')
+
 
     /////////////////////////// kotlin /////////////////////////////
     // 标准库
@@ -82,6 +82,13 @@ dependencies {
 
     // compile 'com.android.tools.build:gradle:2.3.3'
 
+    // ***********************
+    // 使用apt
+    compile project(':apt_annotation')
+    annotationProcessor project(':apt_processor')
+    // ***********************
+
+    compile project(path: ':baselib')
 }
 
 

@@ -40,7 +40,6 @@
         </RelativeLayout>
     </FrameLayout>
 
-
     <FrameLayout
         android:id="@+id/fl_container"
         android:layout_width="match_parent"
