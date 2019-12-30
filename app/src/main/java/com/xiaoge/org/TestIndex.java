@@ -18,6 +18,7 @@ import com.xiaoge.org.activity.demo.ServiceActivity;
 import com.xiaoge.org.activity.demo.TestBaseActivity;
 import com.xiaoge.org.activity.demo.TimerActivity;
 import com.xiaoge.org.activity.demo.WindowManagerActivity;
+import com.xiaoge.org.activity.demo.ZeusBindViewProcessorActivity;
 import com.xiaoge.org.activity.demo0.ConstraintlayoutActivity;
 import com.xiaoge.org.activity.demo0.CustomSurfaceViewActivity;
 import com.xiaoge.org.activity.demo0.DemoViewGroup1Activity;
@@ -32,6 +33,7 @@ public class TestIndex {
     public static int test_page = 0;
 
     public static Class[] clazzs = new Class[]{
+            ZeusBindViewProcessorActivity.class,
             DemoViewActivity.class,
             TestBaseActivity.class,
             FragmentActivity1.class,

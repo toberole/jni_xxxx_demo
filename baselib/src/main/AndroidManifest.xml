@@ -3,9 +3,6 @@
     package="com.sogou.speech.base_lib">
 
     <application>
-        <!--<provider-->
-            <!--android:name="com.cat.zeus.Zeus"-->
-            <!--android:authorities="com.cat.zeus.fuck" />-->
     </application>
 
 </manifest>

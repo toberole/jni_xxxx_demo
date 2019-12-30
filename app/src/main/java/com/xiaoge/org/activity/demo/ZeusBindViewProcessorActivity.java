@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.cat.anno_apt_apis.Zeus;
 import com.cat.zeus.annotation.ZeusAPTBindView;
 import com.xiaoge.org.R;
 
@@ -25,6 +26,8 @@ public class ZeusBindViewProcessorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zeus_bind_view_processor);
-        ZeusBindViewProcessorActivityViewBinding.bind(this);
+        Zeus.bind(this);
+
+        tv_test.setText("bind after");
     }
 }
