@@ -29,5 +29,6 @@ public class ZeusBindViewProcessorActivity extends AppCompatActivity {
         Zeus.bind(this);
 
         tv_test.setText("bind after");
+        et_test.setText("hello et_test");
     }
 }
