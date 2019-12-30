@@ -1,4 +1,4 @@
-package com.cat.processor;
+package com.cat.zeus.processor;
 
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.ProcessingEnvironment;

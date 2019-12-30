@@ -84,6 +84,7 @@ dependencies {
     // 使用apt
     annotationProcessor project(path: ':apt_processor')
     compile project(path: ':apt_annotation')
+    annotationProcessor project(path: ':apt1')
 
     compile project(path: ':baselib')
 }

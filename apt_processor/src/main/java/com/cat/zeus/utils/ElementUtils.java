@@ -1,4 +1,4 @@
-package com.cat.processor.utils;
+package com.cat.zeus.utils;
 
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.Elements;
