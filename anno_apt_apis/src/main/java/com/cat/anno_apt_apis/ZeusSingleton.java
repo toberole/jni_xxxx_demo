@@ -8,7 +8,6 @@ public class ZeusSingleton {
     }
 
     public <T> T getInstance(Class clazz) {
-
         return null;
     }
 
