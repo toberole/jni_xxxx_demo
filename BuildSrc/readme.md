@@ -1,0 +1,3 @@
+对Android打包过程 java文件会先转化为class文件，然后在转化为dex文件。
+通过Gradle插件提供的Transform API，可以在编译成dex文件之前得到class文件。
+得到class文件之后，便可以通过ASM对字节码进行修改，即可完成字节码插桩。

@@ -6,9 +6,9 @@ apply plugin: 'com.jakewharton.butterknife'
 ///////////////////////引用自定义插件 //////////////////////////
 // 第一种写法
 // 'com.cat.zeus.gradle'名字与properties必须一致
-// apply plugin: 'com.cat.zeus.gradle'
+apply plugin: 'com.cat.zeus.gradle'
 // 第二种写法
-apply plugin: com.cat.zeus.plugin.MyPlugin
+// apply plugin: com.cat.zeus.plugin.MyPlugin
 
 
 kotlin {
