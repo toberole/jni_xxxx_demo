@@ -8,7 +8,6 @@ import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
-import com.squareup.javapoet.ParameterizedTypeName;
 import com.squareup.javapoet.TypeSpec;
 
 import java.text.MessageFormat;
@@ -27,9 +26,8 @@ import javax.lang.model.element.VariableElement;
  * 该类有编译环境在编译期间自动创建切只会创建一次
  * 并且由编译环境自动的调用执行
  */
-@AutoService(javax.annotation.processing.Processor.class)
-public class ZeusBindViewProcessor extends BaseProcessor {
-    public static final String TAG = ZeusBindViewProcessor.class.getSimpleName();
+public class ZeusAPTBindViewProcessor extends BaseProcessor {
+    public static final String TAG = ZeusAPTBindViewProcessor.class.getSimpleName();
 
     @Override
     public Set<String> getSupportedAnnotationTypes() {
@@ -84,7 +82,6 @@ public class ZeusBindViewProcessor extends BaseProcessor {
                 Map<Integer, VariableElement> elementMap = typeElementMapMap.get(key);
                 String packageName = ElementUtils.getPackageName(elementUtils, key);
                 log("packageName: " + packageName);
-
                 JavaFile javaFile = JavaFile.builder(packageName, generateCodeByPoet(key, elementMap)).build();
                 javaFile.writeTo(processingEnv.getFiler());
             } catch (Exception e) {

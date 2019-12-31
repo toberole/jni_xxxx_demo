@@ -28,7 +28,12 @@ public class ZeusBindViewProcessorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_zeus_bind_view_processor);
         Zeus.bind(this);
 
+        initData();
+    }
+
+    private void initData() {
         tv_test.setText("bind after");
         et_test.setText("hello et_test");
+        btn_test.setText("hello button");
     }
 }
