@@ -14,18 +14,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.cat.zeus.Zeus;
 import com.cat.zeus.annotation.ZeusBindView;
 import com.cat.zeus.annotation.ZeusOnClick;
 import com.cat.zeus.utils.APT;
-import com.cat.zeus.utils.ZeusLog;
 import com.sogou.speech.base_lib.R;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public abstract class ZeusActivity extends Activity {

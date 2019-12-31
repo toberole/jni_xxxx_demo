@@ -87,8 +87,6 @@ dependencies {
     // 协程
     compile group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-android', version: '1.2.2'
 
-    // compile 'com.android.tools.build:gradle:2.3.3'
-
     // 使用apt
     annotationProcessor project(path: ':apt_processor')
     compile project(path: ':apt_annotation')
