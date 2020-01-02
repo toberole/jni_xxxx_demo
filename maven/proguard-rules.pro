@@ -19,31 +19,3 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
-
--dontoptimize
--dontusemixedcaseclassnames
--renamesourcefileattribute SourceFile
--keepattributes Exceptions,InnerClasses,Signature,Deprecated,SourceFile,LineNumberTable,EnclosingMethod
--dontpreverify
--verbose
-
-# Preserve all annotations.
--keepattributes *Annotation*
-
-# Preserve all native method names and the names of their classes.
--keepclasseswithmembernames class * {
-    native <methods>;
-}
-
-# Preserve the special static methods that are required in all enumeration
-# classes.
-
--keepclassmembers class * extends java.lang.Enum {
-    public static **[] values();
-    public static ** valueOf(java.lang.String);
-}
-
-#-keep class com.cat.anno_apt_apis.Zeus {
-#    *;
-#}
-
