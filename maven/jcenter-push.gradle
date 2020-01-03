@@ -31,7 +31,7 @@ install {
                     developer {
                         id '用户名'
                         name '用户名'
-                        email '你的@gmail.com'
+                        email 'xxxx@gmail.com'
                     }
                 }
 

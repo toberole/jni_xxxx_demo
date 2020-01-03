@@ -30,7 +30,8 @@ apply from: './nexus-push.gradle'
 
 
 方式二：发布到JCenter仓库
-第一步：注册 bintray 账户并在用户中心获取用户名和Api key（Tips：必须使用 gmail 账户注册，另外在注册时注意注册个人账号，organization账户需付费免费使用30天，若不小心注册成组织账户，重新开gmail账户注册）；
+第一步：注册 bintray 账户并在用户中心获取用户名和Api key
+（Tips：必须使用 gmail 账户注册，另外在注册时注意注册个人账号，organization账户需付费免费使用30天，若不小心注册成组织账户，重新开gmail账户注册）；
 
 第二步：到 https://bintray.com 网站 Add New Repository 创建新仓库，一般选择 type 为 Maven；
 

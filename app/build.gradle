@@ -10,6 +10,9 @@ apply plugin: 'com.cat.zeus.gradle'
 // 第二种写法
 // apply plugin: com.cat.zeus.plugin.CreateJavaPlugin
 
+//CostTime {
+//    costTimePackageName = 'com.zhouwei.helloapt'
+//}
 
 kotlin {
     experimental {
