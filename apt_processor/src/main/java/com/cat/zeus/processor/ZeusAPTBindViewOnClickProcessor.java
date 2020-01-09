@@ -63,6 +63,8 @@ public class ZeusAPTBindViewOnClickProcessor extends BaseProcessor {
         }
 
         for (Element e : fieldElements) {
+            System.out.println("*************** Element name: " + e.getSimpleName());
+
             Element enclosingElement = e.getEnclosingElement();
             List<Element> list = map.get(enclosingElement);
             if (list == null) {

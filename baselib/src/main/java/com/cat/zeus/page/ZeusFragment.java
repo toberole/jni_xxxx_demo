@@ -42,7 +42,7 @@ public class ZeusFragment extends Fragment {
     }
 
     protected int setLayout() {
-        return -1;
+        return 0;
     }
 
     @Override
@@ -65,6 +65,8 @@ public class ZeusFragment extends Fragment {
         if (layout == 0) {
             layout = setLayout();
         }
+
+        ZeusLog.i(TAG, "onCreateView layout: " + layout);
 
         View v = setLayoutView();
         if (0 != layout) {

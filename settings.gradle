@@ -1,1 +1,1 @@
-include ':app', ':baselib', ':exp_other', ':xxipc', ':apt_processor', ':apt_annotation', ':apt1', ':anno_apt_apis', ':asm', ':maven'
+include ':app', ':baselib', ':exp_other', ':xxipc', ':apt_processor', ':apt_annotation', ':apt1', ':anno_apt_apis', ':asm', ':maven', ':media'

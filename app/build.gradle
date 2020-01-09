@@ -71,16 +71,23 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
 
+    // rxandroid
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation "io.reactivex.rxjava2:rxjava:2.2.8"
 
+    // butterknife
     implementation 'com.jakewharton:butterknife:10.1.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
 
+    // gson
     implementation 'com.google.code.gson:gson:2.8.5'
 
+    // bugly
     implementation 'com.tencent.bugly:crashreport:latest.release'
     implementation 'com.tencent.bugly:nativecrashreport:latest.release'
+
+    // eventbus
+    implementation 'org.greenrobot:eventbus:3.1.1'
 
     /////////////////////////// kotlin /////////////////////////////
     // 标准库
@@ -97,11 +104,10 @@ dependencies {
 
     compile project(path: ':anno_apt_apis')
     compile project(path: ':baselib')
+    compile project(path: ':media')
 }
 
 
 repositories {
     mavenCentral()
 }
-
-
