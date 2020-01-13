@@ -2,6 +2,7 @@ package com.xiaoge.org;
 
 import com.xiaoge.org.activity.demo.AnimActivity;
 import com.xiaoge.org.activity.demo.BinderPoolActivity;
+import com.xiaoge.org.activity.demo.BuryingPointActivity;
 import com.xiaoge.org.activity.demo.ContentProviderActivity;
 import com.xiaoge.org.activity.demo.DemoViewActivity;
 import com.xiaoge.org.activity.demo.DemoViewActivity1;
@@ -35,6 +36,7 @@ public class TestIndex {
     public static int test_page = 0;
 
     public static Class[] clazzs = new Class[]{
+            BuryingPointActivity.class,
             com.cat.zeus.media.activities.MainActivity.class,
             TestEventActivity.class,
             ZeusAPTBindViewOnClickProcessorActivity.class,

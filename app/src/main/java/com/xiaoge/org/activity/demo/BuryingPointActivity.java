@@ -1,65 +1,58 @@
-package com.xiaoge.org;
+package com.xiaoge.org.activity.demo;
 
-import android.app.Activity;
-import android.app.Application;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+
 import android.os.Bundle;
-import android.os.Process;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.widget.Toast;
 
-import com.xiaoge.org.util.AppUtil;
-import com.xiaoge.org.util.CrashHandler;
+import com.xiaoge.org.R;
 
-import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-public class App extends Application implements Application.ActivityLifecycleCallbacks {
-    public static final String TAG = "AppXXX";
-    public static int count = 0;
+/**
+ * AppClick全埋点
+ * 动态代理方案
+ * <p>
+ * 存在问题：
+ * 1、使用反射，效率比较低，对于性能会有影响，可能也会有兼容性问题
+ * 2、Application.ActivityLifecycleCallbacks 需要 API 14+
+ * 3、View.hasOnClickListeneers 需要 API 15+
+ * 4、removeOnGlobalLayoutListener 需要 API 16+
+ * 5、游离于Activity 之上的View的点击比如Dialog，PopupWindow无法被监视
+ * <p>
+ * 当然我们可以代理Window.Callback 和上面的原理相同。不过问题依然存在。
+ * 代理View.AccessibilityDelegate效果也是差不多的，问题依然存在。
+ */
+public class BuryingPointActivity extends AppCompatActivity {
+    public static final String TAG = BuryingPointActivity.class.getSimpleName();
+
+    private AppCompatButton btn_appCompatButton;
+    private ViewGroup rootView;
 
     @Override
-    public void onCreate() {
-        super.onCreate();
-        AppUtil.getInstance().init(this);
-        count++;
-
-        Log.i(TAG, "App#onCreate " + getApplicationContext().getApplicationInfo().packageName +
-                " pid: " + Process.myPid() +
-                " uid: " + Process.myUid());
-
-        init();
-
-        Toast.makeText(this, "test", Toast.LENGTH_SHORT).show();
-
-        CrashHandler.getInstance().init(this);
-        //CrashReport.initCrashReport(getApplicationContext(), "ff76ba0cbd", true);
-
-        // 反射做埋点
-        registerActivityLifecycleCallbacks(this);
-    }
-
-    private void init() {
-        File file = new File(Constant.TEMP_DIR);
-        if (!file.exists()) file.mkdirs();
-    }
-
-    @Override
-    public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
-
-    }
-
-    @Override
-    public void onActivityStarted(Activity activity) {
-
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_burying_point);
+        btn_appCompatButton = findViewById(R.id.btn_AppCompatButton);
+        btn_appCompatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "btn_appCompatButton clicked");
+            }
+        });
     }
 
     @Override
-    public void onActivityResumed(Activity activity) {
-        ViewGroup rootView = (ViewGroup) activity.getWindow().getDecorView();
+    protected void onResume() {
+        super.onResume();
+        // ViewGroup rootView = (ViewGroup) this.getWindow().getDecorView();
+
+        rootView = findViewById(android.R.id.content);
         // 当动态添加view的时候也可以做到点击代理的替换
         ViewTreeObserver viewTreeObserver = rootView.getViewTreeObserver();
         viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -74,26 +67,6 @@ public class App extends Application implements Application.ActivityLifecycleCal
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public void onActivityPaused(Activity activity) {
-
-    }
-
-    @Override
-    public void onActivityStopped(Activity activity) {
-
-    }
-
-    @Override
-    public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
-
-    }
-
-    @Override
-    public void onActivityDestroyed(Activity activity) {
-
     }
 
     private void setViewProxy(ViewGroup rootView) {
