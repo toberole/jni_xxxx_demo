@@ -20,7 +20,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.demo.BuryingPointActivity"></activity>
+        <activity android:name=".activity.demo.AccessibilityActivity"></activity>
+        <activity android:name=".activity.demo.FindViewByPositionActivity" />
+        <activity android:name=".activity.demo.RecordScreenActivity" />
+        <activity android:name=".activity.demo.BuryingPointActivity" />
         <activity android:name=".activity.demo.TestEventActivity" />
         <activity android:name=".activity.demo.ZeusAPTBindViewOnClickProcessorActivity" />
         <activity android:name=".activity.demo.TestInjectViewActivity" />

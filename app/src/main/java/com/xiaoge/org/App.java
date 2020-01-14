@@ -5,9 +5,19 @@ import android.app.Application;
 import android.os.Bundle;
 import android.os.Process;
 import android.util.Log;
+import android.view.ActionMode;
+import android.view.KeyEvent;
+import android.view.KeyboardShortcutGroup;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.SearchEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.accessibility.AccessibilityEvent;
 import android.widget.Toast;
 
 import com.xiaoge.org.util.AppUtil;
@@ -16,9 +26,12 @@ import com.xiaoge.org.util.CrashHandler;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.List;
 
-public class App extends Application implements Application.ActivityLifecycleCallbacks {
-    public static final String TAG = "AppXXX";
+import androidx.annotation.Nullable;
+
+public class App extends Application implements Application.ActivityLifecycleCallbacks, Window.Callback {
+    public static final String TAG = "app-xxx";
     public static int count = 0;
 
     @Override
@@ -49,16 +62,18 @@ public class App extends Application implements Application.ActivityLifecycleCal
 
     @Override
     public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
-
+        Log.i(TAG, "App#onActivityCreated: " + activity.getClass().getSimpleName());
     }
 
     @Override
     public void onActivityStarted(Activity activity) {
-
+        Log.i(TAG, "App#onActivityStarted: " + activity.getClass().getSimpleName());
     }
 
     @Override
     public void onActivityResumed(Activity activity) {
+        Log.i(TAG, "App#onActivityResumed: " + activity.getClass().getSimpleName());
+
         ViewGroup rootView = (ViewGroup) activity.getWindow().getDecorView();
         // 当动态添加view的时候也可以做到点击代理的替换
         ViewTreeObserver viewTreeObserver = rootView.getViewTreeObserver();
@@ -78,22 +93,24 @@ public class App extends Application implements Application.ActivityLifecycleCal
 
     @Override
     public void onActivityPaused(Activity activity) {
-
+        Log.i(TAG, "App#onActivityPaused: " + activity.getClass().getSimpleName());
     }
 
     @Override
     public void onActivityStopped(Activity activity) {
+        Log.i(TAG, "App#onActivityStopped: " + activity.getClass().getSimpleName());
 
+        // activity.getWindow().getDecorView().getViewTreeObserver().removeOnGlobalLayoutListener();
     }
 
     @Override
     public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
-
+        Log.i(TAG, "App#onActivitySaveInstanceState: " + activity.getClass().getSimpleName());
     }
 
     @Override
     public void onActivityDestroyed(Activity activity) {
-
+        Log.i(TAG, "App#onActivityDestroyed: " + activity.getClass().getSimpleName());
     }
 
     private void setViewProxy(ViewGroup rootView) {
@@ -128,6 +145,135 @@ public class App extends Application implements Application.ActivityLifecycleCal
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        return false;
+    }
+
+    @Override
+    public boolean dispatchKeyShortcutEvent(KeyEvent event) {
+        return false;
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        return false;
+    }
+
+    @Override
+    public boolean dispatchTrackballEvent(MotionEvent event) {
+        return false;
+    }
+
+    @Override
+    public boolean dispatchGenericMotionEvent(MotionEvent event) {
+
+        return false;
+    }
+
+    @Override
+    public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent event) {
+        return false;
+    }
+
+    @Nullable
+    @Override
+    public View onCreatePanelView(int featureId) {
+        return null;
+    }
+
+    @Override
+    public boolean onCreatePanelMenu(int featureId, Menu menu) {
+        return false;
+    }
+
+    @Override
+    public boolean onPreparePanel(int featureId, View view, Menu menu) {
+        return false;
+    }
+
+    @Override
+    public boolean onMenuOpened(int featureId, Menu menu) {
+        return false;
+    }
+
+    @Override
+    public boolean onMenuItemSelected(int featureId, MenuItem item) {
+        return false;
+    }
+
+    @Override
+    public void onWindowAttributesChanged(WindowManager.LayoutParams attrs) {
+
+    }
+
+    @Override
+    public void onContentChanged() {
+
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+
+    }
+
+    @Override
+    public void onAttachedToWindow() {
+
+    }
+
+    @Override
+    public void onDetachedFromWindow() {
+
+    }
+
+    @Override
+    public void onPanelClosed(int featureId, Menu menu) {
+
+    }
+
+    @Override
+    public boolean onSearchRequested() {
+        return false;
+    }
+
+    @Override
+    public boolean onSearchRequested(SearchEvent searchEvent) {
+        return false;
+    }
+
+    @Nullable
+    @Override
+    public ActionMode onWindowStartingActionMode(ActionMode.Callback callback) {
+        return null;
+    }
+
+    @Nullable
+    @Override
+    public ActionMode onWindowStartingActionMode(ActionMode.Callback callback, int type) {
+        return null;
+    }
+
+    @Override
+    public void onActionModeStarted(ActionMode mode) {
+
+    }
+
+    @Override
+    public void onActionModeFinished(ActionMode mode) {
+
+    }
+
+    @Override
+    public void onProvideKeyboardShortcuts(List<KeyboardShortcutGroup> data, @Nullable Menu menu, int deviceId) {
+
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 
     private class OnClickListenererProxy implements View.OnClickListener {

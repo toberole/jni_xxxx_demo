@@ -1,5 +1,6 @@
 package com.xiaoge.org;
 
+import com.xiaoge.org.activity.demo.AccessibilityActivity;
 import com.xiaoge.org.activity.demo.AnimActivity;
 import com.xiaoge.org.activity.demo.BinderPoolActivity;
 import com.xiaoge.org.activity.demo.BuryingPointActivity;
@@ -8,12 +9,14 @@ import com.xiaoge.org.activity.demo.DemoViewActivity;
 import com.xiaoge.org.activity.demo.DemoViewActivity1;
 import com.xiaoge.org.activity.demo.DemoViewGroupActivity;
 import com.xiaoge.org.activity.demo.DemoViewGroupActivity2;
+import com.xiaoge.org.activity.demo.FindViewByPositionActivity;
 import com.xiaoge.org.activity.demo.FragmentActivity;
 import com.xiaoge.org.activity.demo.FragmentActivity1;
 import com.xiaoge.org.activity.demo.IntentServiceActivity;
 import com.xiaoge.org.activity.demo.JNIActivity;
 import com.xiaoge.org.activity.demo.LifeActivity;
 import com.xiaoge.org.activity.demo.ListViewActivityX;
+import com.xiaoge.org.activity.demo.RecordScreenActivity;
 import com.xiaoge.org.activity.demo.ScrollConflictActivity;
 import com.xiaoge.org.activity.demo.ServiceActivity;
 import com.xiaoge.org.activity.demo.TestBaseActivity;
@@ -36,6 +39,9 @@ public class TestIndex {
     public static int test_page = 0;
 
     public static Class[] clazzs = new Class[]{
+            AccessibilityActivity.class,
+            FindViewByPositionActivity.class,
+            RecordScreenActivity.class,
             BuryingPointActivity.class,
             com.cat.zeus.media.activities.MainActivity.class,
             TestEventActivity.class,

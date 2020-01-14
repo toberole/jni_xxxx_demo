@@ -2,12 +2,15 @@ package com.xiaoge.org.activity.demo;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.Toast;
 
 import com.xiaoge.org.R;
 
@@ -45,6 +48,26 @@ public class BuryingPointActivity extends AppCompatActivity {
                 Log.i(TAG, "btn_appCompatButton clicked");
             }
         });
+
+        // runOnUiThread();
+
+        toast_test();
+
+        Fragment fragment = null;
+    }
+
+    /**
+     * 异步线程淡出toast
+     */
+    private void toast_test() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Looper.prepare();
+                Toast.makeText(BuryingPointActivity.this.getApplicationContext(), "hello", Toast.LENGTH_SHORT).show();
+                Looper.loop();
+            }
+        }).start();
     }
 
     @Override
@@ -52,21 +75,21 @@ public class BuryingPointActivity extends AppCompatActivity {
         super.onResume();
         // ViewGroup rootView = (ViewGroup) this.getWindow().getDecorView();
 
-        rootView = findViewById(android.R.id.content);
-        // 当动态添加view的时候也可以做到点击代理的替换
-        ViewTreeObserver viewTreeObserver = rootView.getViewTreeObserver();
-        viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                setViewProxy(rootView);
-            }
-        });
-
-        try {
-            setViewProxy(rootView);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        rootView = findViewById(android.R.id.content);
+//        // 当动态添加view的时候也可以做到点击代理的替换
+//        ViewTreeObserver viewTreeObserver = rootView.getViewTreeObserver();
+//        viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+//            @Override
+//            public void onGlobalLayout() {
+//                setViewProxy(rootView);
+//            }
+//        });
+//
+//        try {
+//            setViewProxy(rootView);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 
     private void setViewProxy(ViewGroup rootView) {
