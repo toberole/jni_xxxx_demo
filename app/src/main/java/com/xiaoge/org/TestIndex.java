@@ -40,8 +40,10 @@ public class TestIndex {
     public static int test_page = 0;
 
     public static Class[] clazzs = new Class[]{
+            com.xiaoge.org.activity.demo1.ConstraintlayoutActivity.class,
             FragmentActivity2.class
     };
+
 
     public static Class[] clazzs1 = new Class[]{
             AccessibilityActivity.class,

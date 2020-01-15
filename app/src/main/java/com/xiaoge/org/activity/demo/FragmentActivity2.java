@@ -97,8 +97,7 @@ public class FragmentActivity2 extends AppCompatActivity {
             fragment2 = new Fragment2();
         }
 
-        fragmentManager.
-                beginTransaction()
+        fragmentManager.beginTransaction()
                 .replace(R.id.ll_container, fragment2, "f2")
                 .commit();
     }
