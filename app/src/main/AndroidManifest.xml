@@ -20,7 +20,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.demo.AccessibilityActivity"></activity>
+        <activity android:name=".activity.demo.AsyncLayoutInflaterActivity"></activity>
+        <activity android:name=".activity.demo.AccessibilityActivity1" />
+        <activity android:name=".activity.demo.AccessibilityActivity" />
         <activity android:name=".activity.demo.FindViewByPositionActivity" />
         <activity android:name=".activity.demo.RecordScreenActivity" />
         <activity android:name=".activity.demo.BuryingPointActivity" />

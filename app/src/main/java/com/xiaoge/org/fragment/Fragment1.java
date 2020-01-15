@@ -13,6 +13,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+/**
+ * onAttach -> onCreate -> onCreateView
+ * -> onActivityCreated -> onStart
+ * -> onResume -> onPause -> onStop
+ * -> onDestroyView -> onDestroy -> onDetach
+ */
 public class Fragment1 extends Fragment {
     public static final String TAG = Fragment1.class.getSimpleName();
 
@@ -20,18 +26,6 @@ public class Fragment1 extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         LogUtil.i(TAG, "Fragment1#onAttach context: " + context);
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        LogUtil.i(TAG, "Fragment1#onStart");
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        LogUtil.i(TAG, "Fragment1#onStop");
     }
 
     @Override
@@ -54,6 +48,25 @@ public class Fragment1 extends Fragment {
         LogUtil.i(TAG, "Fragment1#onViewCreated");
     }
 
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        LogUtil.i(TAG, "Fragment1#onActivityCreated");
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        LogUtil.i(TAG, "Fragment1#onStart");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        LogUtil.i(TAG, "Fragment1#onResume");
+    }
+
     @Override
     public void onPause() {
         super.onPause();
@@ -61,9 +74,9 @@ public class Fragment1 extends Fragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        LogUtil.i(TAG, "Fragment1#onResume");
+    public void onStop() {
+        super.onStop();
+        LogUtil.i(TAG, "Fragment1#onStop");
     }
 
     @Override
@@ -83,6 +96,4 @@ public class Fragment1 extends Fragment {
         super.onDetach();
         LogUtil.i(TAG, "Fragment1#onDetach");
     }
-
-
 }
