@@ -20,7 +20,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.demo1.ConstraintlayoutActivity"></activity>
+        <activity android:name=".navigation.NavigationActivity"></activity>
+        <activity android:name=".activity.demo1.ConstraintlayoutActivity" />
         <activity android:name=".activity.demo.AsyncLayoutInflaterActivity" />
         <activity android:name=".activity.demo.AccessibilityActivity1" />
         <activity android:name=".activity.demo.AccessibilityActivity" />

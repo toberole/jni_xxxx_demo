@@ -35,12 +35,13 @@ import com.xiaoge.org.activity.demo0.SinLineViewActivity;
 import com.xiaoge.org.activity.demo0.TestServiceActivity;
 import com.xiaoge.org.activity.kotlin.DemoKotlinActivity_1;
 import com.xiaoge.org.activity.kotlin.HelloKotlinActivity;
+import com.xiaoge.org.navigation.NavigationActivity;
 
 public class TestIndex {
     public static int test_page = 0;
 
     public static Class[] clazzs = new Class[]{
-            com.xiaoge.org.activity.demo1.ConstraintlayoutActivity.class,
+            NavigationActivity.class, com.xiaoge.org.activity.demo1.ConstraintlayoutActivity.class,
             FragmentActivity2.class
     };
 
