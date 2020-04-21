@@ -69,6 +69,11 @@ public class NavigationFragment1 extends Fragment implements View.OnClickListene
     }
 
     @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
     public void onDetach() {
         super.onDetach();
         LogUtil.i(TAG, TAG + "#onDetach");

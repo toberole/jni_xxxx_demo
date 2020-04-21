@@ -35,6 +35,16 @@ public class App extends Application implements Application.ActivityLifecycleCal
     public static int count = 0;
 
     @Override
+    public void onTerminate() {
+        super.onTerminate();
+    }
+
+    @Override
+    public void onTrimMemory(int level) {
+        super.onTrimMemory(level);
+    }
+
+    @Override
     public void onCreate() {
         super.onCreate();
         AppUtil.getInstance().init(this);

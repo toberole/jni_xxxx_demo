@@ -11,7 +11,7 @@ class Student public constructor(firstName: String) {
     public var firstName: String
 
     init {
-        this.firstName = firstName;
+        this.firstName = firstName
         println("hello Student")
     }
 }
